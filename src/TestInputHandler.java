@@ -15,10 +15,10 @@ public class TestInputHandler extends InputHandler {
 	{
 		for (GameObject gameObject : getOverallGame().getGameState().getGameObjectCollection())
 		{
-			if (gameObject.checkObjectType(ObjectType.TEST))
+			if (gameObject instanceof TestObject)
 			{
 				g.setColor(Color.RED);
-				g.drawOval((int)gameObject.getxPosition(),(int)gameObject.getyPosition(),32,32);
+				g.fillOval((int)gameObject.getxPosition(),(int)gameObject.getyPosition(),32,32);
 			}
 		}
 	}

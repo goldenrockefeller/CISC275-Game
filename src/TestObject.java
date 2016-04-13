@@ -13,28 +13,6 @@ public class TestObject extends GameObject {
 		//Do Nothing
 	}
 	
-
-	@Override
-	public ObjectType getObjectType()
-	{
-		return ObjectType.TEST;
-	}
-	
-	@Override
-	public boolean checkObjectType(ObjectType type)
-	{
-		return getObjectType() == type || super.checkObjectType(type);
-	}
-	
-	@Override
-	public String toString() {
-		return "TestObject [xPosition=" + xPosition + ", yPosition=" + yPosition + ", xVelocity=" + xVelocity
-				+ ", yVelocity=" + yVelocity + ", objState=" + objState + ", objStateTime=" + objStateTime
-				+ ", getObjectType()=" + getObjectType() + ", getInstanceID()=" + getInstanceID() + "]";
-	}
-	
-	
-	
 	
 
 }

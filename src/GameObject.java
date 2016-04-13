@@ -104,29 +104,12 @@ public class GameObject {
 		return gameState;
 	}
 	
-	public boolean checkObjectType(ObjectType type)
-	{
-		return false;
-	}
-	
-	public ObjectType getObjectType()
-	{
-		return ObjectType.GAMEOBJECT;
-	}
-	
-	public int getInstanceID()
-	{
-		return 0;
-	}
 
-
-	
 	public void setVelocity(double x, double y)
 	{
 		xVelocity = x;
 		yVelocity = y;
 	}
-	
 	
 	public void addVeloction(double x, double y)
 	{
@@ -152,9 +135,10 @@ public class GameObject {
 
 	@Override
 	public String toString() {
-		return "GameObject [xPosition=" + xPosition + ", yPosition=" + yPosition + ", xVelocity=" + xVelocity
+		return super.toString() + "GameObject [xPosition=" + xPosition + ", yPosition=" + yPosition + ", xVelocity=" + xVelocity
 				+ ", yVelocity=" + yVelocity + ", gameState=" + gameState + ", objState=" + objState + ", objStateTime="
-				+ objStateTime + ", getObjectType()=" + getObjectType() + ", getInstanceID()=" + getInstanceID() + "]";
+				+ objStateTime + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
 	}
-
+   
+	
 }

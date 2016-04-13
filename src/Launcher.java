@@ -1,6 +1,10 @@
-
+//TODO add todos
+//TODO create tests
+//TODO add function comments and javadoc
 public class Launcher {
 
+
+	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -9,10 +13,11 @@ public class Launcher {
 		Launcher.setupGameState(gameState);
 		Launcher.setupOverallGame(overallGame);
 		
-		//while loop goes here
+		//TODO correct while loop goes here
 		while (true)
 		{
 			overallGame.update();
+			gameState.toString();
 		}
 	}
 	
