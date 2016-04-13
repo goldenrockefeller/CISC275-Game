@@ -84,20 +84,20 @@ public class GameObject {
 		this.yPosition = yPosition;
 	}
 
-	public int getObjState() {
+	public int getObjectState() {
 		return objectState;
 	}
 
-	public void setObjState(int objState) {
+	public void setObjectState(int objState) {
 		this.objectState = objState;
 	}
 
-	public double getObjStateTime() {
+	public double getObjectStateTime() {
 		return objectStateTime;
 	}
 
-	public void setObjStateTime(double objStateTime) {
-		this.objectStateTime = objStateTime;
+	public void setObjectStateTime(double objectStateTime) {
+		this.objectStateTime = objectStateTime;
 	}
 	
 

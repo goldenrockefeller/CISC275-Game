@@ -12,8 +12,8 @@ public class OverallGame extends JPanel{
 	
 	GameState gameState;
 	JFrame screen;
-	final static int frameWidth = 500;
-    final static int frameHeight = 500;
+	final static int frameWidth = 1000;
+    final static int frameHeight = 1000;
     private Collection<ViewHandler> viewHandlerCollection;
     private Collection<InputHandler> inputHandlerCollection; //paints after
     /*

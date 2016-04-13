@@ -4,6 +4,12 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.*;
 
+import java.io.File;
+import java.io.IOException;
+import java.lang.*;
+
+import javax.imageio.ImageIO;
+
 public class ViewHandler {
 
 	private OverallGame overallGame;
@@ -31,7 +37,15 @@ public class ViewHandler {
 	}
 	public void loadAnimationFromMultipleFiles(String[] fileNames)
 	{
-		//TODO
+		ArrayList <BufferedImage> animation = new ArrayList<BufferedImage>();
+		for (String fileName : fileNames)
+		{
+			try {
+			    animation.add(ImageIO.read(new File(fileName)));
+			} catch (IOException e) {
+				System.out.println("Could not find" + fileName);
+			}
+		}
 		//This function should add an arraylist<BufferedImage> to spriteCollection
 	}
 	public void drawFrame(Graphics g, int x, int y, int animationIndex, int frameIndex)

@@ -17,7 +17,14 @@ public class TestInputHandler extends InputHandler {
 		{
 			if (gameObject instanceof TestObject)
 			{
-				g.setColor(Color.RED);
+				if (gameObject.getObjectState()  == 0)
+				{
+					g.setColor(Color.RED);
+				}
+				else
+				{
+					g.setColor(Color.BLUE);
+				}
 				g.fillOval((int)gameObject.getxPosition(),(int)gameObject.getyPosition(),32,32);
 			}
 		}
