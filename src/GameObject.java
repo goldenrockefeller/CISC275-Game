@@ -18,6 +18,10 @@ public class GameObject {
 		this.gameState = gameState;
 	}
 	
+	public void updateState()
+	{
+	}
+	
 	public void selfDestruct()
 	{
 		gameState.remove(this);
@@ -62,9 +66,6 @@ public class GameObject {
 		yPosition += yVelocity;
 	}
 	
-	public void updateState()
-	{
-	}
 	
 	public double getxPosition() {
 		return xPosition;
