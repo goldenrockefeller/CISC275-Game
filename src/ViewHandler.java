@@ -13,7 +13,6 @@ public class ViewHandler {
 	{
 		this.overallGame = overallGame;
 		this.spriteCollection = new ArrayList<ArrayList<BufferedImage>>();
-		
 	}
 	
 	public void selfDestruct()
@@ -48,5 +47,5 @@ public class ViewHandler {
 		return spriteCollection;
 	}
 	
-	
+
 }
