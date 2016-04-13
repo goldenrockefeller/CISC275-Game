@@ -13,12 +13,13 @@ public class GameState {
 	{
 		for (GameObject gameObject : gameObjectCollection)
 		{
-			gameObject.updateState();
+			gameObject.updatePosition();
 		}
 		for (GameObject gameObject : gameObjectCollection)
 		{
-			gameObject.updatePosition();
+			gameObject.updateState();
 		}
+
 	}
 	public void addToScore(int value)
 	{

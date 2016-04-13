@@ -138,7 +138,7 @@ public class GameObject {
 	@Override
 	public String toString() {
 		return "\n" + super.toString() + " GameObject [xPosition=" + xPosition + ", yPosition=" + yPosition + ", xVelocity=" + xVelocity
-				+ ", yVelocity=" + yVelocity + ", objState=" + objectState + ", objStateTime="
+				+ ", yVelocity=" + yVelocity + ", objectState=" + objectState + ", objectStateTime="
 				+ objectStateTime + "]";
 	}
    
