@@ -1,6 +1,9 @@
 //TODO add todos
 //TODO create tests
 //TODO add function comments and javadoc
+
+import java.lang.*;
+
 public class Launcher {
 
 
@@ -17,7 +20,7 @@ public class Launcher {
 		while (true)
 		{
 			overallGame.update();
-			gameState.toString();
+			System.out.println(gameState);
 		}
 	}
 	
@@ -25,6 +28,7 @@ public class Launcher {
 	{
 		//Construct and add Objects here
 		gameState.add( (GameObject)( new TestObject(32,32,1,0,gameState) ) );
+		gameState.add( (GameObject)( new TestObject(76,32,-5,0,gameState) ) );
 	}
 	
 	public static void setupOverallGame (OverallGame overallGame)

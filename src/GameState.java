@@ -74,7 +74,7 @@ public class GameState {
 	
 	@Override
 	public String toString() {
-		return "GameState [score=" + score + ", trashCount=" + trashCount + ", mittenCount=" + mittenCount
+		return "\nGameState [score=" + score + ", trashCount=" + trashCount + ", mittenCount=" + mittenCount
 				+ ", blueCount=" + blueCount + ", gameObjectCollection=" + gameObjectCollection + "]";
 	}
 	

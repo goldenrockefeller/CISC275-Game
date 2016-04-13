@@ -6,8 +6,8 @@ public class GameObject {
 	double xVelocity;
 	double yVelocity;
 	GameState gameState;
-	int objState = 0;
-	int objStateTime = 0;
+	protected int objectState = 0;
+	protected double objectStateTime = 0;
 	
 	GameObject(double xPosition, double yPosition, double xVelocity, double yVelocity, GameState gameState)
 	{
@@ -36,7 +36,6 @@ public class GameObject {
 		yVelocity = yVelocity * correction;
 		
 	}
-	
 	
 	public double magnitude(double x, double y)
 	{
@@ -85,20 +84,22 @@ public class GameObject {
 	}
 
 	public int getObjState() {
-		return objState;
+		return objectState;
 	}
 
 	public void setObjState(int objState) {
-		this.objState = objState;
+		this.objectState = objState;
 	}
 
-	public int getObjStateTime() {
-		return objStateTime;
+	public double getObjStateTime() {
+		return objectStateTime;
 	}
 
-	public void setObjStateTime(int objStateTime) {
-		this.objStateTime = objStateTime;
+	public void setObjStateTime(double objStateTime) {
+		this.objectStateTime = objStateTime;
 	}
+	
+
 
 	public GameState getGameState() {
 		return gameState;
@@ -135,9 +136,9 @@ public class GameObject {
 
 	@Override
 	public String toString() {
-		return super.toString() + "GameObject [xPosition=" + xPosition + ", yPosition=" + yPosition + ", xVelocity=" + xVelocity
-				+ ", yVelocity=" + yVelocity + ", gameState=" + gameState + ", objState=" + objState + ", objStateTime="
-				+ objStateTime + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
+		return "\n" + super.toString() + " GameObject [xPosition=" + xPosition + ", yPosition=" + yPosition + ", xVelocity=" + xVelocity
+				+ ", yVelocity=" + yVelocity + ", objState=" + objectState + ", objStateTime="
+				+ objectStateTime + "]";
 	}
    
 	
