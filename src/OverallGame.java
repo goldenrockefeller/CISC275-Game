@@ -16,8 +16,7 @@ public class OverallGame extends JPanel{
 	JFrame screen;
 	final static int frameWidth = 1000;
     final static int frameHeight = 1000;
-    private Collection<ViewHandler> viewHandlerCollection;
-    private Collection<InputHandler> inputHandlerCollection; //paints after
+    private Collection<Handler> handlerCollection;
     private static final long serialVersionUID = 1L;
     /*
      * ImageBank contains a set of Sprite Set
@@ -41,8 +40,7 @@ public class OverallGame extends JPanel{
 		
 		this.gameState = gameState;	
 		
-		this.viewHandlerCollection = new LinkedList<ViewHandler>();
-		this.inputHandlerCollection = new LinkedList<InputHandler>();
+		this.handlerCollection = new LinkedList<Handler>();
 		
     }
 	
@@ -50,50 +48,24 @@ public class OverallGame extends JPanel{
 	{
 		//After the user clicks on a button, the Screen lo
 		this.requestFocusInWindow();
-		for (InputHandler inputHandler: inputHandlerCollection)
-		{
-			inputHandler.update();
-		}
 		gameState.update();
 		screen.repaint();
 	}
 	
 	
-	public void add(ViewHandler viewHandler)
+	public void add(Handler handler)
 	{
-		viewHandlerCollection.add(viewHandler);
+		handlerCollection.add(handler);
 	}
-	
-	public void remove(ViewHandler viewHandler)
-	{
-		viewHandlerCollection.remove(viewHandler);
-	}
-	
-	public void add(InputHandler inputHandler)
-	{
-		inputHandlerCollection.add(inputHandler);
-	}
-	
-	public void remove(InputHandler inputHandler)
-	{
-		inputHandlerCollection.remove(inputHandler);
-	}
-	
 	
 	@Override
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		for (ViewHandler viewHandler : viewHandlerCollection )
+		for (Handler handler : handlerCollection )
 		{
-			viewHandler.paint(g);
-		}
-		for (InputHandler inputHandler : inputHandlerCollection)
-		{
-			inputHandler.paint(g);
-		}
-		
-		
+			handler.paint(g);
+		}			
 	}
 	
 	public JFrame getScreen() {
@@ -112,14 +84,10 @@ public class OverallGame extends JPanel{
 		this.gameState = gameState;
 	}
 	
-	public Collection<ViewHandler> getViewHandlerCollection() {
-		return viewHandlerCollection;
+	public Collection<Handler> getHandlerCollection() {
+		return handlerCollection;
 	}
 
-	public Collection<InputHandler> getInputHandlerCollection() {
-		return inputHandlerCollection;
-	}
-	
 	
 
 

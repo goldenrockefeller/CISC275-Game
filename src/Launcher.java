@@ -36,7 +36,7 @@ public class Launcher {
 	public static void setupOverallGame (OverallGame overallGame)
 	{
 		//Construct and add Handlers here
-		overallGame.add ( (ViewHandler) (new TestInputHandler(overallGame) ) );
+		overallGame.add ( (Handler) (new TestInputHandler(overallGame) ) );
 	}
 	
 	public static void setupGameStateFromFile (GameState gameState)

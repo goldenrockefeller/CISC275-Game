@@ -4,7 +4,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import static java.lang.System.out;
 
-public class TestInputHandler extends InputHandler implements ActionListener, KeyListener {
+public class TestInputHandler extends Handler implements ActionListener, KeyListener {
 
 	JButton testButton;
 	boolean red = true;
@@ -41,8 +41,15 @@ public class TestInputHandler extends InputHandler implements ActionListener, Ke
 				{
 					g.setColor(Color.BLUE);
 				}
+				/*
+				if (testButton.getModel().isRollover())
+				{
+					g.setColor(Color.YELLOW);
+				}
+				*/
 				g.fillOval((int)gameObject.getxPosition(),(int)gameObject.getyPosition(),32,32);
 			}
+
 		}
 	}
 	
