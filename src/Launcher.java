@@ -16,14 +16,14 @@ public class Launcher {
 		OverallGame overallGame = new OverallGame(gameState);
 		Launcher.setupGameState(gameState);
 		Launcher.setupOverallGame(overallGame);
-		/*
+		
 		//TODO correct while loop goes here
 		while (true)
 		{
 			overallGame.update();
 			System.out.println(gameState);
 		}
-		*/
+		
 	}
 	
 	public static void setupGameState (GameState gameState)

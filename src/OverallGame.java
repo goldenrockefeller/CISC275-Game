@@ -31,12 +31,16 @@ public class OverallGame extends JPanel{
     	super();
     	this.setBackground(Color.GRAY);
     	this.setOpaque(true);
+    	this.setFocusable(true);
+    	
     	this.screen = new JFrame("Super Team 6");
 		this.screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.screen.setSize(frameWidth, frameHeight);
 		this.screen.getContentPane().add(this);
 		this.screen.setVisible(true);
+		
 		this.gameState = gameState;	
+		
 		this.viewHandlerCollection = new LinkedList<ViewHandler>();
 		this.inputHandlerCollection = new LinkedList<InputHandler>();
 		
@@ -44,6 +48,8 @@ public class OverallGame extends JPanel{
 	
 	public void update()
 	{
+		//After the user clicks on a button, the Screen lo
+		this.requestFocusInWindow();
 		for (InputHandler inputHandler: inputHandlerCollection)
 		{
 			inputHandler.update();

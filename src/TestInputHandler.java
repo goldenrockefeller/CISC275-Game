@@ -4,7 +4,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import static java.lang.System.out;
 
-public class TestInputHandler extends InputHandler implements ActionListener {
+public class TestInputHandler extends InputHandler implements ActionListener, KeyListener {
 
 	JButton testButton;
 	boolean red = true;
@@ -12,6 +12,8 @@ public class TestInputHandler extends InputHandler implements ActionListener {
 	public TestInputHandler(OverallGame overallGame) {
 		
 		super(overallGame);
+		
+		//adds a button to game
 		testButton = new JButton("Click me");
 		overallGame.add(testButton,BorderLayout.SOUTH);
 		overallGame.validate();
@@ -19,6 +21,7 @@ public class TestInputHandler extends InputHandler implements ActionListener {
 		
 
 		testButton.addActionListener(this);
+		overallGame.addKeyListener(this);
 		
 		// TODO Auto-generated constructor stub
 	}
@@ -51,6 +54,19 @@ public class TestInputHandler extends InputHandler implements ActionListener {
 	public void actionPerformed(ActionEvent e)
 	{
 		red = !red;
+	}
+	
+	public void keyTyped(KeyEvent e) {
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		red = !red;
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		System.out.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode()));
 	}
 
 }
