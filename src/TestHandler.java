@@ -19,7 +19,6 @@ public class TestHandler extends Handler implements ActionListener, KeyListener 
 		overallGame.validate();
 		overallGame.repaint();
 		
-
 		testButton.addActionListener(this);
 		overallGame.addKeyListener(this);
 		
@@ -53,14 +52,9 @@ public class TestHandler extends Handler implements ActionListener, KeyListener 
 		}
 	}
 	
-	public void update()
-	{
-		
-	}
-	
 	public void actionPerformed(ActionEvent e)
 	{
-		red = !red;
+		red = false;
 	}
 	
 	public void keyTyped(KeyEvent e) {
@@ -68,7 +62,7 @@ public class TestHandler extends Handler implements ActionListener, KeyListener 
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		red = !red;
+		red = true;
 	}
 
 	@Override

@@ -5,6 +5,10 @@ public class GameState {
 	int trashCount;
 	int mittenCount;
 	int blueCount;
+	final static int frameWidth = 1000;
+	final static int crabUpperBound = 200;
+	final static int crabLowerBound = 800;
+    final static int frameHeight = 1000;
 	Collection<GameObject> gameObjectCollection = new LinkedList<GameObject>();
 	
 	
