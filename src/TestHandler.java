@@ -4,12 +4,12 @@ import java.awt.event.*;
 import javax.swing.*;
 import static java.lang.System.out;
 
-public class TestInputHandler extends Handler implements ActionListener, KeyListener {
+public class TestHandler extends Handler implements ActionListener, KeyListener {
 
 	JButton testButton;
 	boolean red = true;
 	
-	public TestInputHandler(OverallGame overallGame) {
+	public TestHandler(OverallGame overallGame) {
 		
 		super(overallGame);
 		
