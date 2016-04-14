@@ -16,20 +16,21 @@ public class Launcher {
 		OverallGame overallGame = new OverallGame(gameState);
 		Launcher.setupGameState(gameState);
 		Launcher.setupOverallGame(overallGame);
-		
+		/*
 		//TODO correct while loop goes here
 		while (true)
 		{
 			overallGame.update();
 			System.out.println(gameState);
 		}
+		*/
 	}
 	
 	public static void setupGameState (GameState gameState)
 	{
 		//Construct and add Objects here
-		gameState.add( (GameObject)( new TestObject(32,32,1,0,gameState) ) );
-		gameState.add( (GameObject)( new TestObject(76,32,-5,0,gameState) ) );
+		gameState.add( (GameObject)( new TestObject(500,0,0,0,gameState) ) );
+		gameState.add( (GameObject)( new TestObject(76,32,0,0,gameState) ) );
 	}
 	
 	public static void setupOverallGame (OverallGame overallGame)

@@ -1,12 +1,25 @@
 
-import java.awt.Graphics;
-import java.awt.Color;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 import static java.lang.System.out;
 
-public class TestInputHandler extends InputHandler {
+public class TestInputHandler extends InputHandler implements ActionListener {
 
+	JButton testButton;
+	boolean red = true;
+	
 	public TestInputHandler(OverallGame overallGame) {
+		
 		super(overallGame);
+		testButton = new JButton("Click me");
+		overallGame.add(testButton,BorderLayout.SOUTH);
+		overallGame.validate();
+		overallGame.repaint();
+		
+
+		testButton.addActionListener(this);
+		
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -17,7 +30,7 @@ public class TestInputHandler extends InputHandler {
 		{
 			if (gameObject instanceof TestObject)
 			{
-				if (gameObject.getObjectState()  == 0)
+				if (red)
 				{
 					g.setColor(Color.RED);
 				}
@@ -32,7 +45,12 @@ public class TestInputHandler extends InputHandler {
 	
 	public void update()
 	{
-		out.println("This was not supposed to happen");
+		
+	}
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		red = !red;
 	}
 
 }

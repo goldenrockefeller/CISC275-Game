@@ -1,14 +1,16 @@
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class OverallGame extends JPanel{
+	
+	/**
+	 * 
+	 */
 	
 	GameState gameState;
 	JFrame screen;
@@ -16,6 +18,7 @@ public class OverallGame extends JPanel{
     final static int frameHeight = 1000;
     private Collection<ViewHandler> viewHandlerCollection;
     private Collection<InputHandler> inputHandlerCollection; //paints after
+    private static final long serialVersionUID = 1L;
     /*
      * ImageBank contains a set of Sprite Set
      * SpriteSets contains a list of all Image Sets for a GameObject
@@ -25,12 +28,14 @@ public class OverallGame extends JPanel{
     
     public OverallGame(GameState gameState)
     {
+    	super();
+    	this.setBackground(Color.GRAY);
+    	this.setOpaque(true);
     	this.screen = new JFrame("Super Team 6");
-    	this.screen.setBackground(Color.gray);
 		this.screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.screen.setSize(frameWidth, frameHeight);
-		this.screen.setVisible(true);
 		this.screen.getContentPane().add(this);
+		this.screen.setVisible(true);
 		this.gameState = gameState;	
 		this.viewHandlerCollection = new LinkedList<ViewHandler>();
 		this.inputHandlerCollection = new LinkedList<InputHandler>();
@@ -70,8 +75,9 @@ public class OverallGame extends JPanel{
 	
 	
 	@Override
-	public void paint(Graphics g)
+	public void paintComponent(Graphics g)
 	{
+		super.paintComponent(g);
 		for (ViewHandler viewHandler : viewHandlerCollection )
 		{
 			viewHandler.paint(g);
@@ -80,6 +86,8 @@ public class OverallGame extends JPanel{
 		{
 			inputHandler.paint(g);
 		}
+		
+		
 	}
 	
 	public JFrame getScreen() {
@@ -105,6 +113,8 @@ public class OverallGame extends JPanel{
 	public Collection<InputHandler> getInputHandlerCollection() {
 		return inputHandlerCollection;
 	}
+	
+	
 
 
 }

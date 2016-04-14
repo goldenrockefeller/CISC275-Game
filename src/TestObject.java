@@ -13,9 +13,12 @@ public class TestObject extends GameObject {
 		setObjectState(0);
 		for (GameObject gameObject : getGameState().getGameObjectCollection())
 		{
-			if (magnitude(this.getxPosition()-gameObject.getxPosition(),this.getyPosition()-gameObject.getyPosition()) < 32)
+			if (gameObject != this)
 			{
-				setObjectState(1);
+				if (magnitude(this.getxPosition()-gameObject.getxPosition(),this.getyPosition()-gameObject.getyPosition()) < 32)
+				{
+					setObjectState(1);
+				}
 			}
 		}
 	}
