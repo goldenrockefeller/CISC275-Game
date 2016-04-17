@@ -54,7 +54,9 @@ public class TestHandler extends Handler implements ActionListener, KeyListener 
 	
 	public void actionPerformed(ActionEvent e)
 	{
-		red = false;
+		red = !red;
+		//After the user clicks on a button, the Screen gain focus again for keypresses and mouseclicks
+		getOverallGame().requestFocusInWindow();
 	}
 	
 	public void keyTyped(KeyEvent e) {

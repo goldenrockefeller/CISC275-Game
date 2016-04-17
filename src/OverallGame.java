@@ -46,8 +46,7 @@ public class OverallGame extends JPanel{
 	
 	public void update()
 	{
-		//After the user clicks on a button, the Screen lo
-		this.requestFocusInWindow();
+
 		gameState.update();
 		screen.repaint();
 	}
