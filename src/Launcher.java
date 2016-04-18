@@ -38,6 +38,7 @@ public class Launcher {
 		gameState.add( (GameObject)( new MittenCrab(500,500,0,0,gameState) ) );
 		gameState.add( (GameObject)( new BlueCrab(76,32,0,0,gameState) ) );
 		gameState.add( (GameObject) ( new TestObject(500,500,0,0,gameState) ));
+		gameState.add( (GameObject)( new mytestObject(32,64,0,0,gameState) ) );
 	}
 	
 	public static void setupOverallGame (OverallGame overallGame)
@@ -46,6 +47,7 @@ public class Launcher {
 		overallGame.add ( (Handler) (new MittenCrabHandler(overallGame) ) );
 		overallGame.add ( (Handler) (new BlueCrabHandler(overallGame) ) );
 		overallGame.add ( (Handler) (new TestHandler(overallGame) ));
+		overallGame.add ( ( Handler) (new mytestHandler(overallGame) ) );
 	}
 	
 	public static void setupGameStateFromFile (GameState gameState)
