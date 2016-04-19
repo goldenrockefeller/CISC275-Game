@@ -10,16 +10,16 @@ public class mytestObject extends GameObject {
 	@Override
 	public void updateState()
 	{
-		setObjectState(0);
+		
 		for (GameObject gameObject : getGameState().getGameObjectCollection())
 		{
-			if (gameObject != this)
-			{
-				if (magnitude(this.getxPosition()-gameObject.getxPosition(),this.getyPosition()-gameObject.getyPosition()) < 32)
-				{
-					setObjectState(1);
-				}
-			}
+//			if (gameObject != this)
+//			{
+//				if (magnitude(this.getxPosition()-gameObject.getxPosition(),this.getyPosition()-gameObject.getyPosition()) < 32)
+//				{
+//					setObjectState(1);
+//				}
+//			}
 		}
 	}
 	

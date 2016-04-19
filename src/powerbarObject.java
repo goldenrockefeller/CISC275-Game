@@ -11,10 +11,6 @@ public class powerbarObject extends GameObject {
 	public void updateState()
 	{
 		setObjectState(0);
-		for (GameObject gameObject : getGameState().getGameObjectCollection())
-		{
-			
-		}
 	}
 	
 	
