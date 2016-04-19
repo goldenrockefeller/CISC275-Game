@@ -28,7 +28,7 @@ public class mytestHandler extends Handler implements ActionListener, KeyListene
 		overallGame.add(randomButton, BorderLayout.SOUTH);
 		overallGame.validate();
 		overallGame.repaint();
-
+	
 		testButton.addActionListener(this);
 		BlackButton.addActionListener(this);
 		randomButton.addActionListener(this);
@@ -36,6 +36,7 @@ public class mytestHandler extends Handler implements ActionListener, KeyListene
 
 		// TODO Auto-generated constructor stub
 	}
+	
 
 	@Override
 	public void paint(Graphics g) {
@@ -62,10 +63,12 @@ public class mytestHandler extends Handler implements ActionListener, KeyListene
 					/*
 					 * if (testButton.getModel().isRollover()) {
 					 * g.setColor(Color.YELLOW); }
-					 */} else if (color == "BLACK") {
+					 */
+					} else if (color == "BLACK") {
 					g.setColor(Color.BLACK);
 				}
 				g.fillRect((int) gameObject.getxPosition(), (int) gameObject.getyPosition(), 32, 32);
+				
 			}
 
 		}
@@ -98,8 +101,9 @@ public class mytestHandler extends Handler implements ActionListener, KeyListene
 
 		} else if (e.getActionCommand() == "White") {
 			color = "WHITE";
-			System.out.println(random);
-		}
+			
+		}else {}
+		getOverallGame().requestFocusInWindow();
 	}
 
 	public void keyTyped(KeyEvent e) {
@@ -110,16 +114,17 @@ public class mytestHandler extends Handler implements ActionListener, KeyListene
 		for (GameObject gameObject : getOverallGame().getGameState().getGameObjectCollection()) {
 			if (gameObject instanceof mytestObject) {
 				if (e.getKeyCode() == KeyEvent.VK_UP) {
-					gameObject.translatePosition(0, -1);
+					//System.out.println(gameObject.getxPosition()+" "+gameObject.getxPosition()+" "+gameObject.getxVelocity()+" "+gameObject.getyVelocity());
+					gameObject.translatePosition(0, -3);
 
 				} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-					gameObject.translatePosition(0, 1);
+					gameObject.translatePosition(0, 3);
 
 				} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-					gameObject.translatePosition(-1, 0);
+					gameObject.translatePosition(-3, 0);
 
 				} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-					gameObject.translatePosition(1, 0);
+					gameObject.translatePosition(3, 0);
 
 				}
 
@@ -129,7 +134,7 @@ public class mytestHandler extends Handler implements ActionListener, KeyListene
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		System.out.println("keyReleased=" + KeyEvent.getKeyText(e.getKeyCode()));
+		//System.out.println("keyReleased=" + KeyEvent.getKeyText(e.getKeyCode()));
 	}
 
 }
