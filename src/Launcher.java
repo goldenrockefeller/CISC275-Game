@@ -38,7 +38,7 @@ public class Launcher {
 		gameState.add( (GameObject)( new Background(0,0,0,0,gameState)));
 		gameState.add( (GameObject)( new MittenCrab(500,500,0,0,gameState) ) );
 		gameState.add( (GameObject)( new BlueCrab(76,32,0,0,gameState) ) );
-		gameState.add( (GameObject) ( new TestObject(500,500,0,0,gameState) ));
+		gameState.add( (GameObject) ( new TestObject(500,900,0,0,gameState) ));
 		gameState.add( (GameObject)( new mytestObject(32,64,0,0,gameState) ) );
 	}
 	
