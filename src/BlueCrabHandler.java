@@ -10,8 +10,8 @@ public class BlueCrabHandler extends Handler{
 
 	Image image;
 	
-	BlueCrabHandler(OverallGame overallGame) {
-		super(overallGame);
+	BlueCrabHandler(GameScreen gameScreen,GameState gameState) {
+		super(gameScreen,gameState);
 		try{
 			image = ImageIO.read(new File("img/crab_1.png")).getScaledInstance(100, 100, Image.SCALE_FAST);	
 		}
@@ -23,7 +23,7 @@ public class BlueCrabHandler extends Handler{
 	}
 
 	public void paint(Graphics g) {
-		for (GameObject gameObject : getOverallGame().getGameState().getGameObjectCollection())
+		for (GameObject gameObject : getGameState().getGameObjectCollection())
 		{
 			if (gameObject instanceof BlueCrab)
 			{

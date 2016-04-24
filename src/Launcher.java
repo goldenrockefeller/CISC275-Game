@@ -5,22 +5,28 @@
 
 import java.lang.*;
 
+import javax.swing.JFrame;
+
 public class Launcher {
-
-
-	
+	final static int frameWidth = 1000;
+    final static int frameHeight = 1000;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		GameState gameState = new GameState();
-		OverallGame overallGame = new OverallGame(gameState);
+		GameScreen gameScreen = new GameScreen();
+		JFrame gameWindow = new JFrame("Super Team 6");
+		
+		
 		Launcher.setupGameState(gameState);
-		Launcher.setupOverallGame(overallGame);
+		Launcher.setupGameScreen(gameScreen,gameState);
+		Launcher.setupGameWindow(gameWindow,gameScreen);
 		
 		//TODO correct while loop goes here
 		while (true)
 		{
-			overallGame.update();
+			gameState.update();
+			gameScreen.repaint();
 			//System.out.println(gameState);
 			try {
 				Thread.sleep(10);
@@ -35,25 +41,34 @@ public class Launcher {
 	public static void setupGameState (GameState gameState)
 	{
 		//Construct and add Objects here
-		gameState.add( (GameObject)( new Background(0,0,0,0,gameState)));
-		gameState.add( (GameObject)( new MittenCrab(500,500,0,0,gameState) ) );
-		gameState.add( (GameObject)( new BlueCrab(76,32,0,0,gameState) ) );
-		gameState.add( (GameObject) ( new TestObject(500,500,0,0,gameState) ));
-		gameState.add( (GameObject)( new mytestObject(32,64,0,0,gameState) ) );
-		gameState.add((GameObject)(new powerbarFrame(18, 126, 0, 0, gameState)));
-		gameState.add( (GameObject)( new powerbarObject(20,128,0,0,gameState) ) );
+		gameState.add(new MittenCrab(500,500,0,0,gameState));
+		gameState.add(new BlueCrab(76,32,0,0,gameState));
+		gameState.add(new TestObject(500,500,0,0,gameState));
+		gameState.add(new mytestObject(32,64,0,0,gameState));
+		gameState.add(new powerbarFrame(18, 126, 0, 0, gameState));
+		gameState.add(new powerbarObject(20,128,0,0,gameState));
 		
 	}
 	
-	public static void setupOverallGame (OverallGame overallGame)
+	public static void setupGameScreen (GameScreen gameScreen, GameState gameState)
 	{
 		//Construct and add Handlers here
-		overallGame.add ( (Handler) (new BackgroundHandler(overallGame) ) );
-		overallGame.add ( (Handler) (new MittenCrabHandler(overallGame) ) );
-		overallGame.add ( (Handler) (new BlueCrabHandler(overallGame) ) );
-		overallGame.add ( (Handler) (new TestHandler(overallGame) ));
-		overallGame.add ( ( Handler) (new mytestHandler(overallGame) ) );
-		overallGame.add ( ( Handler) (new powerbarHandler(overallGame) ) );
+		gameScreen.add (new BackgroundHandler(gameScreen,gameState));
+		gameScreen.add (new MittenCrabHandler(gameScreen,gameState));
+		gameScreen.add (new BlueCrabHandler(gameScreen,gameState));
+		gameScreen.add (new TestHandler(gameScreen,gameState));
+		gameScreen.add (new mytestHandler(gameScreen,gameState));
+		gameScreen.add (new powerbarHandler(gameScreen,gameState));
+	}
+	
+	public static void setupGameWindow(JFrame gameWindow, GameScreen gameScreen)
+	{
+    	
+		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gameWindow.setSize(frameWidth, frameHeight);
+		gameWindow.getContentPane().add(gameScreen);
+		gameWindow.setVisible(true);
+
 	}
 	
 	public static void setupGameStateFromFile (GameState gameState)

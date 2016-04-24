@@ -10,8 +10,8 @@ public class BackgroundHandler extends Handler {
 
 	Image image;
 		
-	BackgroundHandler(OverallGame overallGame) {
-		super(overallGame);
+	BackgroundHandler(GameScreen gameScreen, GameState gameState) {
+		super(gameScreen,gameState);
 		try{
 			image = ImageIO.read(new File("img/bad-background.png"));//.getScaledInstance(1000, 1000, Image.SCALE_FAST);	
 		}
@@ -22,13 +22,7 @@ public class BackgroundHandler extends Handler {
 	}
 	
 	public void paint(Graphics g) {
-		for (GameObject gameObject : getOverallGame().getGameState().getGameObjectCollection())
-		{
-			if (gameObject instanceof Background)
-			{
-				g.drawImage( image, (int)gameObject.xPosition, (int)gameObject.yPosition, Color.gray, null);
-			}
-		}
+		g.drawImage( image, 0, 0, Color.gray, null);
 	}
 
 	

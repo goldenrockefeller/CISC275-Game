@@ -6,16 +6,12 @@ import java.util.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class OverallGame extends JPanel{
+public class GameScreen extends JPanel{
 	
 	/**
 	 * 
 	 */
 	
-	GameState gameState;
-	JFrame screen;
-	final static int frameWidth = 1000;
-    final static int frameHeight = 1000;
     private Collection<Handler> handlerCollection;
     private static final long serialVersionUID = 1L;
     /*
@@ -25,32 +21,15 @@ public class OverallGame extends JPanel{
      *
      */
     
-    public OverallGame(GameState gameState)
+    public GameScreen()
     {
     	super();
     	this.setBackground(Color.GRAY);
     	this.setOpaque(true);
     	this.setFocusable(true);
-    	
-    	this.screen = new JFrame("Super Team 6");
-		this.screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.screen.setSize(frameWidth, frameHeight);
-		this.screen.getContentPane().add(this);
-		this.screen.setVisible(true);
-		
-		this.gameState = gameState;	
-		
 		this.handlerCollection = new LinkedList<Handler>();
 		
     }
-	
-	public void update()
-	{
-
-		gameState.update();
-		screen.repaint();
-	}
-	
 	
 	public void add(Handler handler)
 	{
@@ -66,22 +45,7 @@ public class OverallGame extends JPanel{
 			handler.paint(g);
 		}			
 	}
-	
-	public JFrame getScreen() {
-		return screen;
-	}
 
-	public void setScreen(JFrame screen) {
-		this.screen = screen;
-	}
-	
-	public GameState getGameState() {
-		return gameState;
-	}
-
-	public void setGameState(GameState gameState) {
-		this.gameState = gameState;
-	}
 	
 	public Collection<Handler> getHandlerCollection() {
 		return handlerCollection;

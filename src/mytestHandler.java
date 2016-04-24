@@ -17,24 +17,22 @@ public class mytestHandler extends Handler implements ActionListener, KeyListene
 	double y = 1;
 	Random random = new Random();
 
-	public mytestHandler(OverallGame overallGame) {
+	public mytestHandler(GameScreen gameScreen, GameState gameState) {
 
-		super(overallGame);
+		super(gameScreen,gameState);
 
 		// adds a button to game
 		testButton = new JButton("White");
 		BlackButton = new JButton("Black");
 		randomButton = new JButton("Random");
-		overallGame.add(testButton, BorderLayout.SOUTH);
-		overallGame.add(BlackButton, BorderLayout.SOUTH);
-		overallGame.add(randomButton, BorderLayout.SOUTH);
-		overallGame.validate();
-		overallGame.repaint();
+		gameScreen.add(testButton, BorderLayout.SOUTH);
+		gameScreen.add(BlackButton, BorderLayout.SOUTH);
+		gameScreen.add(randomButton, BorderLayout.SOUTH);
 
 		testButton.addActionListener(this);
 		BlackButton.addActionListener(this);
 		randomButton.addActionListener(this);
-		overallGame.addKeyListener(this);
+		gameScreen.addKeyListener(this);
 
 		// TODO Auto-generated constructor stub
 	}
@@ -42,7 +40,7 @@ public class mytestHandler extends Handler implements ActionListener, KeyListene
 	@Override
 	public void paint(Graphics g) {
 
-		for (GameObject gameObject : getOverallGame().getGameState().getGameObjectCollection()) {
+		for (GameObject gameObject : getGameState().getGameObjectCollection()) {
 			if (gameObject instanceof mytestObject) {
 				if (randomMode == 1) {
 					if (gameObject.getxVelocity() == 0 || gameObject.getyVelocity() == 0) {
@@ -110,7 +108,7 @@ public class mytestHandler extends Handler implements ActionListener, KeyListene
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		for (GameObject gameObject : getOverallGame().getGameState().getGameObjectCollection()) {
+		for (GameObject gameObject : getGameState().getGameObjectCollection()) {
 			if (gameObject instanceof mytestObject) {
 				if (e.getKeyCode() == KeyEvent.VK_UP) {
 					gameObject.translatePosition(0, -1);

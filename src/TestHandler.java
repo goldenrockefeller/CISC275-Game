@@ -9,18 +9,16 @@ public class TestHandler extends Handler implements ActionListener, KeyListener 
 	JButton testButton;
 	boolean red = true;
 	
-	public TestHandler(OverallGame overallGame) {
+	public TestHandler(GameScreen gameScreen,GameState gameState) {
 		
-		super(overallGame);
+		super(gameScreen,gameState);
 		
 		//adds a button to game
 		testButton = new JButton("Click me");
-		overallGame.add(testButton,BorderLayout.SOUTH);
-		overallGame.validate();
-		overallGame.repaint();
+		gameScreen.add(testButton,BorderLayout.SOUTH);
 		
 		testButton.addActionListener(this);
-		overallGame.addKeyListener(this);
+		gameScreen.addKeyListener(this);
 		
 		// TODO Auto-generated constructor stub
 	}
@@ -28,7 +26,7 @@ public class TestHandler extends Handler implements ActionListener, KeyListener 
 	@Override
 	public void  paint(Graphics g)
 	{
-		for (GameObject gameObject : getOverallGame().getGameState().getGameObjectCollection())
+		for (GameObject gameObject : getGameState().getGameObjectCollection())
 		{
 			if (gameObject instanceof TestObject)
 			{
@@ -57,7 +55,7 @@ public class TestHandler extends Handler implements ActionListener, KeyListener 
 		red = !red;
 		
 		//After the user clicks on a button, the Screen needs to gain focus again for keypresses and mouseclicks
-		getOverallGame().requestFocusInWindow();
+		gameScreen.requestFocusInWindow();
 	}
 	
 	public void keyTyped(KeyEvent e) {

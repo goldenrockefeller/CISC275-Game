@@ -10,24 +10,32 @@ import java.lang.*;
 
 import javax.imageio.ImageIO;
 
-public class Handler {
+public abstract class Handler {
 
-	private OverallGame overallGame;
+	GameScreen gameScreen;
+	GameState gameState;
 
-	Handler(OverallGame overallGame)
+	Handler(GameScreen gameScreen, GameState gameState)
 	{
-		this.overallGame = overallGame;
+		this.gameScreen = gameScreen;
+		this.gameState = gameState;
 	}
 	
-	public void paint(Graphics g)
-	{
-		
+	abstract public void paint(Graphics g);
+
+	/**
+	 * @return the gameScreen
+	 */
+	public GameScreen getGameScreen() {
+		return gameScreen;
 	}
 
-	public OverallGame getOverallGame() {
-		return overallGame;
+	/**
+	 * @return the gameState
+	 */
+	public GameState getGameState() {
+		return gameState;
 	}
 
-
-
+	
 }

@@ -9,8 +9,8 @@ import javax.imageio.ImageIO;
 public class MittenCrabHandler extends Handler {
 	Image image;
 	
-	MittenCrabHandler(OverallGame overallGame) {
-		super(overallGame);
+	MittenCrabHandler(GameScreen gameScreen,GameState gameState) {
+		super(gameScreen,gameState);
 		try{
 			image = ImageIO.read(new File("img/mittencrab1.png")).getScaledInstance(100, 100, Image.SCALE_FAST);	
 		}
@@ -22,7 +22,7 @@ public class MittenCrabHandler extends Handler {
 	}
 
 	public void paint(Graphics g) {
-		for (GameObject gameObject : getOverallGame().getGameState().getGameObjectCollection())
+		for (GameObject gameObject : getGameState().getGameObjectCollection())
 		{
 			if (gameObject instanceof MittenCrab)
 			{

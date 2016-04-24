@@ -1,6 +1,6 @@
 import java.lang.*;
 
-public class GameObject {
+public abstract class GameObject {
 	double xPosition;
 	double yPosition;
 	double xVelocity;
@@ -18,9 +18,7 @@ public class GameObject {
 		this.gameState = gameState;
 	}
 	
-	public void updateState()
-	{
-	}
+	abstract public void updateState();
 	
 	public void selfDestruct()
 	{

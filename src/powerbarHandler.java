@@ -10,9 +10,9 @@ public class powerbarHandler extends Handler implements ActionListener, KeyListe
 	boolean red = true;
 	int  length=32;
 	boolean direction = true;
-	public powerbarHandler(OverallGame overallGame) {
+	public powerbarHandler(GameScreen gameScreen, GameState gameState) {
 		
-		super(overallGame);
+		super(gameScreen,gameState);
 		
 		//adds a button to game
 //		testButton = new JButton("Click me");
@@ -21,7 +21,7 @@ public class powerbarHandler extends Handler implements ActionListener, KeyListe
 //		overallGame.repaint();
 //		
 //		testButton.addActionListener(this);
-		overallGame.addKeyListener(this);
+		gameScreen.addKeyListener(this);
 		
 		// TODO Auto-generated constructor stub
 	}
@@ -29,7 +29,7 @@ public class powerbarHandler extends Handler implements ActionListener, KeyListe
 	@Override
 	public void  paint(Graphics g)
 	{
-		for (GameObject gameObject : getOverallGame().getGameState().getGameObjectCollection())
+		for (GameObject gameObject : getGameState().getGameObjectCollection())
 		{
 			if (gameObject instanceof powerbarObject)
 			{	
