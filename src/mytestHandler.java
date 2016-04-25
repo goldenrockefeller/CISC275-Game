@@ -130,7 +130,7 @@ public class mytestHandler extends Handler implements ActionListener, KeyListene
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		System.out.println("keyReleased=" + KeyEvent.getKeyText(e.getKeyCode()));
+		//System.out.println("keyReleased= " + KeyEvent.getKeyText(e.getKeyCode()));
 	}
 
 }

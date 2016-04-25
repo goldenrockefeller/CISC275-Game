@@ -47,7 +47,7 @@ public class Launcher {
 		gameState.add(new mytestObject(32,64,0,0,gameState));
 		gameState.add(new powerbarFrame(18, 126, 0, 0, gameState));
 		gameState.add(new powerbarObject(20,128,0,0,gameState));
-		
+		gameState.setShooter(new Shooter(gameState));
 	}
 	
 	public static void setupGameScreen (GameScreen gameScreen, GameState gameState)
@@ -59,16 +59,15 @@ public class Launcher {
 		gameScreen.add (new TestHandler(gameScreen,gameState));
 		gameScreen.add (new mytestHandler(gameScreen,gameState));
 		gameScreen.add (new powerbarHandler(gameScreen,gameState));
+		gameScreen.add (new ShooterHandler(gameScreen, gameState));
 	}
 	
 	public static void setupGameWindow(JFrame gameWindow, GameScreen gameScreen)
 	{
-    	
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gameWindow.setSize(frameWidth, frameHeight);
 		gameWindow.getContentPane().add(gameScreen);
 		gameWindow.setVisible(true);
-
 	}
 	
 	public static void setupGameStateFromFile (GameState gameState)

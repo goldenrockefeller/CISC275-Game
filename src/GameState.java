@@ -5,13 +5,12 @@ public class GameState {
 	int trashCount;
 	int mittenCount;
 	int blueCount;
+	Shooter gameShooter;
 	final static int frameWidth = 1000;
 	final static int crabUpperBound = 200;
 	final static int crabLowerBound = 800;
     final static int frameHeight = 1000;
 	Collection<GameObject> gameObjectCollection = new LinkedList<GameObject>();
-	
-	
 	
 	public void update()
 	{
@@ -23,6 +22,8 @@ public class GameState {
 		{
 			gameObject.updateState();
 		}
+		
+		gameShooter.update(); //not a gameObject, so I didn't use updateState
 
 	}
 	public void addToScore(int value)
@@ -75,6 +76,12 @@ public class GameState {
 	}
 	public Collection<GameObject> getGameObjectCollection() {
 		return gameObjectCollection;
+	}
+	public Shooter getShooter(){
+		return gameShooter;
+	}
+	public void setShooter(Shooter newShooter){
+		gameShooter = newShooter;
 	}
 	
 	@Override

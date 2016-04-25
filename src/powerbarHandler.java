@@ -81,7 +81,7 @@ public class powerbarHandler extends Handler implements ActionListener, KeyListe
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		System.out.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode()));
+		//System.out.println("pb keyReleased="+KeyEvent.getKeyText(e.getKeyCode()));
 	}
 
 	@Override
