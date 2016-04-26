@@ -15,8 +15,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 	
 public class ShooterHandler extends Handler implements KeyListener {
-	public static final int arrowWidth = 50;
-	public static final int arrowHeight = 140;
+	public static final int arrowWidth = 228;
+	public static final int arrowHeight = 214;
 	
 	BufferedImage arrow_image;
 	Image powerbar_image;
@@ -43,17 +43,15 @@ public class ShooterHandler extends Handler implements KeyListener {
 		Arrow a = gameShooter.getArrow();
 		
 		// rotate arrow - NEEDS TESTING -----------------------------------------------------
-		double rotation_needed = 260;
+        double rotation_needed = Math.toRadians(90 - a.getDirectFluc());
 		double locationX = (double) arrowWidth / 2;
 		double locationY = (double) arrowHeight / 2;
 		AffineTransform tx = AffineTransform.getRotateInstance(rotation_needed, locationX, locationY);
 		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+        
+		BufferedImage new_image = op.filter(arrow_image, null);
 		
-		BufferedImage temp = op.createCompatibleDestImage(arrow_image, null);
-		temp = op.filter(temp, null);
-		arrow_image = temp;
-		
-		g.drawImage(arrow_image, (int)a.xPosition, (int)a.yPosition, Color.gray, null);
+		g.drawImage(new_image, (int)a.xPosition, (int)a.yPosition, new Color(0, 0, 0, 0), null);
 		
 		g.drawImage(powerbar_image, (int)pb.xPosition, (int)pb.yPosition, new Color(0, 0, 0, 0), null);
 	}
