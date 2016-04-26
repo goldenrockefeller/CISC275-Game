@@ -48,7 +48,7 @@ public class powerbarHandler extends Handler implements ActionListener, KeyListe
 			{
 				g.setColor(Color.BLACK);
 				
-				g.fillRect((int)gameObject.getxPosition(),(int)gameObject.getyPosition(),132,36);
+				g.fillRect((int)gameObject.getxPosition(),(int)gameObject.getyPosition(),105,36);
 				
 			}
 
@@ -58,15 +58,7 @@ public class powerbarHandler extends Handler implements ActionListener, KeyListe
 	private void powerbar(){
 		
 		if (direction){
-			length++;
-			if (length>=128){
-				direction=false;
-			}
-		}else {
-			length--;
-			if(length<=1){
-				direction=true;
-			}
+			length = getGameState().getShooter().getPowerBar().getPowerFluc();
 		}
 	}
 	
