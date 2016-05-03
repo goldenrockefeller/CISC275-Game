@@ -103,6 +103,7 @@ public class ShooterHandler extends Handler implements KeyListener {
 		if (randProj < 5) {
 			gameState.setProjectile(new Food(480,700,0,0,gameState));
 		}
+		//A comment
 		else {
 			gameState.setProjectile(new Trash(480,700,0,0,gameState));
 		}
