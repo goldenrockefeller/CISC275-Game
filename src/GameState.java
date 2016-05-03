@@ -16,7 +16,14 @@ public class GameState {
     final static int frameHeight = 1000;
 	Collection<GameObject> gameObjectCollection = new LinkedList<GameObject>();
 	Collection<Projectile> trashCollection = new LinkedList<Projectile>();
-	
+	/*Other group's method of making screen size changeable
+	 * final Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+	 double frameWidth = screensize.getWidth();
+	 double frameHeight = screensize.getHeight(); 
+	 double xScale= frameWidth/1366;
+	 double yScale= frameHeight/768;
+	 these numbers are MY resolution. Can be easily changed to match any real, possible resolution
+	 */
 	
 	/**
 	 * Iterate through game objects and update position for each one based on velocity
