@@ -6,7 +6,8 @@ public class Shooter {
 	
 	public Shooter(GameState game){
 		arrow_or_pb_flag = true;
-		game_arrow = new Arrow(GameState.frameWidth / 2 - 50, GameState.frameHeight - 330, 0, 0, game);
+		//game_arrow = new Arrow(GameState.frameWidth / 2 - 50, GameState.frameHeight - 330, 0, 0, game);
+		game_arrow = new Arrow(380, 700, 0, 0, game);
 		game_powerbar = new PowerBar(GameState.frameWidth/5, GameState.frameHeight - 220, 0, 0, game);
 	}
 	

@@ -2,6 +2,7 @@
 		private int directfluc = 0;
 		private int direction = -1;
 		private boolean arrow_flag = true; // Used to determine if arrow is rotating left or right
+		private boolean stop_flag;
 		
 		public Arrow(double xPosition, double yPosition, double xVelocity,
 				double yVelocity, GameState gameState) {
@@ -9,16 +10,18 @@
 		}
 		
 		public void setDirectFluc(){
-			if(arrow_flag){
-				directfluc++;
-				if(directfluc >= 180){
-					arrow_flag = false;
+			if (!stop_flag) {
+				if(arrow_flag){
+					directfluc++;
+					if(directfluc >= 180){
+						arrow_flag = false;
+					}
 				}
-			}
-			else{
-				directfluc--;
-				if(directfluc <= 0){
-					arrow_flag = true;
+				else{
+					directfluc--;
+					if(directfluc <= 0){
+						arrow_flag = true;
+					}
 				}
 			}
 		}
@@ -43,9 +46,12 @@
 			directfluc = x;
 		}
 		
+		public void setStop() {
+			stop_flag = !stop_flag;
+		}
 		public void defaultDirection(){
-			direction = -1;
-			this.setDirectFluc(0);
-			arrow_flag = true;
+			//direction = -1;
+			//this.setDirectFluc(0);
+			//arrow_flag = true;
 		}
 	}

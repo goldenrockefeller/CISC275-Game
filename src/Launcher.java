@@ -41,12 +41,14 @@ public class Launcher {
 	public static void setupGameState (GameState gameState)
 	{
 		//Construct and add Objects here
-		gameState.add(new MittenCrab(500,500,0,0,gameState));
-		gameState.add(new BlueCrab(76,32,0,0,gameState));
-		gameState.add(new TestObject(500,500,0,0,gameState));
-		gameState.add(new mytestObject(32,64,0,0,gameState));
-		gameState.add(new powerbarFrame(18, 126, 0, 0, gameState));
-		gameState.add(new powerbarObject(20,128,0,0,gameState));
+		gameState.add(new MittenCrab(500,500,2,1,gameState));
+		gameState.add(new BlueCrab(500,500,3,1,gameState));
+		//gameState.add(new TestObject(480,850,0,0,gameState));
+		//gameState.add(new mytestObject(32,64,0,0,gameState));
+		gameState.add(new powerbarFrame(200, 783, 0, 0, gameState));
+		gameState.add(new powerbarObject(200,785,0,0,gameState));
+		gameState.add(new Food(480,700,0,0,gameState));
+		gameState.setProjectile(new Food(480,700,0,0,gameState));
 		gameState.setShooter(new Shooter(gameState));
 	}
 	
@@ -56,10 +58,13 @@ public class Launcher {
 		gameScreen.add (new BackgroundHandler(gameScreen,gameState));
 		gameScreen.add (new MittenCrabHandler(gameScreen,gameState));
 		gameScreen.add (new BlueCrabHandler(gameScreen,gameState));
-		gameScreen.add (new TestHandler(gameScreen,gameState));
-		gameScreen.add (new mytestHandler(gameScreen,gameState));
-		gameScreen.add (new powerbarHandler(gameScreen,gameState));
 		gameScreen.add (new ShooterHandler(gameScreen, gameState));
+		gameScreen.add (new TestHandler(gameScreen,gameState));
+		//gameScreen.add (new mytestHandler(gameScreen,gameState));
+		gameScreen.add (new powerbarHandler(gameScreen,gameState));
+		gameScreen.add (new FoodHandler(gameScreen,gameState));
+		gameScreen.add (new TrashHandler(gameScreen, gameState));
+		
 	}
 	
 	public static void setupGameWindow(JFrame gameWindow, GameScreen gameScreen)

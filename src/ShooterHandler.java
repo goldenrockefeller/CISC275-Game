@@ -15,9 +15,15 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 	
 public class ShooterHandler extends Handler implements KeyListener {
-	public static final int arrowWidth = 50;
-	public static final int arrowHeight = 140;
-	
+	public static final int arrowWidth = 228;
+	public static final int arrowHeight = 214;
+	int xSpeed;
+	int ySpeed;
+	int degrees;
+	int power;
+	int randProj;
+	Food tempf;
+	Trash tempt;
 	BufferedImage arrow_image;
 	Image powerbar_image;
 	
@@ -43,21 +49,68 @@ public class ShooterHandler extends Handler implements KeyListener {
 		Arrow a = gameShooter.getArrow();
 		
 		// rotate arrow - NEEDS TESTING -----------------------------------------------------
-		double rotation_needed = 260;
+        double rotation_needed = Math.toRadians(90 - a.getDirectFluc());
 		double locationX = (double) arrowWidth / 2;
 		double locationY = (double) arrowHeight / 2;
 		AffineTransform tx = AffineTransform.getRotateInstance(rotation_needed, locationX, locationY);
 		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+        
+		BufferedImage new_image = op.filter(arrow_image, null);
 		
-		BufferedImage temp = op.createCompatibleDestImage(arrow_image, null);
-		temp = op.filter(temp, null);
-		arrow_image = temp;
+		g.drawImage(new_image, (int)a.xPosition, (int)a.yPosition, new Color(0, 0, 0, 0), null);
 		
-		g.drawImage(arrow_image, (int)a.xPosition, (int)a.yPosition, Color.gray, null);
-		
-		g.drawImage(powerbar_image, (int)pb.xPosition, (int)pb.yPosition, new Color(0, 0, 0, 0), null);
+		//g.drawImage(powerbar_image, (int)pb.xPosition, (int)pb.yPosition, new Color(0, 0, 0, 0), null);
 	}
 
+	/**
+	 * Fetch angle and power of shot
+	 * Use trig functions to set xSpeed and ySpeed
+	 * If power is less than half, trash will not make it to trash, leaves it on board (does not affect food)
+	 * If trash, add to trash collection. Need to keep track of those that are still on the board
+	 * Rest arrow movement
+	 * @param gameShooter
+	 */
+	public void calculateTrajectory(Shooter gameShooter) {
+		degrees = gameShooter.getArrow().getDirection();
+		power = gameShooter.getPowerBar().getPower();
+		
+		xSpeed = (int) (Math.toDegrees(Math.cos(Math.toRadians(degrees)))/10);
+		ySpeed = -(int) (Math.toDegrees(Math.sin(Math.toRadians(degrees)))/10);
+		
+		gameState.getProjectile().setVelocity(xSpeed, ySpeed);
+		
+		if (power < 50) {
+			gameState.getProjectile().setEnd((int) (400 + Math.random()*200));
+		}
+		
+		if (gameState.getProjectile() instanceof Trash) {
+			
+			gameState.addTrash(gameState.getProjectile());
+		}
+		
+		gameShooter.getArrow().setStop();
+	}
+	
+	/**
+	 * Uses RNG to load either a food or trash projectile
+	 * Sets this as gamestate's current projectile
+	 * 
+	 * ISSUE: projectile does not appear until it is fired, something to fix
+	 */
+	public void loadProjectile(Shooter gameShooter) {
+		randProj = (int) (Math.random()*10);
+		
+		if (randProj < 5) {
+			gameState.setProjectile(new Food(480,700,0,0,gameState));
+		}
+		//A comment
+		else {
+			gameState.setProjectile(new Trash(480,700,0,0,gameState));
+		}
+		
+		
+	}
+	
 	@Override
 	public void keyTyped(KeyEvent e) {
 		
@@ -69,12 +122,18 @@ public class ShooterHandler extends Handler implements KeyListener {
 			Shooter gameShooter = getGameState().getShooter();
 			if(gameShooter.getFlag()){
 				gameShooter.getArrow().setDirection();
+				gameShooter.getArrow().setStop();
 				gameShooter.changeFlag();
+				
 			}
 			else{
 				gameShooter.getPowerBar().setPower();
 				System.out.print("Fired at: " + gameShooter.getPowerBar().getPower() + " power ");
 				System.out.println("in direction " + gameShooter.getArrow().getDirection() + "!");
+				
+				loadProjectile(gameShooter);
+				calculateTrajectory(gameShooter);
+				
 				gameShooter.changeFlag();
 				gameShooter.setDefault();
 			}

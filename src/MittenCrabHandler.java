@@ -26,7 +26,7 @@ public class MittenCrabHandler extends Handler {
 		{
 			if (gameObject instanceof MittenCrab)
 			{
-				g.drawImage( image, (int)gameObject.xPosition, (int)gameObject.yPosition, Color.gray, null);
+				g.drawImage( image, (int)gameObject.xPosition, (int)gameObject.yPosition, new Color(0,0,0,0), null);
 			}
 		}
 	}

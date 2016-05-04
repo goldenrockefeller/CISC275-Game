@@ -1,3 +1,4 @@
+import java.awt.image.BufferStrategy;
 import java.util.*;
 
 public class GameState {
@@ -5,15 +6,45 @@ public class GameState {
 	int trashCount;
 	int mittenCount;
 	int blueCount;
+	boolean hitb;
+	boolean hitm;
+	int buffb = 0;
+	int buffm = 0;
+	Projectile projectile;
 	Shooter gameShooter;
 	final static int frameWidth = 1000;
-	final static int crabUpperBound = 200;
-	final static int crabLowerBound = 800;
     final static int frameHeight = 1000;
 	Collection<GameObject> gameObjectCollection = new LinkedList<GameObject>();
+	Collection<Projectile> trashCollection = new LinkedList<Projectile>();
+	/*Other group's method of making screen size changeable
+	 * final Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+	 double frameWidth = screensize.getWidth();
+	 double frameHeight = screensize.getHeight(); 
+	 double xScale= frameWidth/1366;
+	 double yScale= frameHeight/768;
+	 these numbers are MY resolution. Can be easily changed to match any real, possible resolution
+	 */
 	
+	/**
+	 * Iterate through game objects and update position for each one based on velocity
+	 * Iterate once again and update state (view)
+	 * After updates, check for any collisions, add crabs accordingly
+	 * Use buffer value (@see buffm buffb) to ensure only one crab is replicated per projectile
+	 * Prioritize blue crab
+	 * Finally, update gameShooter
+	 * 
+	 */
 	public void update()
 	{
+		//if (projectile != null) {
+			projectile.updatePosition();
+			projectile.updateState();
+		//}
+		for (Projectile trash : trashCollection) 
+		{
+			trash.updatePosition();
+			trash.updateState();
+		}
 		for (GameObject gameObject : gameObjectCollection)
 		{
 			gameObject.updatePosition();
@@ -21,9 +52,46 @@ public class GameState {
 		for (GameObject gameObject : gameObjectCollection)
 		{
 			gameObject.updateState();
+			if (gameObject instanceof BlueCrab) {
+				if (((Crab) gameObject).checkCollision()) {
+					hitb = true;
+				}
+			}
+			if (gameObject instanceof MittenCrab) {
+				if (((Crab) gameObject).checkCollision()) {
+					hitm = true;
+				}
+			}
 		}
+		if (hitb && buffb <= 0) {
+			this.add(new BlueCrab(500,500,2,1,this));
+			blueCount++;
+			buffb = 300;
+			buffm = 300;
+		}
+		if (hitm && buffm <= 0) {
+			this.add(new MittenCrab(500,500,1,2,this));
+			mittenCount++;
+			buffm = 300;
+			buffb = 300;
+		}
+		buffb--;
+		buffm--;
+		hitb = false;
+		hitm = false;
 		
 		gameShooter.update(); //not a gameObject, so I didn't use updateState
+		
+		if (mittenCount > 10 || blueCount > 10) {
+			System.out.println("Over capacity!");
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			mittenCount = 0;
+			blueCount = 0;
+		}
 
 	}
 	public void addToScore(int value)
@@ -46,9 +114,17 @@ public class GameState {
 	{
 		this.gameObjectCollection.add(gameObject);
 	}
+	public void addTrash(Projectile projectile)
+	{
+		this.trashCollection.add(projectile);
+	}
 	public void remove(GameObject gameObject)
 	{
 		this.gameObjectCollection.remove(gameObject);
+	}
+	public void removeTrash(Trash trash)
+	{
+		this.trashCollection.remove(trash);
 	}
 	public int getScore() {
 		return score;
@@ -77,11 +153,20 @@ public class GameState {
 	public Collection<GameObject> getGameObjectCollection() {
 		return gameObjectCollection;
 	}
+	public Collection<Projectile> getTrashCollection() {
+		return trashCollection;
+	}
 	public Shooter getShooter(){
 		return gameShooter;
 	}
 	public void setShooter(Shooter newShooter){
 		gameShooter = newShooter;
+	}
+	public void setProjectile(Projectile projectile) {
+		this.projectile = projectile;
+	}
+	public Projectile getProjectile(){
+		return projectile;
 	}
 	
 	@Override

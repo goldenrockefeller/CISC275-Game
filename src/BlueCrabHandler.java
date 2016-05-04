@@ -27,7 +27,7 @@ public class BlueCrabHandler extends Handler{
 		{
 			if (gameObject instanceof BlueCrab)
 			{
-				g.drawImage( image, (int)gameObject.xPosition, (int)gameObject.yPosition, Color.gray, null);
+				g.drawImage( image, (int)gameObject.xPosition, (int)gameObject.yPosition, new Color(0,0,0,0), null);
 			}
 		}
 	}
