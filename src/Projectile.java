@@ -5,6 +5,7 @@ public class Projectile extends GameObject {
 	int xEnd;
 	int yEnd;
 	boolean isVisible = true;
+	boolean stopped = false;
 	
 	Projectile(double xPosition, double yPosition, double xVelocity, double yVelocity, GameState gameState) {
 		super(xPosition, yPosition, xVelocity, yVelocity, gameState);
