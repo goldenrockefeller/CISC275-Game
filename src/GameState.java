@@ -6,12 +6,8 @@ public class GameState {
 	int trashCount;
 	int mittenCount;
 	int blueCount;
-	boolean hitb;
-	boolean hitm;
-	int buffb = 0;
-	int buffm = 0;
-	Projectile projectile;
 	Shooter gameShooter;
+	//TO DO need to have this in Launcher
 	final static int frameWidth = 1000;
     final static int frameHeight = 1000;
 	Collection<GameObject> gameObjectCollection = new LinkedList<GameObject>();
@@ -36,65 +32,16 @@ public class GameState {
 	 */
 	public void update()
 	{
-		//If first projectile, or food that has been eaten, or trash that has stopped, load the next projectile
-		if (projectile == null || !projectile.isVisible || projectile.stopped) {
-			loadProjectile(gameShooter);
-		}
-		projectile.updatePosition();
-		projectile.updateState();
-		for (Projectile trash : trashCollection) 
-		{
-			trash.updatePosition();
-			trash.updateState();
-		}
 		for (GameObject gameObject : gameObjectCollection)
 		{
 			gameObject.updatePosition();
 		}
-		for (GameObject gameObject : gameObjectCollection)
+		for (GameObject gameObject : new ArrayList<GameObject>(gameObjectCollection))
 		{
 			gameObject.updateState();
-			if (gameObject instanceof BlueCrab) {
-				if (((Crab) gameObject).checkCollision()) {
-					hitb = true;
-				}
-			}
-			if (gameObject instanceof MittenCrab) {
-				if (((Crab) gameObject).checkCollision()) {
-					hitm = true;
-				}
-			}
 		}
-		if (hitb && buffb <= 0) {
-			this.add(new BlueCrab(500,500,2,1,this));
-			blueCount++;
-			buffb = 300;
-			buffm = 300;
-		}
-		if (hitm && buffm <= 0) {
-			this.add(new MittenCrab(500,500,1,2,this));
-			mittenCount++;
-			buffm = 300;
-			buffb = 300;
-		}
-		buffb--;
-		buffm--;
-		hitb = false;
-		hitm = false;
 		
 		gameShooter.update(); //not a gameObject, so I didn't use updateState
-		
-		if (mittenCount > 10 || blueCount > 10) {
-			System.out.println("Over capacity!");
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			mittenCount = 0;
-			blueCount = 0;
-		}
-
 	}
 	public void addToScore(int value)
 	{
@@ -164,13 +111,7 @@ public class GameState {
 	public void setShooter(Shooter newShooter){
 		gameShooter = newShooter;
 	}
-	public void setProjectile(Projectile projectile) {
-		this.projectile = projectile;
-	}
-	public Projectile getProjectile(){
-		return projectile;
-	}
-	
+	/*
 	public void loadProjectile(Shooter gameShooter) {
 		int randProj = (int) (Math.random()*10);
 		
@@ -184,7 +125,7 @@ public class GameState {
 		
 		
 	}
-	
+	*/
 	@Override
 	public String toString() {
 		return "\nGameState [score=" + score + ", trashCount=" + trashCount + ", mittenCount=" + mittenCount
