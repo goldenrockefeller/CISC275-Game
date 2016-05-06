@@ -48,6 +48,9 @@ public class Launcher {
 		gameState.add(new powerbarFrame(200, 783, 0, 0, gameState));
 		gameState.add(new powerbarObject(200,785,0,0,gameState));
 		gameState.add(new Food(480,700,0,0,gameState));
+		gameState.add(new trashcanObject(100,120,0,0,gameState));
+		gameState.add(new trashcanObject(400,120,0,0,gameState));
+		gameState.add(new trashcanObject(800,120,0,0,gameState));
 		gameState.setProjectile(new Food(480,700,0,0,gameState));
 		gameState.setShooter(new Shooter(gameState));
 	}
@@ -56,6 +59,7 @@ public class Launcher {
 	{
 		//Construct and add Handlers here
 		gameScreen.add (new BackgroundHandler(gameScreen,gameState));
+		gameScreen.add (new trashcanHandler(gameScreen,gameState));
 		gameScreen.add (new MittenCrabHandler(gameScreen,gameState));
 		gameScreen.add (new BlueCrabHandler(gameScreen,gameState));
 		gameScreen.add (new ShooterHandler(gameScreen, gameState));
