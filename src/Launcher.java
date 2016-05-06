@@ -3,13 +3,16 @@
 //TODO add function comments and javadoc
 //TODO add a button to the frame
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.lang.*;
 
 import javax.swing.JFrame;
 
-public class Launcher {
-	final static int frameWidth = 1000;
-    final static int frameHeight = 1000;
+public class Launcher {	
+	private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	public static final int WIDTH = (int) screenSize.getWidth();
+	public static final int HEIGHT = (int) screenSize.getHeight();
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -74,7 +77,7 @@ public class Launcher {
 	public static void setupGameWindow(JFrame gameWindow, GameScreen gameScreen)
 	{
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		gameWindow.setSize(frameWidth, frameHeight);
+		gameWindow.setSize(Launcher.WIDTH, Launcher.HEIGHT);
 		gameWindow.getContentPane().add(gameScreen);
 		gameWindow.setVisible(true);
 	}
