@@ -79,37 +79,19 @@ public class ShooterHandler extends Handler implements KeyListener {
 		
 		gameState.getProjectile().setVelocity(xSpeed, ySpeed);
 		
-		if (power < 50) {
+		if (gameState.getProjectile() instanceof Trash && power < 50) {
 			gameState.getProjectile().setEnd((int) (400 + Math.random()*200));
 		}
 		
 		if (gameState.getProjectile() instanceof Trash) {
-			
 			gameState.addTrash(gameState.getProjectile());
 		}
 		
 		gameShooter.getArrow().setStop();
+		
+		
 	}
 	
-	/**
-	 * Uses RNG to load either a food or trash projectile
-	 * Sets this as gamestate's current projectile
-	 * 
-	 * ISSUE: projectile does not appear until it is fired, something to fix
-	 */
-	public void loadProjectile(Shooter gameShooter) {
-		randProj = (int) (Math.random()*10);
-		
-		if (randProj < 5) {
-			gameState.setProjectile(new Food(480,700,0,0,gameState));
-		}
-		//A comment
-		else {
-			gameState.setProjectile(new Trash(480,700,0,0,gameState));
-		}
-		
-		
-	}
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -118,7 +100,7 @@ public class ShooterHandler extends Handler implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if("Space" == KeyEvent.getKeyText(e.getKeyCode())){
+		if(e.getKeyCode() == KeyEvent.VK_SPACE){
 			Shooter gameShooter = getGameState().getShooter();
 			if(gameShooter.getFlag()){
 				gameShooter.getArrow().setDirection();
@@ -131,7 +113,6 @@ public class ShooterHandler extends Handler implements KeyListener {
 				System.out.print("Fired at: " + gameShooter.getPowerBar().getPower() + " power ");
 				System.out.println("in direction " + gameShooter.getArrow().getDirection() + "!");
 				
-				loadProjectile(gameShooter);
 				calculateTrajectory(gameShooter);
 				
 				gameShooter.changeFlag();

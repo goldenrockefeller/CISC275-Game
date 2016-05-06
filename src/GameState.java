@@ -32,6 +32,20 @@ public class GameState {
 	 */
 	public void update()
 	{
+<<<<<<< HEAD
+=======
+		//If first projectile, or food that has been eaten, or trash that has stopped, load the next projectile
+		if (projectile == null || !projectile.isVisible || projectile.stopped) {
+			loadProjectile(gameShooter);
+		}
+		projectile.updatePosition();
+		projectile.updateState();
+		for (Projectile trash : trashCollection) 
+		{
+			trash.updatePosition();
+			trash.updateState();
+		}
+>>>>>>> b185d154ef978fd2c23ec9364369c26dd2965d56
 		for (GameObject gameObject : gameObjectCollection)
 		{
 			gameObject.updatePosition();
@@ -110,6 +124,20 @@ public class GameState {
 	}
 	public void setShooter(Shooter newShooter){
 		gameShooter = newShooter;
+	}
+	
+	public void loadProjectile(Shooter gameShooter) {
+		int randProj = (int) (Math.random()*10);
+		
+		if (randProj < 5) {
+			setProjectile(new Food(480,700,0,0,this));
+		}
+		//A comment
+		else {
+			setProjectile(new Trash(480,700,0,0,this));
+		}
+		
+		
 	}
 	
 	@Override

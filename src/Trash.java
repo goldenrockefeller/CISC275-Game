@@ -1,7 +1,6 @@
 
 public class Trash extends Projectile{
 
-	int yEnd;
 	
 	Trash(double xPosition, double yPosition, double xVelocity, double yVelocity, GameState gameState) {
 		super(xPosition, yPosition, xVelocity, yVelocity, gameState);
@@ -22,23 +21,24 @@ public class Trash extends Projectile{
 	public void updateState() {
 		
 		//Trash 1
-		if (Math.abs(xPosition - 150) < 50 && Math.abs(yPosition - 150) < 50) {
+		if (Math.abs(xPosition - 150) < 50 && Math.abs(yPosition - 200) < 50) {
 			setVelocity(0,0);
 			isVisible = false;
 		}
 		//Trash 2
-		else if (Math.abs(xPosition - 500) < 50 && Math.abs(yPosition - 150) < 50) {
+		else if (Math.abs(xPosition - 500) < 50 && Math.abs(yPosition - 200) < 50) {
 			setVelocity(0,0);
 			isVisible = false;
 		}
 		//Trash 3
-		else if (Math.abs(xPosition - 800) < 50 && Math.abs(yPosition - 150) < 50) {
+		else if (Math.abs(xPosition - 800) < 50 && Math.abs(yPosition - 200) < 50) {
 			setVelocity(0,0);
 			isVisible = false;
 		}
 		//No trash can
 		if (yPosition <= yEnd) {
 			setVelocity(0,0);
+			stopped = true;
 		}
 	}
 	

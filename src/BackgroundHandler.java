@@ -7,13 +7,15 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class BackgroundHandler extends Handler {
-
-	Image image;
-		
+	
+	Image sand;
+	Image water;
+	
 	BackgroundHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen,gameState);
 		try{
-			image = ImageIO.read(new File("img/bad-background.png"));//.getScaledInstance(1000, 1000, Image.SCALE_FAST);	
+			sand = ImageIO.read(new File("img/background/tile_sand_center.png"));//.getScaledInstance(1000, 1000, Image.SCALE_FAST);	
+			water = ImageIO.read(new File("img/background/river_revised.jpg"));
 		}
 		catch(IOException e)
 		{
@@ -22,7 +24,11 @@ public class BackgroundHandler extends Handler {
 	}
 	
 	public void paint(Graphics g) {
-		g.drawImage( image, 0, 0, Color.gray, null);
+		for(int i = 0; i < Launcher.WIDTH; i += sand.getWidth(null)){
+			for(int j = 0; j < Launcher.HEIGHT; j+= sand.getWidth(null)){
+				g.drawImage(sand, i, j, Color.gray, null);
+			}
+		}
 	}
 
 	
