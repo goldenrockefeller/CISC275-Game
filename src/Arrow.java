@@ -1,5 +1,5 @@
 	public class Arrow extends GameObject {
-		private int directfluc = 0;
+		private int directfluc = 20;
 		private int direction = -1;
 		private boolean arrow_flag = true; // Used to determine if arrow is rotating left or right
 		private boolean stop_flag;
@@ -13,13 +13,13 @@
 			if (!stop_flag) {
 				if(arrow_flag){
 					directfluc++;
-					if(directfluc >= 180){
+					if(directfluc >= 160){
 						arrow_flag = false;
 					}
 				}
 				else{
 					directfluc--;
-					if(directfluc <= 0){
+					if(directfluc <= 20){
 						arrow_flag = true;
 					}
 				}

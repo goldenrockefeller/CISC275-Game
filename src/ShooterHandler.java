@@ -100,7 +100,7 @@ public class ShooterHandler extends Handler implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if("Space" == KeyEvent.getKeyText(e.getKeyCode())){
+		if(e.getKeyCode() == KeyEvent.VK_SPACE){
 			Shooter gameShooter = getGameState().getShooter();
 			if(gameShooter.getFlag()){
 				gameShooter.getArrow().setDirection();

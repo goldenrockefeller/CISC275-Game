@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-<<<<<<< HEAD
-	<name>EstuaryGame</name>
-=======
-	<name>CISC275_Game</name>
->>>>>>> 63d3f4cd89c3ad7c2186ae15917907e7202732a6
+	<name>CISC275-Game</name>
 	<comment></comment>
 	<projects>
 	</projects>
