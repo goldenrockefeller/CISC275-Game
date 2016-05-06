@@ -30,6 +30,7 @@ public class BackgroundHandler extends Handler {
 				g.drawImage(sand, i, j, Color.gray, null);
 			}
 		}
+		
 		g.drawImage(water, 0, Launcher.HEIGHT / 4, null);
 		if (water.getWidth(null) <= Launcher.WIDTH){
 			g.drawImage(water, Launcher.WIDTH / 2, Launcher.HEIGHT / 4, null);
