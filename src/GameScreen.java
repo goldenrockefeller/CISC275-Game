@@ -30,12 +30,17 @@ public class GameScreen extends JPanel{
 		this.handlerCollection = new LinkedList<Handler>();
 		
     }
-	
+	/**
+	 * adds a handler to the handler collection
+	 * @param handler
+	 */
 	public void add(Handler handler)
 	{
 		handlerCollection.add(handler);
 	}
-	
+	/**
+	 * paints in graphics based on the handlers in the collection
+	 */
 	@Override
 	public void paintComponent(Graphics g)
 	{

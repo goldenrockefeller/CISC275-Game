@@ -23,7 +23,10 @@ public class MittenCrabHandler extends Handler {
 		}
 		// TODO Auto-generated constructor stub
 	}
-
+	/**
+	 * paints mitten crab onto graphics
+	 * @param g graphics used
+	 */
 	public void paint(Graphics g) {
 		for (GameObject gameObject : getGameState().getGameObjectCollection())
 		{

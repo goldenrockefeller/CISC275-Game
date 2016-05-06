@@ -40,7 +40,10 @@ public class ShooterHandler extends Handler implements KeyListener {
 		}
 		gameScreen.addKeyListener(this);
 	}
-
+	/**
+	 * paints objects
+	 * @param g, graphics being used.
+	 */
 	public void paint(Graphics g) {
 		GameState game = getGameState();
 		Shooter gameShooter = getGameState().getShooter();
@@ -92,7 +95,9 @@ public class ShooterHandler extends Handler implements KeyListener {
 		
 	}
 	
-	
+	/**
+	 * key events for the shooter
+	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
 		

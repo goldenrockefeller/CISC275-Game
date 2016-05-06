@@ -24,7 +24,11 @@ public class trashcanHandler extends Handler {
 		}
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	/**
+	 * paints trash cans on screen
+	 * @param g, graphics being used
+	 */
 	@Override
 	public void  paint(Graphics g)
 	{

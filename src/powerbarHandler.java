@@ -24,7 +24,10 @@ public class powerbarHandler extends Handler implements ActionListener, KeyListe
 		
 		// TODO Auto-generated constructor stub
 	}
-	
+	/**
+	 * paints object onto view 
+	 * @param g, graphics being used
+	 */
 	@Override
 	public void  paint(Graphics g)
 	{
@@ -54,7 +57,9 @@ public class powerbarHandler extends Handler implements ActionListener, KeyListe
 
 		}
 	}
-	
+	/**
+	 * sets the length of the bar based on power fluctuation
+	 */
 	private void powerbar(){
 		
 		if (direction){
@@ -62,7 +67,9 @@ public class powerbarHandler extends Handler implements ActionListener, KeyListe
 		}
 	}
 	
-	
+	/**
+	 * key events to affect this class
+	 */
 	public void keyTyped(KeyEvent e) {
 	}
 

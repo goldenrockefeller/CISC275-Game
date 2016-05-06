@@ -24,6 +24,7 @@ public class TrashHandler extends Handler {
 	/**
 	 * First draw all trash on the board
 	 * Then draw trash currently in transit if visible
+	 * @param g graphics being used
 	 */
 	@Override
 	public void paint(Graphics g) {

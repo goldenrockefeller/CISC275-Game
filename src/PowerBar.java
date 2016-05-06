@@ -14,7 +14,9 @@ public class PowerBar extends GameObject {
 			stop_flag = false;
 		}
 
-	
+		/**
+		 * sets the direction of the bar's fluctuation
+		 */
 		public void setPowerFluc(){
 			if (!stop_flag) {
 				if(power_flag){
@@ -31,7 +33,9 @@ public class PowerBar extends GameObject {
 				}
 			}
 		}
-
+		/**
+		 * updates state by calling setPowerFluc
+		 */
 		public void updateState(){
 			setPowerFluc();
 		}
@@ -56,6 +60,9 @@ public class PowerBar extends GameObject {
 		public void setStop() {
 			stop_flag = !stop_flag;
 		}
+		/**
+		 * sets the power fluctuation to its default values
+		 */
 		public void defaultPower(){
 			power = -1;
 			this.setPowerFluc(0);

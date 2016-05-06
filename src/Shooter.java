@@ -20,6 +20,9 @@ public class Shooter {
 	public boolean getFlag(){
 		return arrow_or_pb_flag;
 	}
+	/**
+	 * changes "state" to change if the input is going to determine the arrow or power values
+	 */
 	public void changeFlag(){
 		if(arrow_or_pb_flag){
 			arrow_or_pb_flag = false;
@@ -29,12 +32,17 @@ public class Shooter {
 		}
 		return;
 	}
+	/**
+	 * sets arrow and power to the default values
+	 */
 	public void setDefault(){
 		game_arrow.defaultDirection();
 		game_powerbar.defaultPower();
 		return;
 	}
-	
+	/**
+	 * updates the states of arrow and power bar (in that order)
+	 */
 	public void update() {
 		game_arrow.updateState();
 		game_powerbar.updateState();

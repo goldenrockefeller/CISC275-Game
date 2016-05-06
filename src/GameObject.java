@@ -155,7 +155,9 @@ public abstract class GameObject {
 	public void setyVelocity(double yVelocity) {
 		this.yVelocity = yVelocity;
 	}
-
+	/**
+	 * to string for game objects
+	 */
 	@Override
 	public String toString() {
 		return "\n" + super.toString() + " GameObject [xPosition=" + xPosition + ", yPosition=" + yPosition + ", xVelocity=" + xVelocity
