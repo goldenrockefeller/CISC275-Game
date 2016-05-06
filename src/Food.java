@@ -5,5 +5,16 @@ public class Food extends Projectile{
 		super(xPosition, yPosition, xVelocity, yVelocity, gameState);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public void updateState() {
+		if (xPosition <= 0 || xPosition >= gameState.frameWidth) {
+			setVelocity(0,0);
+			isVisible = false;
+		}
+		if (yPosition <= 0 || yPosition >= gameState.frameHeight) {
+			setVelocity(0,0);
+			isVisible = false;
+		}
+	}
 
 }
