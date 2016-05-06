@@ -25,12 +25,13 @@ public class BlueCrabHandler extends Handler{
 	}
 
 	public void paint(Graphics g) {
+		crabFlag++;
+		crabFlag = crabFlag % 3;
 		for (GameObject gameObject : getGameState().getGameObjectCollection())
 		{
 			if (gameObject instanceof BlueCrab)
 			{
-				crabFlag++;
-				crabFlag = crabFlag % 3;
+				
 				//System.out.println(crabFlag);
 				g.drawImage(image[crabFlag], (int)gameObject.xPosition, (int)gameObject.yPosition, new Color(0,0,0,0), null);
 			}

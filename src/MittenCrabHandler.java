@@ -25,12 +25,12 @@ public class MittenCrabHandler extends Handler {
 	}
 
 	public void paint(Graphics g) {
+		crabFlag++;
+		crabFlag = crabFlag % 3;
 		for (GameObject gameObject : getGameState().getGameObjectCollection())
 		{
 			if (gameObject instanceof MittenCrab)
 			{
-				crabFlag++;
-				crabFlag = crabFlag % 3;
 				g.drawImage(image[crabFlag], (int)gameObject.xPosition, (int)gameObject.yPosition, new Color(0,0,0,0), null);
 			}
 		}
