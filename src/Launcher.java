@@ -50,7 +50,7 @@ public class Launcher {
 		//gameState.add(new mytestObject(32,64,0,0,gameState));
 		gameState.add(new powerbarFrame(200, 783, 0, 0, gameState));
 		gameState.add(new powerbarObject(200,785,0,0,gameState));
-		gameState.add(new Food(480,700,0,0,gameState));
+		//gameState.add(new Food(480,700,0,0,gameState));
 		gameState.add(new trashcanObject(100,120,0,0,gameState));
 		gameState.add(new trashcanObject(400,120,0,0,gameState));
 		gameState.add(new trashcanObject(800,120,0,0,gameState));

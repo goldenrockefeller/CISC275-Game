@@ -40,6 +40,7 @@ public class ShooterHandler extends Handler implements KeyListener {
 			System.out.println("Arrow Image not found");
 		}
 		gameScreen.addKeyListener(this);
+		generateProjectile();
 	}
 
 	public void paint(Graphics g) {
@@ -115,6 +116,7 @@ public class ShooterHandler extends Handler implements KeyListener {
 				System.out.println("in direction " + gameShooter.getArrow().getDirection() + "!");
 				
 				calculateTrajectory(gameShooter);
+				generateProjectile();
 				
 				gameShooter.changeFlag();
 				gameShooter.setDefault();
