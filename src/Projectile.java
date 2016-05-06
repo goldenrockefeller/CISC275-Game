@@ -16,7 +16,7 @@ public class Projectile extends GameObject {
 	public void updateState() {
 		
 	}
-/*
+
 	public void setEnd(int j) {
 		// TODO Auto-generated method stub
 		
@@ -26,5 +26,5 @@ public class Projectile extends GameObject {
 		// TODO Auto-generated method stub
 		return null;
 	}
-*/
+
 }
