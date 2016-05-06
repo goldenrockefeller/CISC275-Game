@@ -27,21 +27,13 @@ public class TrashHandler extends Handler {
 	 */
 	@Override
 	public void paint(Graphics g) {
-		for (Projectile trash : getGameState().getTrashCollection())
-		{
-			g.drawImage( image, (int)trash.xPosition, (int)trash.yPosition, new Color(0,0,0,0), null);
-		}
-		
-		if (getGameState().getProjectile() instanceof Trash) {
-			Trash t = (Trash) getGameState().getProjectile();
+		for (GameObject gameObject : getGameState().getGameObjectCollection()){
+			if (gameObject instanceof Trash)
 			{
-				if (t.isVisible) {
-					g.drawImage( image, (int)t.xPosition, (int)t.yPosition, new Color(0,0,0,0), null);
-				}
-				
+				g.drawImage( image, (int)gameObject.xPosition, (int)gameObject.yPosition, new Color(0,0,0,0), null);
+		
 			}
 		}
-		
 	}
 
 }

@@ -24,6 +24,7 @@ public class ShooterHandler extends Handler implements KeyListener {
 	int randProj;
 	Food tempf;
 	Trash tempt;
+	Projectile projectile;
 	BufferedImage arrow_image;
 	Image powerbar_image;
 	
@@ -48,7 +49,7 @@ public class ShooterHandler extends Handler implements KeyListener {
 		PowerBar pb = gameShooter.getPowerBar();
 		Arrow a = gameShooter.getArrow();
 		
-		// rotate arrow - NEEDS TESTING -----------------------------------------------------
+		// TODO rotate arrow - NEEDS TESTING -----------------------------------------------------
         double rotation_needed = Math.toRadians(90 - a.getDirectFluc());
 		double locationX = (double) arrowWidth / 2;
 		double locationY = (double) arrowHeight / 2;
@@ -77,15 +78,15 @@ public class ShooterHandler extends Handler implements KeyListener {
 		xSpeed = (int) (Math.toDegrees(Math.cos(Math.toRadians(degrees)))/10);
 		ySpeed = -(int) (Math.toDegrees(Math.sin(Math.toRadians(degrees)))/10);
 		
-		gameState.getProjectile().setVelocity(xSpeed, ySpeed);
+		projectile.setVelocity(xSpeed, ySpeed);
 		
-		if (gameState.getProjectile() instanceof Trash && power < 50) {
-			gameState.getProjectile().setEnd((int) (400 + Math.random()*200));
+		if (projectile instanceof Trash && power < 50) {
+			projectile.setEnd((int) (400 + Math.random()*200));
 		}
 		
-		if (gameState.getProjectile() instanceof Trash) {
-			gameState.addTrash(gameState.getProjectile());
-		}
+		/*if (projectile instanceof Trash) {
+			gameState.addTrash(projectile);
+		}*/
 		
 		gameShooter.getArrow().setStop();
 		
@@ -119,6 +120,17 @@ public class ShooterHandler extends Handler implements KeyListener {
 				gameShooter.setDefault();
 			}
 		}
+	}
+	
+	public void generateProjectile()
+	{
+		if (Math.random() < .5) {
+			projectile = new Food(480,700,0,0,gameState);
+		}
+		else {
+			projectile = new Trash(480,700,0,0,gameState);
+		}
+		gameState.add(projectile);
 	}
 
 	@Override

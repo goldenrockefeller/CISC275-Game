@@ -28,13 +28,10 @@ public class FoodHandler extends Handler{
 	 */
 	@Override
 	public void paint(Graphics g) {
-		if (getGameState().getProjectile() instanceof Food) {
-			Food t = (Food) getGameState().getProjectile();
+		for (GameObject gameObject : getGameState().getGameObjectCollection()) {
+			if (gameObject instanceof Food)
 			{
-				if (t.isVisible) {
-					g.drawImage( image, (int)t.xPosition, (int)t.yPosition, new Color(0,0,0,0), null);
-				}
-				
+				g.drawImage( image, (int)gameObject.getxPosition(), (int)gameObject.getyPosition(), new Color(0,0,0,0), null);
 			}
 		}
 	}

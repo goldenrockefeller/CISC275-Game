@@ -54,7 +54,7 @@ public class Launcher {
 		gameState.add(new trashcanObject(100,120,0,0,gameState));
 		gameState.add(new trashcanObject(400,120,0,0,gameState));
 		gameState.add(new trashcanObject(800,120,0,0,gameState));
-		gameState.setProjectile(new Food(480,700,0,0,gameState));
+		//gameState.setProjectile(new Food(480,700,0,0,gameState));
 		gameState.setShooter(new Shooter(gameState));
 	}
 	

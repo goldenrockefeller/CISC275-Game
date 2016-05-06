@@ -11,7 +11,7 @@ public class GameState {
 	final static int frameWidth = 1000;
     final static int frameHeight = 1000;
 	Collection<GameObject> gameObjectCollection = new LinkedList<GameObject>();
-	Collection<Projectile> trashCollection = new LinkedList<Projectile>();
+	//Collection<Projectile> trashCollection = new LinkedList<Projectile>();
 	/*Other group's method of making screen size changeable
 	 * final Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
 	 double frameWidth = screensize.getWidth();
@@ -63,18 +63,22 @@ public class GameState {
 	{
 		this.gameObjectCollection.add(gameObject);
 	}
+	/*
 	public void addTrash(Projectile projectile)
 	{
 		this.trashCollection.add(projectile);
 	}
+	*/
 	public void remove(GameObject gameObject)
 	{
 		this.gameObjectCollection.remove(gameObject);
 	}
+	/*
 	public void removeTrash(Trash trash)
 	{
 		this.trashCollection.remove(trash);
 	}
+	*/
 	public int getScore() {
 		return score;
 	}
@@ -102,9 +106,10 @@ public class GameState {
 	public Collection<GameObject> getGameObjectCollection() {
 		return gameObjectCollection;
 	}
+	/*
 	public Collection<Projectile> getTrashCollection() {
 		return trashCollection;
-	}
+	}*/
 	public Shooter getShooter(){
 		return gameShooter;
 	}
@@ -113,15 +118,7 @@ public class GameState {
 	}
 	/*
 	public void loadProjectile(Shooter gameShooter) {
-		int randProj = (int) (Math.random()*10);
-		
-		if (randProj < 5) {
-			setProjectile(new Food(480,700,0,0,this));
-		}
-		//A comment
-		else {
-			setProjectile(new Trash(480,700,0,0,this));
-		}
+
 		
 		
 	}
