@@ -12,7 +12,9 @@ public class Crab extends GameObject {
 		super(xPosition, yPositionition, xVelocity, yVelocity, gameState);
 		// TODO Auto-generated constructor stub
 	}
-
+	/**
+	 * updates velocity of crab.
+	 */
 	public void updateState() {
 		if (xPosition > GameState.frameWidth)
 		{

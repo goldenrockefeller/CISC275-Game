@@ -20,11 +20,18 @@ public abstract class GameObject {
 	
 	abstract public void updateState();
 	
+	/**
+	 * removes the object from the game
+	 */
 	public void selfDestruct()
 	{
 		gameState.remove(this);
 	}
-	
+	/**
+	 * rotates the object's velocity based on parameters
+	 * @param cosineAngle- angle used for x part of velocity
+	 * @param sineAngle- angle used for y part of velocity
+	 */
 	public void rotateDirection(double cosineAngle, double sineAngle)
 	{
 		double speed = getSpeed(); //end velocity must have the same end speed
@@ -38,7 +45,12 @@ public abstract class GameObject {
 		yVelocity = yVelocity * correction;
 		
 	}
-	
+	/**
+	 * calculates magnitude
+	 * @param x, an x value
+	 * @param y, a y value
+	 * @return magnitude as a double
+	 */
 	public double magnitude(double x, double y)
 	{
 		return Math.sqrt(x*x + y*y);
@@ -49,13 +61,20 @@ public abstract class GameObject {
 		return magnitude(xVelocity,yVelocity);
 	}
 	
+	/**
+	 * alters object's position
+	 * @param x value to affect x position
+	 * @param y value to affect y position
+	 */
 	public void translatePosition(double x, double y)
 	{
 		xPosition += x;
 		yPosition += y;
 	}
 	
-	
+	/**
+	 * updates the x and y positions based on their respective velocities
+	 */
 	// Do not override, this will handle position update
 	// for every subclass of GameObject
 	public void updatePosition()
@@ -110,8 +129,12 @@ public abstract class GameObject {
 		xVelocity = x;
 		yVelocity = y;
 	}
-	
-	public void addVeloction(double x, double y)
+	/**
+	 * adds to velocity based on parameters
+	 * @param x addition to x velocity
+	 * @param y addition to y velocity
+	 */
+	public void addVelocity(double x, double y)
 	{
 		xVelocity += x;
 		yVelocity += y;

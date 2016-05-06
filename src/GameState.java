@@ -96,6 +96,11 @@ public class GameState {
 		}
 
 	}
+	
+	/**
+	 ** Methods to add values to their namesake attributes
+	 *@param value, the int being added
+	 **/
 	public void addToScore(int value)
 	{
 		this.score += value;
@@ -120,14 +125,23 @@ public class GameState {
 	{
 		this.trashCollection.add(projectile);
 	}
+	/**
+	 * removes object from game
+	 * @param gameObject the object being removed
+	 */
 	public void remove(GameObject gameObject)
 	{
 		this.gameObjectCollection.remove(gameObject);
 	}
+	/**
+	 * removes trash from game
+	 * @param trash the trash being removed
+	 */
 	public void removeTrash(Trash trash)
 	{
 		this.trashCollection.remove(trash);
 	}
+	
 	public int getScore() {
 		return score;
 	}
@@ -170,7 +184,10 @@ public class GameState {
 	public Projectile getProjectile(){
 		return projectile;
 	}
-	
+	/**
+	 * randomly chooses what kind of projectile will be thrown by the player.
+	 * @param gameShooter instance of the game's shooter
+	 */
 	public void loadProjectile(Shooter gameShooter) {
 		int randProj = (int) (Math.random()*10);
 		
@@ -184,7 +201,9 @@ public class GameState {
 		
 		
 	}
-	
+	/**
+	 * to string method for this game state
+	 */
 	@Override
 	public String toString() {
 		return "\nGameState [score=" + score + ", trashCount=" + trashCount + ", mittenCount=" + mittenCount

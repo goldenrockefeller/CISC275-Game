@@ -5,7 +5,9 @@ public class Food extends Projectile{
 		super(xPosition, yPosition, xVelocity, yVelocity, gameState);
 		// TODO Auto-generated constructor stub
 	}
-	
+	/**
+	 * food becomes invisible if it goes "off screen"
+	 */
 	public void updateState() {
 		if (xPosition <= 0 || xPosition >= gameState.frameWidth) {
 			setVelocity(0,0);

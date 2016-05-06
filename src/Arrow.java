@@ -8,7 +8,9 @@
 				double yVelocity, GameState gameState) {
 			super(xPosition, yPosition, xVelocity, yVelocity, gameState);
 		}
-		
+		/**
+		 * sets the direction of the arrow's movement for each tick
+		 */
 		public void setDirectFluc(){
 			if (!stop_flag) {
 				if(arrow_flag){
@@ -25,7 +27,9 @@
 				}
 			}
 		}
-
+		/**
+		 * updates state with setDirectFluc
+		 */
 		public void updateState(){
 			setDirectFluc();
 		}

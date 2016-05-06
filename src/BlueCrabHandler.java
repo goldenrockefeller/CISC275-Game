@@ -24,6 +24,10 @@ public class BlueCrabHandler extends Handler{
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * draws the blue crab in place
+	 * @param graphics g, graphic being used
+	 */
 	public void paint(Graphics g) {
 		for (GameObject gameObject : getGameState().getGameObjectCollection())
 		{
