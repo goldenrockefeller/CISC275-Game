@@ -111,7 +111,7 @@ public abstract class GameObject {
 		yVelocity = y;
 	}
 	
-	public void addVeloction(double x, double y)
+	public void addVelocty(double x, double y)
 	{
 		xVelocity += x;
 		yVelocity += y;

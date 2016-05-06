@@ -30,6 +30,8 @@ public class Crab extends GameObject {
 		{
 			yVelocity = Math.abs(yVelocity);
 		}
+		
+		checkCollision();
 	}
 	
 	/**
@@ -37,13 +39,14 @@ public class Crab extends GameObject {
 	 * @return 
 	 * @return true if within a certain hitbox, false otherwise.
 	 */
-	public boolean checkCollision() {
-			if (getGameState().projectile instanceof Food && Math.abs(this.xPosition - getGameState().projectile.xPosition) < 50 && Math.abs(this.yPosition - getGameState().projectile.yPosition) < 50) {
-				System.out.println("Collision!");
-				getGameState().projectile.isVisible = false;
-				return true;
+	private void checkCollision() {
+		for (GameObject gameObject: getGameState().getGameObjectCollection())
+		{
+			if (gameObject instanceof Food)
+			{
+				
 			}
-		return false;
+		}
 	}
 
 }
