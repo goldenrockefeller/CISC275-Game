@@ -4,10 +4,12 @@
 //TODO add a button to the frame
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.lang.*;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class Launcher {	
 	private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -23,6 +25,11 @@ public class Launcher {
 		Launcher.setupGameState(gameState);
 		Launcher.setupGameScreen(gameScreen,gameState);
 		Launcher.setupGameWindow(gameWindow,gameScreen);
+		
+		JLabel label1 = new JLabel("Tap to start!",
+                JLabel.CENTER);
+		label1.setFont(new Font(label1.getFont().getName(), Font.PLAIN, 48));
+		gameScreen.add(label1);
 		
 		//TODO correct while loop goes here
 		while (true)
