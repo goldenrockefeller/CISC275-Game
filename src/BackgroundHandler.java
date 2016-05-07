@@ -11,6 +11,8 @@ public class BackgroundHandler extends Handler {
 	Image sand;
 	Image water;
 	
+	
+	
 	BackgroundHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen,gameState);
 		try{

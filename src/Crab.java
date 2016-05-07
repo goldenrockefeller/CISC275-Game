@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Crab extends GameObject {
 	
-	final static int crabUpperBound = 400;
+	final static int crabUpperBound = Launcher.HEIGHT / 4;
 	final static int crabLowerBound = 600;
 
 	Crab(double xPosition, double yPositionition, double xVelocity, double yVelocity, GameState gameState) {
