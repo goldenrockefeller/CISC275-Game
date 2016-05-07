@@ -17,6 +17,8 @@ import javax.imageio.ImageIO;
 public class ShooterHandler extends Handler implements KeyListener {
 	public static final int arrowWidth = 228;
 	public static final int arrowHeight = 214;
+	public static final int projectileStartingX = 480;
+	public static final int projectileStartingY = 700;
 	int xSpeed;
 	int ySpeed;
 	int degrees;
@@ -40,7 +42,7 @@ public class ShooterHandler extends Handler implements KeyListener {
 			System.out.println("Arrow Image not found");
 		}
 		gameScreen.addKeyListener(this);
-		generateProjectile();
+		projectile = generateProjectile();
 	}
 
 	public void paint(Graphics g) {
@@ -60,6 +62,15 @@ public class ShooterHandler extends Handler implements KeyListener {
 		BufferedImage new_image = op.filter(arrow_image, null);
 		
 		g.drawImage(new_image, (int)a.xPosition, (int)a.yPosition, new Color(0, 0, 0, 0), null);
+		
+		//Generate new projectile only when the current projectile has stopped
+		if (projectile.getSpeed() == 0 &&
+			!(projectile.getxPosition() == projectileStartingX &&
+			projectile.getyPosition() == projectileStartingY))
+		{
+			projectile = generateProjectile();
+		}
+		
 		
 		//g.drawImage(powerbar_image, (int)pb.xPosition, (int)pb.yPosition, new Color(0, 0, 0, 0), null);
 	}
@@ -91,7 +102,9 @@ public class ShooterHandler extends Handler implements KeyListener {
 		
 		gameShooter.getArrow().setStop();
 		
+
 		
+				
 	}
 	
 	
@@ -103,36 +116,44 @@ public class ShooterHandler extends Handler implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_SPACE){
-			Shooter gameShooter = getGameState().getShooter();
-			if(gameShooter.getFlag()){
-				gameShooter.getArrow().setDirection();
-				gameShooter.getArrow().setStop();
-				gameShooter.changeFlag();
-				
-			}
-			else{
-				gameShooter.getPowerBar().setPower();
-				System.out.print("Fired at: " + gameShooter.getPowerBar().getPower() + " power ");
-				System.out.println("in direction " + gameShooter.getArrow().getDirection() + "!");
-				
-				calculateTrajectory(gameShooter);
-				generateProjectile();
-				
-				gameShooter.changeFlag();
-				gameShooter.setDefault();
+			// Do not control shooter when the projectile is in motion
+
+			
+			System.out.println(projectile);
+			if ((projectile.getxPosition() == projectileStartingX && projectile.getyPosition() == projectileStartingY))
+			{
+				Shooter gameShooter = getGameState().getShooter();
+				if(gameShooter.getFlag()){
+					gameShooter.getArrow().setDirection();
+					gameShooter.getArrow().setStop();
+					gameShooter.changeFlag();
+					
+				}
+				else{
+					gameShooter.getPowerBar().setPower();
+					System.out.print("Fired at: " + gameShooter.getPowerBar().getPower() + " power ");
+					System.out.println("in direction " + gameShooter.getArrow().getDirection() + "!");
+					
+					calculateTrajectory(gameShooter);
+					
+					gameShooter.changeFlag();
+					gameShooter.setDefault();
+				}
 			}
 		}
 	}
 	
-	public void generateProjectile()
+	public Projectile generateProjectile()
 	{
+		Projectile proj;
 		if (Math.random() < .5) {
-			projectile = new Food(480,700,0,0,gameState);
+			proj = new Food(projectileStartingX,projectileStartingY,0,0,gameState);
 		}
 		else {
-			projectile = new Trash(480,700,0,0,gameState);
+			proj = new Trash(projectileStartingX,projectileStartingY,0,0,gameState);
 		}
-		gameState.add(projectile);
+		gameState.add(proj);
+		return proj;
 	}
 
 	@Override
