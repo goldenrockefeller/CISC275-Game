@@ -18,8 +18,7 @@ public class Launcher {
 		// TODO Auto-generated method stub
 		GameState gameState = new GameState();
 		GameScreen gameScreen = new GameScreen();
-		JFrame gameWindow = new JFrame("Super Team 6");
-		
+		JFrame gameWindow = new JFrame("Estuary Slam!");
 		
 		Launcher.setupGameState(gameState);
 		Launcher.setupGameScreen(gameScreen,gameState);
@@ -51,9 +50,9 @@ public class Launcher {
 		gameState.add(new powerbarFrame(200, 783, 0, 0, gameState));
 		gameState.add(new powerbarObject(200,785,0,0,gameState));
 		//gameState.add(new Food(480,700,0,0,gameState));
-		gameState.add(new trashcanObject(100,120,0,0,gameState));
-		gameState.add(new trashcanObject(400,120,0,0,gameState));
-		gameState.add(new trashcanObject(800,120,0,0,gameState));
+		gameState.add(new trashcanObject(200,120,0,0,gameState));
+		gameState.add(new trashcanObject(Launcher.WIDTH / 2 - 75,120,0,0,gameState));
+		gameState.add(new trashcanObject(Launcher.WIDTH - 275,120,0,0,gameState));
 		//gameState.setProjectile(new Food(480,700,0,0,gameState));
 		gameState.setShooter(new Shooter(gameState));
 	}
