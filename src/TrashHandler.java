@@ -13,7 +13,7 @@ public class TrashHandler extends Handler {
 	TrashHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen, gameState);
 		try{
-			image = ImageIO.read(new File("img/rock.png")).getScaledInstance(30, 30, Image.SCALE_FAST);	
+			image = ImageIO.read(new File("img/rock.png")).getScaledInstance(Launcher.WIDTH/50, Launcher.HEIGHT/50, Image.SCALE_FAST);	
 		}
 		catch(IOException e)
 		{
@@ -30,7 +30,7 @@ public class TrashHandler extends Handler {
 		for (GameObject gameObject : getGameState().getGameObjectCollection()){
 			if (gameObject instanceof Trash)
 			{
-				g.drawImage( image, (int)gameObject.xPosition, (int)gameObject.yPosition, new Color(0,0,0,0), null);
+				g.drawImage( image,  scaleX(gameObject.getxPosition()), scaleY(gameObject.getyPosition()), new Color(0,0,0,0), null);
 		
 			}
 		}

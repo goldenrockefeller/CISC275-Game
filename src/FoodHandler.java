@@ -13,7 +13,7 @@ public class FoodHandler extends Handler{
 	FoodHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen, gameState);
 		try{
-			image = ImageIO.read(new File("img/Coin1.png")).getScaledInstance(30, 30, Image.SCALE_FAST);	
+			image = ImageIO.read(new File("img/Coin1.png")).getScaledInstance(Launcher.WIDTH/50, Launcher.HEIGHT/50, Image.SCALE_FAST);	
 		}
 		catch(IOException e)
 		{
@@ -31,7 +31,7 @@ public class FoodHandler extends Handler{
 		for (GameObject gameObject : getGameState().getGameObjectCollection()) {
 			if (gameObject instanceof Food)
 			{
-				g.drawImage( image, (int)gameObject.getxPosition(), (int)gameObject.getyPosition(), new Color(0,0,0,0), null);
+				g.drawImage( image, scaleX(gameObject.getxPosition()), scaleY(gameObject.getyPosition()), new Color(0,0,0,0), null);
 			}
 		}
 	}

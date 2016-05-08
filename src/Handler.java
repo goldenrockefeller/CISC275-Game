@@ -36,6 +36,16 @@ public abstract class Handler {
 	public GameState getGameState() {
 		return gameState;
 	}
+	
+	public int scaleX(double x)
+	{
+		return (int)(x * Launcher.WIDTH / GameState.frameWidth);
+	}
+	
+	public int scaleY(double y)
+	{
+		return (int)(y * Launcher.HEIGHT / GameState.frameHeight);
+	}
 
 	
 }

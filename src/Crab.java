@@ -10,8 +10,8 @@ public abstract class Crab extends GameObject {
 	final static int crabUpperBound = 250; //Changed by Golden because it is easier and more manageable to only have the view worry about screen placement.
 	final static int crabLowerBound = 700; //It also technically violates MVC
 	
-	final static int height = 100;
-	final static int width = 100;
+	final static int height = GameState.frameHeight/15;
+	final static int width = GameState.frameWidth/15;
 
 	Crab(double xPosition, double yPositionition, double xVelocity, double yVelocity, GameState gameState) {
 		super(xPosition, yPositionition, xVelocity, yVelocity, gameState);
