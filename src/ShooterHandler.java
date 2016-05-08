@@ -18,7 +18,7 @@ public class ShooterHandler extends Handler implements KeyListener {
 	public static final int arrowWidth = 228;
 	public static final int arrowHeight = 214;
 	public static final int projectileStartingX = 480;
-	public static final int projectileStartingY = 700;
+	public static final int projectileStartingY = 730;
 	int xSpeed;
 	int ySpeed;
 	int degrees;
@@ -91,10 +91,14 @@ public class ShooterHandler extends Handler implements KeyListener {
 		ySpeed = -(int) (Math.toDegrees(Math.sin(Math.toRadians(degrees)))/10);
 		
 		projectile.setVelocity(xSpeed, ySpeed);
+		int timeOfFlight = power*5;
+		projectile.setZ(timeOfFlight);
+		/*
 		
 		if (projectile instanceof Trash && power < 50) {
 			projectile.setEnd((int) (400 + Math.random()*200));
 		}
+		*/
 		
 		/*if (projectile instanceof Trash) {
 			gameState.addTrash(projectile);

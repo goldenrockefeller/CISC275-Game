@@ -19,7 +19,7 @@ public class Trash extends Projectile{
 	 * @return true if within a certain hitbox, false otherwise.
 	 */
 	public void updateState() {
-		
+		super.updateState();
 		//Trash 1
 		if (Math.abs(xPosition - 150) < 50 && Math.abs(yPosition - 200) < 50) {
 			setVelocity(0,0);

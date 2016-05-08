@@ -14,6 +14,7 @@
 /MittenCrabHandler.class
 /PowerBar.class
 /Projectile.class
+/ProjectileHandler.class
 /Shooter.class
 /ShooterHandler.class
 /TestHandler.class
@@ -25,9 +26,5 @@
 /powerbarFrame.class
 /powerbarHandler.class
 /powerbarObject.class
-<<<<<<< HEAD
-=======
 /trashcanHandler.class
 /trashcanObject.class
->>>>>>> b185d154ef978fd2c23ec9364369c26dd2965d56
-/ProjectileHandler.class
