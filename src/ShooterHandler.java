@@ -19,8 +19,8 @@ public class ShooterHandler extends Handler implements KeyListener {
 	public static final int arrowHeight = 214;
 	public static final int projectileStartingX = 480;
 	public static final int projectileStartingY = 730;
-	int xSpeed;
-	int ySpeed;
+	double xSpeed; 
+	double ySpeed;
 	int degrees;
 	int power;
 	int randProj;
@@ -61,7 +61,7 @@ public class ShooterHandler extends Handler implements KeyListener {
         
 		BufferedImage new_image = op.filter(arrow_image, null);
 		
-		g.drawImage(new_image, 9*Launcher.WIDTH/10, 9*Launcher.HEIGHT/10, new Color(0, 0, 0, 0), null);
+		g.drawImage(new_image, (int)a.getxPosition(), (int)a.getyPosition(), new Color(0, 0, 0, 0), null);
 		
 		//Generate new projectile only when the current projectile has stopped
 		if (projectile.getSpeed() == 0 &&
@@ -87,11 +87,11 @@ public class ShooterHandler extends Handler implements KeyListener {
 		degrees = gameShooter.getArrow().getDirection();
 		power = gameShooter.getPowerBar().getPower();
 		
-		xSpeed = (int) (Math.toDegrees(Math.cos(Math.toRadians(degrees)))/10);
-		ySpeed = -(int) (Math.toDegrees(Math.sin(Math.toRadians(degrees)))/10);
+		xSpeed = (Math.toDegrees(Math.cos(Math.toRadians(degrees)))/10);
+		ySpeed = - (Math.toDegrees(Math.sin(Math.toRadians(degrees)))/10);
 		
 		projectile.setVelocity(xSpeed, ySpeed);
-		int timeOfFlight = power;
+		int timeOfFlight = power * 2;
 		projectile.setZ(timeOfFlight);
 		/*
 		
