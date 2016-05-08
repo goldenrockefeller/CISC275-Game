@@ -18,7 +18,7 @@ public class BackgroundHandler extends Handler {
 			sand = ImageIO.read(new File("img/background/tile_sand_center.png"));//.getScaledInstance(1000, 1000, Image.SCALE_FAST);	
 			water = ImageIO.read(new File("img/background/river_revised.jpg"))
 					.getScaledInstance(Launcher.WIDTH, Launcher.HEIGHT / 10, Image.SCALE_FAST);
-			sky = ImageIO.read(new File("img/background/sky_tile.png"));
+			sky = ImageIO.read(new File("img/background/sky_tile.jpg"));
 		}
 		catch(IOException e)
 		{
