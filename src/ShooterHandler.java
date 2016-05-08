@@ -61,7 +61,7 @@ public class ShooterHandler extends Handler implements KeyListener {
         
 		BufferedImage new_image = op.filter(arrow_image, null);
 		
-		g.drawImage(new_image, scaleX(a.xPosition), scaleY(a.yPosition), new Color(0, 0, 0, 0), null);
+		g.drawImage(new_image, 9*Launcher.WIDTH/10, 9*Launcher.HEIGHT/10, new Color(0, 0, 0, 0), null);
 		
 		//Generate new projectile only when the current projectile has stopped
 		if (projectile.getSpeed() == 0 &&
@@ -91,7 +91,7 @@ public class ShooterHandler extends Handler implements KeyListener {
 		ySpeed = -(int) (Math.toDegrees(Math.sin(Math.toRadians(degrees)))/10);
 		
 		projectile.setVelocity(xSpeed, ySpeed);
-		int timeOfFlight = power*3;
+		int timeOfFlight = power;
 		projectile.setZ(timeOfFlight);
 		/*
 		

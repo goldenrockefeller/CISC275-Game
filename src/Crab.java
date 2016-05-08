@@ -1,4 +1,5 @@
 import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
@@ -36,11 +37,38 @@ public abstract class Crab extends GameObject {
 			yVelocity = Math.abs(yVelocity);
 		}
 		
+		//Add variation by slightly altering Direction over time.
+		double oldspeed = getSpeed();
+		addVelocity((Math.random() - .5)/10,(Math.random()-.5)/10);
+		double correction = oldspeed / getSpeed();
+		setVelocity(getxVelocity()*correction,getyVelocity()*correction);
+		
 		for (GameObject gameObject: new ArrayList<GameObject>(getGameState().getGameObjectCollection()))
 		{
+			
 			if (gameObject instanceof Food)
 			{
-				checkCollision((Food)gameObject);
+				Food food = (Food)gameObject;
+				checkCollision(food);
+				//TODO package this code as a function
+				if (food.getxPosition() < GameState.frameWidth &&
+						food.getyPosition() < crabLowerBound &&
+						food.getxPosition() + Food.width > 0 &&
+						food.getyPosition() + Food.height > crabUpperBound ) //food is in bound to be attractive
+				{
+					double offsetX = food.getxPosition()+Food.width - this.getxPosition() - Crab.width;
+					double offsetY = food.getyPosition() + Food.height - this.getyPosition() - Crab.height;
+					double distance = magnitude(offsetX, offsetY);
+					if (  distance < 300 && distance > 5)
+					{
+						//Change Direction and maintain constant speed
+						oldspeed = getSpeed();
+						addVelocity(offsetX*300/distance/distance/(1+food.getZ()),offsetY *300/distance/distance/(1+food.getZ()));
+						correction = oldspeed / getSpeed();
+						setVelocity(getxVelocity()*correction,getyVelocity()*correction);
+						
+					}
+				}
 			}
 		}
 	}
