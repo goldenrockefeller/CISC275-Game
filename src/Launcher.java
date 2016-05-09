@@ -25,13 +25,15 @@ public class Launcher {
 		Launcher.setupGameState(gameState);
 		Launcher.setupGameScreen(gameScreen,gameState);
 		Launcher.setupGameWindow(gameWindow,gameScreen);
-		
+
+		/*
 		JLabel label1 = new JLabel("Tap to start!",
                 JLabel.CENTER);
 		label1.setFont(new Font(label1.getFont().getName(), Font.PLAIN, 48));
 		gameScreen.add(label1);
-		
+		*/
 		//TODO correct while loop goes here
+		
 		while (true)
 		{
 			gameState.update();
@@ -54,8 +56,8 @@ public class Launcher {
 		gameState.add(new BlueCrab(500,500,3,1,gameState));
 		//gameState.add(new TestObject(480,850,0,0,gameState));
 		//gameState.add(new mytestObject(32,64,0,0,gameState));
-		gameState.add(new powerbarFrame(200, 783, 0, 0, gameState));
-		gameState.add(new powerbarObject(200,785,0,0,gameState));
+		gameState.add(new powerbarFrame(Launcher.WIDTH / 5, (Launcher.HEIGHT - 50 - 2), 0, 0, gameState));
+		gameState.add(new powerbarObject(Launcher.WIDTH / 5, Launcher.HEIGHT - 50, 0, 0, gameState));
 		//gameState.add(new Food(480,700,0,0,gameState));
 		gameState.add(new trashcanObject(200,120,0,0,gameState));
 		gameState.add(new trashcanObject(500,120,0,0,gameState));
