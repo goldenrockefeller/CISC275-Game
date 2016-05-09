@@ -22,6 +22,7 @@ public class StartDisplayHandler extends Handler implements KeyListener {
 		catch (IOException e){
 			System.out.println("startscreen.png not found");
 		}
+		gameScreen.addKeyListener(this);
 		active = true;
 	}
 
@@ -32,23 +33,8 @@ public class StartDisplayHandler extends Handler implements KeyListener {
 			{
 				if (gameObject instanceof StartDisplay)
 				{
-					g.drawImage(startdisplay, (int) gameObject.getxPosition(), (int) gameObject.getyPosition(), new Color(0,0,0,0), null);
-				}
-			}
-		}
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		if(active){
-			if(e.getKeyCode() == KeyEvent.VK_SPACE){
-				for (GameObject gameObject : getGameState().getGameObjectCollection())
-				{
-					if (gameObject instanceof StartDisplay)
-					{
-						getGameState().remove(gameObject);
-						active = false;
-						System.out.println("dooooone");
+					if(active){
+						g.drawImage(startdisplay, (int) gameObject.getxPosition(), (int) gameObject.getyPosition(), new Color(0,0,0,0), null);
 					}
 				}
 			}
@@ -56,9 +42,25 @@ public class StartDisplayHandler extends Handler implements KeyListener {
 	}
 
 	@Override
+	public void keyTyped(KeyEvent e) {
+
+	}
+
+	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+		if(active){
+			if(e.getKeyCode() == KeyEvent.VK_SPACE){
+				System.out.println("hello");
+				for (GameObject gameObject : getGameState().getGameObjectCollection())
+				{
+					if (gameObject instanceof StartDisplay)
+					{
+						getGameState().remove(gameObject);
+						active = false;
+					}
+				}
+			}
+		}
 	}
 
 	@Override

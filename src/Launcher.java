@@ -59,12 +59,8 @@ public class Launcher {
 		gameState.add(new trashcanObject(500,120,0,0,gameState));
 		gameState.add(new trashcanObject(800,120,0,0,gameState));
 		//gameState.setProjectile(new Food(480,700,0,0,gameState));
-		gameState.add(new StartDisplay(GameState.WIDTH / 7, GameState.HEIGHT / 8, 0, 0, gameState));
+		gameState.add(new StartDisplay(GameState.WIDTH / 8, GameState.HEIGHT / 12, 0, 0, gameState));
 		gameState.setShooter(new Shooter(gameState));
-	}
-	
-	public static void displayStartScreen(GameScreen gameScreen, GameState gamestate){
-		
 	}
 	
 	public static void setupGameScreen (GameScreen gameScreen, GameState gameState)

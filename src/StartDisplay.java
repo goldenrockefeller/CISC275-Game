@@ -8,7 +8,7 @@ public class StartDisplay extends GameObject {
 
 	@Override
 	public void updateState() {
-		return;
+		
 	}
 
 }

@@ -30,6 +30,9 @@ public class ShooterHandler extends Handler implements KeyListener {
 	BufferedImage arrow_image;
 	Image powerbar_image;
 	
+	boolean firstclick; // This ignores the first space click.  We do this because the first
+						 // space click removes the start screen
+	
 	ShooterHandler(GameScreen gameScreen,GameState gameState) {
 		super(gameScreen,gameState);
 		// TODO Auto-generated constructor stub
@@ -43,6 +46,8 @@ public class ShooterHandler extends Handler implements KeyListener {
 		}
 		gameScreen.addKeyListener(this);
 		projectile = generateProjectile();
+		
+		firstclick = true;
 	}
 
 	public void paint(Graphics g) {
@@ -108,12 +113,15 @@ public class ShooterHandler extends Handler implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 		
 	}
-
+	
 	@Override
 	public void keyPressed(KeyEvent e) {
+		if(firstclick == true){
+			firstclick = false;
+			return;
+		}
 		if(e.getKeyCode() == KeyEvent.VK_SPACE){
 			// Do not control shooter when the projectile is in motion
-
 
 			System.out.println(projectile);
 			if ((projectile.getxPosition() == projectileStartingX && projectile.getyPosition() == projectileStartingY))
