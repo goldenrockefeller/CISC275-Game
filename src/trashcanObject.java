@@ -2,7 +2,7 @@
 public class trashcanObject extends GameObject {
 
 	
-	public final static int width = GameState.frameWidth /25;
+	public final static int width = GameState.frameWidth / 25;
 	public final static int height = GameState.frameHeight / 25;
 	
 

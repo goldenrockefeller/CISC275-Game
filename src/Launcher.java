@@ -19,10 +19,10 @@ public class Launcher {
 		GameScreen gameScreen = new GameScreen();
 		JFrame gameWindow = new JFrame("Estuary Slam!");
 		
+		Launcher.setupGameWindow(gameWindow,gameScreen);
 		Launcher.setupGameState(gameState);
 		Launcher.setupGameScreen(gameScreen,gameState);
-		Launcher.setupGameWindow(gameWindow,gameScreen);
-
+		
 		/*
 		JLabel label1 = new JLabel("Tap to start!",
                 JLabel.CENTER);
@@ -30,7 +30,6 @@ public class Launcher {
 		gameScreen.add(label1);
 		*/
 		//TODO correct while loop goes here
-		
 		
 		while (true)
 		{
@@ -44,7 +43,6 @@ public class Launcher {
 				e.printStackTrace();
 			}
 		}
-		
 	}
 	
 	public static void setupGameState (GameState gameState)
@@ -64,6 +62,10 @@ public class Launcher {
 		gameState.setShooter(new Shooter(gameState));
 	}
 	
+	public static void displayStartScreen(GameScreen gameScreen, GameState gamestate){
+		
+	}
+	
 	public static void setupGameScreen (GameScreen gameScreen, GameState gameState)
 	{
 		//Construct and add Handlers here
@@ -77,7 +79,6 @@ public class Launcher {
 		gameScreen.add (new powerbarHandler(gameScreen,gameState));
 		gameScreen.add (new FoodHandler(gameScreen,gameState));
 		gameScreen.add (new TrashHandler(gameScreen, gameState));
-		
 	}
 	
 	public static void setupGameWindow(JFrame gameWindow, GameScreen gameScreen)
