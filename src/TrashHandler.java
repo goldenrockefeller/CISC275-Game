@@ -22,7 +22,7 @@ public class TrashHandler extends Handler {
 			}
 		catch(IOException e)
 		{
-			
+			System.out.println("Trash not found.");
 		}
 	}
 

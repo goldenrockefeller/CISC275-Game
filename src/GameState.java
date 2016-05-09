@@ -7,7 +7,6 @@ public class GameState {
 	int mittenCount;
 	int blueCount;
 	Shooter gameShooter;
-	StartScreen ourStart;
 	//TO DO need to have this in Launcher
 	final static int frameWidth = 1000;
     final static int frameHeight = 1000;
