@@ -12,9 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class Launcher {	
-	private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	public static final int WIDTH = (int) screenSize.getWidth();
-	public static final int HEIGHT = (int) screenSize.getHeight();
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -33,6 +30,7 @@ public class Launcher {
 		gameScreen.add(label1);
 		*/
 		//TODO correct while loop goes here
+		
 		
 		while (true)
 		{
@@ -56,8 +54,8 @@ public class Launcher {
 		gameState.add(new BlueCrab(500,500,3,1,gameState));
 		//gameState.add(new TestObject(480,850,0,0,gameState));
 		//gameState.add(new mytestObject(32,64,0,0,gameState));
-		gameState.add(new powerbarFrame(Launcher.WIDTH / 5, (Launcher.HEIGHT - 50 - 2), 0, 0, gameState));
-		gameState.add(new powerbarObject(Launcher.WIDTH / 5, Launcher.HEIGHT - 50, 0, 0, gameState));
+		gameState.add(new powerbarFrame(GameState.WIDTH / 5, (GameState.HEIGHT - 50 - 2), 0, 0, gameState));
+		gameState.add(new powerbarObject(GameState.WIDTH / 5, GameState.HEIGHT - 50, 0, 0, gameState));
 		//gameState.add(new Food(480,700,0,0,gameState));
 		gameState.add(new trashcanObject(200,120,0,0,gameState));
 		gameState.add(new trashcanObject(500,120,0,0,gameState));
@@ -85,7 +83,7 @@ public class Launcher {
 	public static void setupGameWindow(JFrame gameWindow, GameScreen gameScreen)
 	{
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		gameWindow.setSize(Launcher.WIDTH, Launcher.HEIGHT);
+		gameWindow.setSize(GameState.WIDTH, GameState.HEIGHT);
 		gameWindow.getContentPane().add(gameScreen);
 		gameWindow.setVisible(true);
 	}

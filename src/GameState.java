@@ -1,7 +1,13 @@
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.util.*;
 
 public class GameState {
+	private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	public static final int WIDTH = (int) screenSize.getWidth();
+	public static final int HEIGHT = (int) screenSize.getHeight();
+	
 	int score;
 	int trashCount;
 	int mittenCount;
@@ -40,7 +46,6 @@ public class GameState {
 		{
 			gameObject.updateState();
 		}
-		
 		gameShooter.update(); //not a gameObject, so I didn't use updateState
 	}
 	public void addToScore(int value)

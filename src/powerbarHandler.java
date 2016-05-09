@@ -42,13 +42,13 @@ public class powerbarHandler extends Handler implements ActionListener, KeyListe
 				}
 				//if (!stopflag)
 					powerbar();
-				g.fillRect(scaleX(gameObject.getxPosition()),scaleY(gameObject.getyPosition()),length*Launcher.WIDTH/1000,32*Launcher.HEIGHT/1000);
+				g.fillRect(scaleX(gameObject.getxPosition()),scaleY(gameObject.getyPosition()),length*GameState.WIDTH/1000,32*GameState.HEIGHT/1000);
 				
 			}if (gameObject instanceof powerbarFrame)
 			{
 				g.setColor(Color.BLACK);
 				
-				g.fillRect(scaleX(gameObject.getxPosition()),scaleY(gameObject.getyPosition()),105*Launcher.WIDTH/1000,36*Launcher.HEIGHT/1000);
+				g.fillRect(scaleX(gameObject.getxPosition()),scaleY(gameObject.getyPosition()),105*GameState.WIDTH/1000,36*GameState.HEIGHT/1000);
 				
 			}
 

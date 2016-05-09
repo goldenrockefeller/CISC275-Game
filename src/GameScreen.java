@@ -14,6 +14,7 @@ public class GameScreen extends JPanel{
 	
     private Collection<Handler> handlerCollection;
     private static final long serialVersionUID = 1L;
+    boolean inStart;
     /*
      * ImageBank contains a set of Sprite Set
      * SpriteSets contains a list of all Image Sets for a GameObject
@@ -28,12 +29,23 @@ public class GameScreen extends JPanel{
     	this.setOpaque(true);
     	this.setFocusable(true);
 		this.handlerCollection = new LinkedList<Handler>();
-		
+		inStart = true;
     }
 	
 	public void add(Handler handler)
 	{
 		handlerCollection.add(handler);
+	}
+	
+	/*
+	 * What to do while in the start screen
+	 */
+	
+	public void start(){
+		StartScreenHandler ourstart = new StartScreenHandler();
+		while(inStart == true){
+			
+		}
 	}
 	
 	@Override

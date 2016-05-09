@@ -39,12 +39,12 @@ public abstract class Handler {
 	
 	public int scaleX(double x)
 	{
-		return (int)(x * Launcher.WIDTH / GameState.frameWidth);
+		return (int)(x * GameState.WIDTH / GameState.frameWidth);
 	}
 	
 	public int scaleY(double y)
 	{
-		return (int)(y * Launcher.HEIGHT / GameState.frameHeight);
+		return (int)(y * GameState.HEIGHT / GameState.frameHeight);
 	}
 
 	
