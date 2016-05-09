@@ -70,9 +70,6 @@ public class ShooterHandler extends Handler implements KeyListener {
 		{
 			projectile = generateProjectile();
 		}
-		
-		
-		//g.drawImage(powerbar_image, (int)pb.xPosition, (int)pb.yPosition, new Color(0, 0, 0, 0), null);
 	}
 
 	/**
@@ -105,12 +102,7 @@ public class ShooterHandler extends Handler implements KeyListener {
 		}*/
 		
 		gameShooter.getArrow().setStop();
-		
-
-		
-				
 	}
-	
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -122,7 +114,7 @@ public class ShooterHandler extends Handler implements KeyListener {
 		if(e.getKeyCode() == KeyEvent.VK_SPACE){
 			// Do not control shooter when the projectile is in motion
 
-			
+
 			System.out.println(projectile);
 			if ((projectile.getxPosition() == projectileStartingX && projectile.getyPosition() == projectileStartingY))
 			{
@@ -131,15 +123,15 @@ public class ShooterHandler extends Handler implements KeyListener {
 					gameShooter.getArrow().setDirection();
 					gameShooter.getArrow().setStop();
 					gameShooter.changeFlag();
-					
+
 				}
 				else{
 					gameShooter.getPowerBar().setPower();
 					System.out.print("Fired at: " + gameShooter.getPowerBar().getPower() + " power ");
 					System.out.println("in direction " + gameShooter.getArrow().getDirection() + "!");
-					
+
 					calculateTrajectory(gameShooter);
-					
+
 					gameShooter.changeFlag();
 					gameShooter.setDefault();
 				}

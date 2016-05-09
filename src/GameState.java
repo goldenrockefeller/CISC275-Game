@@ -46,7 +46,7 @@ public class GameState {
 		{
 			gameObject.updateState();
 		}
-		gameShooter.update(); //not a gameObject, so I didn't use updateState
+			gameShooter.update(); //not a gameObject, so I didn't use updateState
 	}
 	public void addToScore(int value)
 	{
