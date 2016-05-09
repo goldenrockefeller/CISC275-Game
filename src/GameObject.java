@@ -132,6 +132,14 @@ public abstract class GameObject {
 	public void setyVelocity(double yVelocity) {
 		this.yVelocity = yVelocity;
 	}
+	
+
+	/**
+	 * @param gameState the gameState to set
+	 */
+	public void setGameState(GameState gameState) {
+		this.gameState = gameState;
+	}
 
 	@Override
 	public String toString() {

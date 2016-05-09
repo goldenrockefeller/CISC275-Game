@@ -69,12 +69,14 @@ public class ShooterHandler extends Handler implements KeyListener {
 		g.drawImage(new_image, (int)a.getxPosition(), (int)a.getyPosition(), new Color(0, 0, 0, 0), null);
 		
 		//Generate new projectile only when the current projectile has stopped
-		if (projectile.getSpeed() == 0 &&
+		if (projectile.getGameState() != getGameState() ||
+				(projectile.getSpeed() == 0 &&
 			!(projectile.getxPosition() == projectileStartingX &&
-			projectile.getyPosition() == projectileStartingY))
+			projectile.getyPosition() == projectileStartingY)))
 		{
 			projectile = generateProjectile();
 		}
+		
 	}
 
 	/**
