@@ -63,7 +63,7 @@ public abstract class Crab extends GameObject {
 					{
 						//Change Direction and maintain constant speed
 						oldspeed = getSpeed();
-						addVelocity(offsetX*10/distance/distance,offsetY *10/distance/distance);
+						addVelocity(offsetX*20/distance/distance,offsetY *20/distance/distance);
 						correction = oldspeed / getSpeed();
 						setVelocity(getxVelocity()*correction,getyVelocity()*correction);
 						

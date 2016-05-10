@@ -72,6 +72,7 @@ public class Launcher {
 		
 		gameScreen.add (new BackgroundHandler(gameScreen,gameState));
 		gameScreen.add (new trashcanHandler(gameScreen,gameState));
+		gameScreen.add (new TrashHandler(gameScreen, gameState));
 		gameScreen.add (new MittenCrabHandler(gameScreen,gameState));
 		gameScreen.add (new BlueCrabHandler(gameScreen,gameState));
 		gameScreen.add (new ShooterHandler(gameScreen, gameState,gameShooter));
@@ -82,7 +83,6 @@ public class Launcher {
 				gameShooter
 				));
 		gameScreen.add (new FoodHandler(gameScreen,gameState));
-		gameScreen.add (new TrashHandler(gameScreen, gameState));
 		gameScreen.add (new StartDisplayHandler(gameScreen, gameState));
 	}
 	

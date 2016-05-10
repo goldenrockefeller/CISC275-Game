@@ -48,7 +48,7 @@ public class powerbarHandler extends Handler implements ActionListener, KeyListe
 			g.setColor(Color.GREEN);
 		}
 		//if (!stopflag)
-			powerbar();
+		powerbar();
 			
 
 		g.fillRect((int)gameShooter.getPowerBar().getxPosition(),(int)gameShooter.getPowerBar().getyPosition(),length*Launcher.WIDTH/1000,32*Launcher.HEIGHT/1000);

@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class Trash extends Projectile{
 
 	int trashFlag = 0;
-	public static final int width = GameState.frameWidth/50;
-	public static final int height = GameState.frameHeight/50;
+	public static final int width = GameState.frameWidth/25;
+	public static final int height = GameState.frameHeight/25;
 	
 	Trash(double xPosition, double yPosition, double xVelocity, double yVelocity, GameState gameState) {
 		super(xPosition, yPosition, xVelocity, yVelocity, gameState);

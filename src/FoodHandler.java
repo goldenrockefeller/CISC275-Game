@@ -13,8 +13,8 @@ public class FoodHandler extends Handler{
 	FoodHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen, gameState);
 		try{
-			image[0] = ImageIO.read(new File("img/algae_good.png")).getScaledInstance(GameState.frameWidth/25, GameState.frameWidth/25, Image.SCALE_FAST);	
-			image[1] = ImageIO.read(new File("img/algae_medium.png")).getScaledInstance(GameState.frameWidth/25, GameState.frameWidth/25, Image.SCALE_FAST);
+			image[0] = ImageIO.read(new File("img/algae_good.png")).getScaledInstance(Launcher.WIDTH/25, Launcher.HEIGHT/25, Image.SCALE_FAST);	
+			image[1] = ImageIO.read(new File("img/algae_medium.png")).getScaledInstance(Launcher.WIDTH/25, Launcher.HEIGHT/25, Image.SCALE_FAST);
 		}
 		catch(IOException e)
 		{

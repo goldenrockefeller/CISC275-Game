@@ -1,5 +1,26 @@
 
 public class Food extends Projectile{
+
+
+	final static int width = GameState.frameWidth/25;
+	final static int height = GameState.frameHeight/25;
+
+
+	Food(double xPosition, double yPosition, double xVelocity, double yVelocity, GameState gameState) {
+		super(xPosition, yPosition, xVelocity, yVelocity, gameState);
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void updateState() {
+		super.updateState();
+		if (xPosition <= 0 || xPosition >= gameState.frameWidth) {
+			setVelocity(0,0);
+		}
+		if (yPosition <= 0 || yPosition >= gameState.frameHeight) {
+			setVelocity(0,0);
+		}
+	}
+
 	
 	/**
 	 * @return the z
@@ -28,24 +49,4 @@ public class Food extends Projectile{
 	public static int getHeight() {
 		return height;
 	}
-
-	final static int width = GameState.frameWidth/50;
-	final static int height = GameState.frameHeight/50;
-
-
-	Food(double xPosition, double yPosition, double xVelocity, double yVelocity, GameState gameState) {
-		super(xPosition, yPosition, xVelocity, yVelocity, gameState);
-		// TODO Auto-generated constructor stub
-	}
-	
-	public void updateState() {
-		super.updateState();
-		if (xPosition <= 0 || xPosition >= gameState.frameWidth) {
-			setVelocity(0,0);
-		}
-		if (yPosition <= 0 || yPosition >= gameState.frameHeight) {
-			setVelocity(0,0);
-		}
-	}
-
 }
