@@ -7,8 +7,8 @@ public class Shooter {
 	public Shooter(GameState game){
 		arrow_or_pb_flag = true;
 		//game_arrow = new Arrow(GameState.frameWidth / 2 - 50, GameState.frameHeight - 330, 0, 0, game);
-		game_arrow = new Arrow(380, 700, 0, 0, game);
-		game_powerbar = new PowerBar(GameState.frameWidth/5, GameState.frameHeight - 220, 0, 0, game);
+		game_arrow = new Arrow(Launcher.WIDTH / 2 - (Launcher.WIDTH * ShooterHandler.arrowWidth / 1000 / 2), Launcher.HEIGHT - 220, 0, 0, game);
+		game_powerbar = new PowerBar(Launcher.WIDTH/5, Launcher.HEIGHT - 220, 0, 0, game);
 	}
 	
 	public Arrow getArrow(){
@@ -20,9 +20,6 @@ public class Shooter {
 	public boolean getFlag(){
 		return arrow_or_pb_flag;
 	}
-	/**
-	 * changes "state" to change if the input is going to determine the arrow or power values
-	 */
 	public void changeFlag(){
 		if(arrow_or_pb_flag){
 			arrow_or_pb_flag = false;
@@ -32,17 +29,12 @@ public class Shooter {
 		}
 		return;
 	}
-	/**
-	 * sets arrow and power to the default values
-	 */
 	public void setDefault(){
 		game_arrow.defaultDirection();
 		game_powerbar.defaultPower();
 		return;
 	}
-	/**
-	 * updates the states of arrow and power bar (in that order)
-	 */
+	
 	public void update() {
 		game_arrow.updateState();
 		game_powerbar.updateState();

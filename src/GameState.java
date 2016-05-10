@@ -1,3 +1,5 @@
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.util.*;
 
@@ -6,16 +8,12 @@ public class GameState {
 	int trashCount;
 	int mittenCount;
 	int blueCount;
-	boolean hitb;
-	boolean hitm;
-	int buffb = 0;
-	int buffm = 0;
-	Projectile projectile;
-	Shooter gameShooter;
+	//Shooter gameShooter;
+	//TO DO need to have this in Launcher
 	final static int frameWidth = 1000;
     final static int frameHeight = 1000;
 	Collection<GameObject> gameObjectCollection = new LinkedList<GameObject>();
-	Collection<Projectile> trashCollection = new LinkedList<Projectile>();
+	//Collection<Projectile> trashCollection = new LinkedList<Projectile>();
 	/*Other group's method of making screen size changeable
 	 * final Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
 	 double frameWidth = screensize.getWidth();
@@ -36,71 +34,20 @@ public class GameState {
 	 */
 	public void update()
 	{
-		//If first projectile, or food that has been eaten, or trash that has stopped, load the next projectile
-		if (projectile == null || !projectile.isVisible || projectile.stopped) {
-			loadProjectile(gameShooter);
-		}
-		projectile.updatePosition();
-		projectile.updateState();
-		for (Projectile trash : trashCollection) 
-		{
-			trash.updatePosition();
-			trash.updateState();
-		}
 		for (GameObject gameObject : gameObjectCollection)
 		{
 			gameObject.updatePosition();
 		}
-		for (GameObject gameObject : gameObjectCollection)
+		for (GameObject gameObject : new ArrayList<GameObject>(gameObjectCollection))
 		{
 			gameObject.updateState();
-			if (gameObject instanceof BlueCrab) {
-				if (((Crab) gameObject).checkCollision()) {
-					hitb = true;
-				}
-			}
-			if (gameObject instanceof MittenCrab) {
-				if (((Crab) gameObject).checkCollision()) {
-					hitm = true;
-				}
-			}
 		}
-		if (hitb && buffb <= 0) {
-			this.add(new BlueCrab(500,500,2,1,this));
-			blueCount++;
-			buffb = 300;
-			buffm = 300;
-		}
-		if (hitm && buffm <= 0) {
-			this.add(new MittenCrab(500,500,1,2,this));
-			mittenCount++;
-			buffm = 300;
-			buffb = 300;
-		}
-		buffb--;
-		buffm--;
-		hitb = false;
-		hitm = false;
-		
-		gameShooter.update(); //not a gameObject, so I didn't use updateState
-		
-		if (mittenCount > 10 || blueCount > 10) {
-			System.out.println("Over capacity!");
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			mittenCount = 0;
-			blueCount = 0;
-		}
-
+			 //not a gameObject, so I didn't use updateState
 	}
-	
 	/**
-	 ** Methods to add values to their namesake attributes
-	 *@param value, the int being added
-	 **/
+	 * add to namesake value based on parameter
+	 * @param value to be added
+	 */
 	public void addToScore(int value)
 	{
 		this.score += value;
@@ -121,27 +68,27 @@ public class GameState {
 	{
 		this.gameObjectCollection.add(gameObject);
 	}
+	/*
 	public void addTrash(Projectile projectile)
 	{
 		this.trashCollection.add(projectile);
 	}
+	*/
 	/**
-	 * removes object from game
-	 * @param gameObject the object being removed
+	 * removes the game object and sets it to null
+	 * @param gameObject to be removed
 	 */
 	public void remove(GameObject gameObject)
 	{
 		this.gameObjectCollection.remove(gameObject);
+		gameObject.setGameState(null);
 	}
-	/**
-	 * removes trash from game
-	 * @param trash the trash being removed
-	 */
+	/*
 	public void removeTrash(Trash trash)
 	{
 		this.trashCollection.remove(trash);
 	}
-	
+	*/
 	public int getScore() {
 		return score;
 	}
@@ -169,40 +116,19 @@ public class GameState {
 	public Collection<GameObject> getGameObjectCollection() {
 		return gameObjectCollection;
 	}
+	/*
 	public Collection<Projectile> getTrashCollection() {
 		return trashCollection;
-	}
-	public Shooter getShooter(){
-		return gameShooter;
-	}
-	public void setShooter(Shooter newShooter){
-		gameShooter = newShooter;
-	}
-	public void setProjectile(Projectile projectile) {
-		this.projectile = projectile;
-	}
-	public Projectile getProjectile(){
-		return projectile;
-	}
-	/**
-	 * randomly chooses what kind of projectile will be thrown by the player.
-	 * @param gameShooter instance of the game's shooter
-	 */
+	}*/
+	/*
 	public void loadProjectile(Shooter gameShooter) {
-		int randProj = (int) (Math.random()*10);
-		
-		if (randProj < 5) {
-			setProjectile(new Food(480,700,0,0,this));
-		}
-		//A comment
-		else {
-			setProjectile(new Trash(480,700,0,0,this));
-		}
+
 		
 		
 	}
+	*/
 	/**
-	 * to string method for this game state
+	 * tostring for the Game state
 	 */
 	@Override
 	public String toString() {

@@ -17,20 +17,21 @@ public abstract class GameObject {
 		this.yVelocity = yVelocity;
 		this.gameState = gameState;
 	}
-	
-	abstract public void updateState();
-	
 	/**
-	 * removes the object from the game
+	 * an updating method to be implemented by the subclasses
+	 */
+	abstract public void updateState();
+	/**
+	 * removes the game object from the game
 	 */
 	public void selfDestruct()
 	{
 		gameState.remove(this);
 	}
 	/**
-	 * rotates the object's velocity based on parameters
-	 * @param cosineAngle- angle used for x part of velocity
-	 * @param sineAngle- angle used for y part of velocity
+	 * takes the existing speed and adjusts the velocity's direction based on parameters
+	 * @param cosineAngle the angle associated with the x velocity
+	 * @param sineAngle the angle associated with the y velocity
 	 */
 	public void rotateDirection(double cosineAngle, double sineAngle)
 	{
@@ -46,25 +47,27 @@ public abstract class GameObject {
 		
 	}
 	/**
-	 * calculates magnitude
-	 * @param x, an x value
-	 * @param y, a y value
-	 * @return magnitude as a double
+	 * 
+	 * @param x the x value
+	 * @param y the y value
+	 * @return the two values squared and then added together
 	 */
 	public double magnitude(double x, double y)
 	{
 		return Math.sqrt(x*x + y*y);
 	}
-	
+	/**
+	 * gets speed by calling magnitude for the object's velocities
+	 * @return the object's speed
+	 */
 	public double getSpeed()
 	{
 		return magnitude(xVelocity,yVelocity);
 	}
-	
 	/**
-	 * alters object's position
-	 * @param x value to affect x position
-	 * @param y value to affect y position
+	 * increases the object's position based on paramters
+	 * @param x to be added to xPosition
+	 * @param y to be added to yPosition
 	 */
 	public void translatePosition(double x, double y)
 	{
@@ -73,7 +76,7 @@ public abstract class GameObject {
 	}
 	
 	/**
-	 * updates the x and y positions based on their respective velocities
+	 * increases x and y position based on their respective velocities
 	 */
 	// Do not override, this will handle position update
 	// for every subclass of GameObject
@@ -83,7 +86,9 @@ public abstract class GameObject {
 		yPosition += yVelocity;
 	}
 	
-	
+	/**
+	 * getters and setters for this class
+	 */
 	public double getxPosition() {
 		return xPosition;
 	}
@@ -131,8 +136,8 @@ public abstract class GameObject {
 	}
 	/**
 	 * adds to velocity based on parameters
-	 * @param x addition to x velocity
-	 * @param y addition to y velocity
+	 * @param x to be added to xVelocity
+	 * @param y to be added to yVelocity
 	 */
 	public void addVelocity(double x, double y)
 	{
@@ -155,8 +160,16 @@ public abstract class GameObject {
 	public void setyVelocity(double yVelocity) {
 		this.yVelocity = yVelocity;
 	}
+	
+
 	/**
-	 * to string for game objects
+	 * @param gameState the gameState to set
+	 */
+	public void setGameState(GameState gameState) {
+		this.gameState = gameState;
+	}
+	/**
+	 * tostring method for game objects
 	 */
 	@Override
 	public String toString() {

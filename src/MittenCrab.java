@@ -7,7 +7,13 @@ public class MittenCrab extends Crab {
 		// TODO Auto-generated constructor stub
 		
 	}
-
+	/**
+	 * adds a new mitten crab to the game
+	 */
+	@Override
+	public void crabClone() {
+		getGameState().add( new MittenCrab(getxPosition(),getyPosition(),-getxVelocity(), -getyVelocity(),gameState));
+	}
 	
 
 }

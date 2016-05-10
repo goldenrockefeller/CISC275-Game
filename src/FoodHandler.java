@@ -8,12 +8,17 @@ import javax.imageio.ImageIO;
 
 public class FoodHandler extends Handler{
 
-	Image image;
-	
+	Image image[] = new Image[2];
+	/**
+	 * constructor, should load images or throw exception
+	 * @param gameScreen the game's View
+	 * @param gameState the instance of the game state
+	 */
 	FoodHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen, gameState);
 		try{
-			image = ImageIO.read(new File("img/Coin1.png")).getScaledInstance(30, 30, Image.SCALE_FAST);	
+			image[0] = ImageIO.read(new File("img/algae_good.png")).getScaledInstance(GameState.frameWidth/25, GameState.frameWidth/25, Image.SCALE_FAST);	
+			image[1] = ImageIO.read(new File("img/algae_medium.png")).getScaledInstance(GameState.frameWidth/25, GameState.frameWidth/25, Image.SCALE_FAST);
 		}
 		catch(IOException e)
 		{
@@ -28,13 +33,11 @@ public class FoodHandler extends Handler{
 	 */
 	@Override
 	public void paint(Graphics g) {
-		if (getGameState().getProjectile() instanceof Food) {
-			Food t = (Food) getGameState().getProjectile();
+		for (GameObject gameObject : getGameState().getGameObjectCollection()) {
+			if (gameObject instanceof Food)
 			{
-				if (t.isVisible) {
-					g.drawImage( image, (int)t.xPosition, (int)t.yPosition, new Color(0,0,0,0), null);
-				}
-				
+				//Use .hashCode() to assign each Food Item a random image for easy maintainability
+				g.drawImage( image[gameObject.hashCode()%2], scaleX(gameObject.getxPosition()), scaleY(gameObject.getyPosition()), new Color(0,0,0,0), null);
 			}
 		}
 	}

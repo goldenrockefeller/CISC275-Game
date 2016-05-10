@@ -7,9 +7,17 @@ public class BlueCrab extends Crab {
 
 	BlueCrab(double xPosition, double yPositionition, double xVelocity, double yVelocity, GameState gameState){
 		super(xPosition, yPositionition, xVelocity, yVelocity, gameState);
-		// TODO Auto-generated constructor stub
 	
 	}
+	/**
+	 * adds a new blue crab to the game
+	 */
+	@Override
+	public void crabClone() {
+		getGameState().add( new BlueCrab(getxPosition(),getyPosition(),-getxVelocity(), -getyVelocity(),gameState));
+	}
+	
+	
 
 	
 

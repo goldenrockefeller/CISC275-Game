@@ -16,7 +16,7 @@ public class trashcanHandler extends Handler {
 	trashcanHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen, gameState);
 		try{
-			image  = ImageIO.read(new File("img/TrashCan/trashcan_open.png")).getScaledInstance(150, 150, Image.SCALE_FAST);	
+			image  = ImageIO.read(new File("img/TrashCan/trashcan_open.png")).getScaledInstance(Launcher.WIDTH/25, Launcher.HEIGHT/25, Image.SCALE_FAST);	
 		}
 		catch(IOException e)
 		{
@@ -24,11 +24,7 @@ public class trashcanHandler extends Handler {
 		}
 		// TODO Auto-generated constructor stub
 	}
-	
-	/**
-	 * paints trash cans on screen
-	 * @param g, graphics being used
-	 */
+
 	@Override
 	public void  paint(Graphics g)
 	{
@@ -37,7 +33,7 @@ public class trashcanHandler extends Handler {
 		{
 			if (gameObject instanceof trashcanObject)
 			{
-				g.drawImage( image, (int)gameObject.xPosition, (int)gameObject.yPosition, new Color(0,0,0,0), null);
+				g.drawImage( image, scaleX(gameObject.getxPosition()), scaleY(gameObject.getyPosition()), new Color(0,0,0,0), null);
 			}
 		}
 	}

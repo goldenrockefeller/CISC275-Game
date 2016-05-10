@@ -7,15 +7,19 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class MittenCrabHandler extends Handler {
-	Image image[] = new Image[3];
+	Image image[] = new Image[3];//this creature uses 3 images and keeps them in an array
 	int crabFlag = 0;
-	
+	/**
+	 * constructor, should load mitten crab's files or throw an exception
+	 * @param gameScreen
+	 * @param gameState
+	 */
 	MittenCrabHandler(GameScreen gameScreen,GameState gameState) {
 		super(gameScreen,gameState);
 		try{
-			image[0] = ImageIO.read(new File("img/mittencrab/mittencrab_0.png")).getScaledInstance(100, 100, Image.SCALE_FAST);
-			image[1] = ImageIO.read(new File("img/mittencrab/mittencrab_1.png")).getScaledInstance(100, 100, Image.SCALE_FAST);
-			image[2] = ImageIO.read(new File("img/mittencrab/mittencrab_2.png")).getScaledInstance(100, 100, Image.SCALE_FAST);
+			image[0] = ImageIO.read(new File("img/mittencrab/mittencrab_0.png")).getScaledInstance(Launcher.WIDTH/15, Launcher.HEIGHT/15, Image.SCALE_FAST);
+			image[1] = ImageIO.read(new File("img/mittencrab/mittencrab_1.png")).getScaledInstance(Launcher.WIDTH/15, Launcher.HEIGHT/15, Image.SCALE_FAST);
+			image[2] = ImageIO.read(new File("img/mittencrab/mittencrab_2.png")).getScaledInstance(Launcher.WIDTH/15, Launcher.HEIGHT/15, Image.SCALE_FAST);
 		}
 		catch(IOException e)
 		{
@@ -23,18 +27,15 @@ public class MittenCrabHandler extends Handler {
 		}
 		// TODO Auto-generated constructor stub
 	}
-	/**
-	 * paints mitten crab onto graphics
-	 * @param g graphics used
-	 */
+
 	public void paint(Graphics g) {
+		crabFlag++;
+		crabFlag = crabFlag % 3;
 		for (GameObject gameObject : getGameState().getGameObjectCollection())
 		{
 			if (gameObject instanceof MittenCrab)
 			{
-				crabFlag++;
-				crabFlag = crabFlag % 3;
-				g.drawImage(image[crabFlag], (int)gameObject.xPosition, (int)gameObject.yPosition, new Color(0,0,0,0), null);
+				g.drawImage(image[crabFlag], scaleX(gameObject.getxPosition()), scaleY(gameObject.getyPosition()), new Color(0,0,0,0), null);
 			}
 		}
 	}
