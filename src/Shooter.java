@@ -7,8 +7,8 @@ public class Shooter {
 	public Shooter(GameState game){
 		arrow_or_pb_flag = true;
 		//game_arrow = new Arrow(GameState.frameWidth / 2 - 50, GameState.frameHeight - 330, 0, 0, game);
-		game_arrow = new Arrow(GameState.WIDTH / 2 - (ShooterHandler.arrowWidth / 2), GameState.HEIGHT - 220, 0, 0, game);
-		game_powerbar = new PowerBar(GameState.WIDTH/5, GameState.HEIGHT - 220, 0, 0, game);
+		game_arrow = new Arrow(Launcher.WIDTH / 2 - (Launcher.WIDTH * ShooterHandler.arrowWidth / 1000 / 2), Launcher.HEIGHT - 220, 0, 0, game);
+		game_powerbar = new PowerBar(Launcher.WIDTH/5, Launcher.HEIGHT - 220, 0, 0, game);
 	}
 	
 	public Arrow getArrow(){

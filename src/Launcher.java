@@ -12,16 +12,22 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class Launcher {	
-	
+	private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	public static final int WIDTH = (int) screenSize.getWidth();
+	public static final int HEIGHT = (int) screenSize.getHeight();
 	public static void main(String[] args) {
+		
+		
 		// TODO Auto-generated method stub
 		GameState gameState = new GameState();
 		GameScreen gameScreen = new GameScreen();
 		JFrame gameWindow = new JFrame("Estuary Slam!");
+
+		Shooter gameShooter = new Shooter(gameState);
 		
 		Launcher.setupGameWindow(gameWindow,gameScreen);
 		Launcher.setupGameState(gameState);
-		Launcher.setupGameScreen(gameScreen,gameState);
+		Launcher.setupGameScreen(gameScreen,gameState,gameShooter);
 		
 		/*
 		JLabel label1 = new JLabel("Tap to start!",
@@ -30,7 +36,6 @@ public class Launcher {
 		gameScreen.add(label1);
 		*/
 		//TODO correct while loop goes here
-		
 		while (true)
 		{
 			gameState.update();
@@ -52,28 +57,30 @@ public class Launcher {
 		gameState.add(new BlueCrab(500,500,3,1,gameState));
 		//gameState.add(new TestObject(480,850,0,0,gameState));
 		//gameState.add(new mytestObject(32,64,0,0,gameState));
-		gameState.add(new powerbarFrame(GameState.WIDTH / 5, (GameState.HEIGHT - 50 - 2), 0, 0, gameState));
-		gameState.add(new powerbarObject(GameState.WIDTH / 5, GameState.HEIGHT - 50, 0, 0, gameState));
 		//gameState.add(new Food(480,700,0,0,gameState));
 		gameState.add(new trashcanObject(200,120,0,0,gameState));
 		gameState.add(new trashcanObject(500,120,0,0,gameState));
 		gameState.add(new trashcanObject(800,120,0,0,gameState));
 		//gameState.setProjectile(new Food(480,700,0,0,gameState));
-		gameState.add(new StartDisplay(GameState.WIDTH / 8, GameState.HEIGHT / 12, 0, 0, gameState));
-		gameState.setShooter(new Shooter(gameState));
+		gameState.add(new StartDisplay(Launcher.WIDTH / 8, Launcher.HEIGHT / 12, 0, 0, gameState));
+		
 	}
 	
-	public static void setupGameScreen (GameScreen gameScreen, GameState gameState)
+	public static void setupGameScreen (GameScreen gameScreen, GameState gameState, Shooter gameShooter)
 	{
 		//Construct and add Handlers here
+		
 		gameScreen.add (new BackgroundHandler(gameScreen,gameState));
 		gameScreen.add (new trashcanHandler(gameScreen,gameState));
 		gameScreen.add (new MittenCrabHandler(gameScreen,gameState));
 		gameScreen.add (new BlueCrabHandler(gameScreen,gameState));
-		gameScreen.add (new ShooterHandler(gameScreen, gameState));
-		gameScreen.add (new TestHandler(gameScreen,gameState));
+		gameScreen.add (new ShooterHandler(gameScreen, gameState,gameShooter));
+		//gameScreen.add (new TestHandler(gameScreen,gameState));
 		//gameScreen.add (new mytestHandler(gameScreen,gameState));
-		gameScreen.add (new powerbarHandler(gameScreen,gameState));
+		gameScreen.add (new powerbarHandler(gameScreen,
+				gameState,
+				gameShooter
+				));
 		gameScreen.add (new FoodHandler(gameScreen,gameState));
 		gameScreen.add (new TrashHandler(gameScreen, gameState));
 		gameScreen.add (new StartDisplayHandler(gameScreen, gameState));
@@ -82,7 +89,7 @@ public class Launcher {
 	public static void setupGameWindow(JFrame gameWindow, GameScreen gameScreen)
 	{
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		gameWindow.setSize(GameState.WIDTH, GameState.HEIGHT);
+		gameWindow.setSize(Launcher.WIDTH, Launcher.HEIGHT);
 		gameWindow.getContentPane().add(gameScreen);
 		gameWindow.setVisible(true);
 	}

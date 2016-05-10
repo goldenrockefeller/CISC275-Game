@@ -29,11 +29,12 @@ public class ShooterHandler extends Handler implements KeyListener {
 	Projectile projectile;
 	BufferedImage arrow_image;
 	Image powerbar_image;
+	Shooter gameShooter;
 	
 	boolean firstclick; // This ignores the first space click.  We do this because the first
 						 // space click removes the start screen
 	
-	ShooterHandler(GameScreen gameScreen,GameState gameState) {
+	ShooterHandler(GameScreen gameScreen,GameState gameState, Shooter gameShooter) {
 		super(gameScreen,gameState);
 		// TODO Auto-generated constructor stub
 		try{
@@ -46,13 +47,13 @@ public class ShooterHandler extends Handler implements KeyListener {
 		}
 		gameScreen.addKeyListener(this);
 		projectile = generateProjectile();
-		
+		this.gameShooter = gameShooter;
 		firstclick = true;
 	}
 
 	public void paint(Graphics g) {
-		GameState game = getGameState();
-		Shooter gameShooter = getGameState().getShooter();
+		gameShooter.update();
+		//GameState game = getGameState();
 		
 		PowerBar pb = gameShooter.getPowerBar();
 		Arrow a = gameShooter.getArrow();
@@ -128,7 +129,7 @@ public class ShooterHandler extends Handler implements KeyListener {
 			System.out.println(projectile);
 			if ((projectile.getxPosition() == projectileStartingX && projectile.getyPosition() == projectileStartingY))
 			{
-				Shooter gameShooter = getGameState().getShooter();
+				
 				if(gameShooter.getFlag()){
 					gameShooter.getArrow().setDirection();
 					gameShooter.getArrow().setStop();
