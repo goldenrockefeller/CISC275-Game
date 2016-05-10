@@ -26,7 +26,7 @@ public class powerbarHandler extends Handler implements ActionListener, KeyListe
 //		testButton.addActionListener(this);
 		gameScreen.addKeyListener(this);
 		this.gameShooter = gameShooter;
-		this.powerBarFrame = new powerbarFrame(Launcher.WIDTH/5, Launcher.HEIGHT - 220, 0, 0, gameState);
+		this.powerBarFrame = new powerbarFrame(Launcher.WIDTH/5 -2, Launcher.HEIGHT - 220 - 2, 0, 0, gameState);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -34,6 +34,11 @@ public class powerbarHandler extends Handler implements ActionListener, KeyListe
 	public void  paint(Graphics g)
 	{
 
+
+		g.setColor(Color.BLACK);
+		
+		g.fillRect((int)powerBarFrame.getxPosition(),(int)powerBarFrame.getyPosition(),105*Launcher.WIDTH/1000,36*Launcher.HEIGHT/1000);
+		
 		if (length>=80){
 		g.setColor(Color.RED);
 		}
@@ -44,11 +49,9 @@ public class powerbarHandler extends Handler implements ActionListener, KeyListe
 		}
 		//if (!stopflag)
 			powerbar();
-		g.fillRect((int)gameShooter.getPowerBar().getxPosition(),(int)gameShooter.getPowerBar().getyPosition(),length*Launcher.WIDTH/1000,32*Launcher.HEIGHT/1000);
+			
 
-		g.setColor(Color.BLACK);
-		
-		g.drawRect((int)powerBarFrame.getxPosition(),(int)powerBarFrame.getyPosition(),105*Launcher.WIDTH/1000,36*Launcher.HEIGHT/1000);
+		g.fillRect((int)gameShooter.getPowerBar().getxPosition(),(int)gameShooter.getPowerBar().getyPosition(),length*Launcher.WIDTH/1000,32*Launcher.HEIGHT/1000);
 
 
 		
