@@ -96,7 +96,7 @@ public class ShooterHandler extends Handler implements KeyListener {
 		ySpeed = - (Math.toDegrees(Math.sin(Math.toRadians(degrees)))/10);
 		
 		projectile.setVelocity(xSpeed, ySpeed);
-		int timeOfFlight = power * 2;
+		int timeOfFlight = power ;
 		projectile.setZ(timeOfFlight);
 		/*
 		
