@@ -36,24 +36,32 @@
 		}
 		
 		/**
-		 * getters and setters for this class
+		 * getter for direction
 		 */
 		public int getDirection(){
 			return direction;
 		}
-		
+		/**
+		 * setter for direction
+		 */
 		public void setDirection(){
 			direction = directfluc;
 		}
-		
+		/**
+		 * getter for direction fluctuation
+		 */
 		public int getDirectFluc(){
 			return directfluc;
 		}
-		
+		/**
+		 * setter for direction fluctuation
+		 */
 		public void setDirectFluc(int x){
 			directfluc = x;
 		}
-		
+		/**
+		 * changes the stop flag from off to on or vice versa
+		 */
 		public void setStop() {
 			stop_flag = !stop_flag;
 		}
