@@ -1,8 +1,8 @@
 	public class Arrow extends GameObject {
-		private int directfluc = 20;
-		private int direction = -1;
+		private int directfluc = 20; //sets value for the arrow's movement, acts as "position"
+		private int direction = -1; //determines direction
 		private boolean arrow_flag = true; // Used to determine if arrow is rotating left or right
-		private boolean stop_flag;
+		private boolean stop_flag; //determines if the arrow is stopped
 		
 		public Arrow(double xPosition, double yPosition, double xVelocity,
 				double yVelocity, GameState gameState) {

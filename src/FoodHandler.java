@@ -7,7 +7,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class FoodHandler extends Handler{
-
+	//this object has 2 different images which are stored
 	Image image[] = new Image[2];
 	/**
 	 * constructor, should load images or throw exception

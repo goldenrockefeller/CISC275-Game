@@ -58,7 +58,10 @@ public class GameScreen extends JPanel{
 			handler.paint(g);
 		}		
 	}
-	
+	/**
+	 * a getter for the handler collection
+	 * @return the collection of handlers
+	 */
 	public Collection<Handler> getHandlerCollection() {
 		return handlerCollection;
 	}

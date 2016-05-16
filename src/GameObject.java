@@ -1,14 +1,27 @@
 import java.lang.*;
 
 public abstract class GameObject {
+	//the x and y values for the game object's location
 	double xPosition;
 	double yPosition;
+	//the x and y values for the game object's velocity
 	double xVelocity;
 	double yVelocity;
+	//an instance of game state to associate with the object in question
 	GameState gameState;
+	//a number to associate with the object's state
 	protected int objectState = 0;
+	//to be used with methods concerning time
 	protected double objectStateTime = 0;
 	
+	/**
+	 * Constructor for game objects
+	 * @param xPosition
+	 * @param yPosition
+	 * @param xVelocity
+	 * @param yVelocity
+	 * @param gameState
+	 */
 	GameObject(double xPosition, double yPosition, double xVelocity, double yVelocity, GameState gameState)
 	{
 		this.xPosition = xPosition;
@@ -65,7 +78,7 @@ public abstract class GameObject {
 		return magnitude(xVelocity,yVelocity);
 	}
 	/**
-	 * increases the object's position based on paramters
+	 * increases the object's position based on parameters
 	 * @param x to be added to xPosition
 	 * @param y to be added to yPosition
 	 */

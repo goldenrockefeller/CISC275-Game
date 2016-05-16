@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 public class BlueCrabHandler extends Handler{
 	//this creature has three images which are used instead of just one, so they are stored in an array
 	Image image[] = new Image[3];
-	int crabFlag = 0;
+	int crabFlag = 0; //number of this type of crab
 	/**
 	 * constructor, should load images for the crab or throw exception
 	 * @param gameScreen, the game's view

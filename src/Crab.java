@@ -7,15 +7,25 @@ import java.util.Random;
 
 public abstract class Crab extends GameObject {
 	
+	/**
+	 * these values manually set the bounds and frame size of the crabs
+	 */
 	//final static int crabUpperBound = Launcher.HEIGHT / 4;
 	final static int crabUpperBound = 250; //Changed by Golden because it is easier and more manageable to only have the view worry about screen placement.
 	final static int crabLowerBound = 700; //It also technically violates MVC
 	
 	final static int height = GameState.frameHeight/15;
 	final static int width = GameState.frameWidth/15;
-
-	Crab(double xPosition, double yPositionition, double xVelocity, double yVelocity, GameState gameState) {
-		super(xPosition, yPositionition, xVelocity, yVelocity, gameState);
+	/**
+	 * Constructor for crabs
+	 * @param xPosition the crab's x position
+	 * @param yPosition the crab's y position
+	 * @param xVelocity the crab's x velocity
+	 * @param yVelocity the crab's y velocity
+	 * @param gameState the relative game state
+	 */
+	Crab(double xPosition, double yPosition, double xVelocity, double yVelocity, GameState gameState) {
+		super(xPosition, yPosition, xVelocity, yVelocity, gameState);
 		// TODO Auto-generated constructor stub
 	}
 	/**
