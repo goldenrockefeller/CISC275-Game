@@ -15,17 +15,21 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 	
 public class ShooterHandler extends Handler implements KeyListener {
+	//starting size of arrow
 	public static final int arrowWidth = 228;
 	public static final int arrowHeight = 214;
+	//starting x and y values for projectile
 	public static final int projectileStartingX = 480;
 	public static final int projectileStartingY = 730;
+	//x and y values for speed
 	double xSpeed; 
 	double ySpeed;
-	int degrees;
-	int power;
-	int randProj;
-	Food tempf;
-	Trash tempt;
+	int degrees; //degrees used for determining parts of velocity
+	int power; //power for projectile being shot
+	int randProj; 
+	Food tempf; //temporary food
+	Trash tempt; //temporary trash
+	//projectile, arrow's image, powerbar's image, and shooter to be associated with this handler
 	Projectile projectile;
 	BufferedImage arrow_image;
 	Image powerbar_image;
@@ -33,7 +37,12 @@ public class ShooterHandler extends Handler implements KeyListener {
 	
 	boolean firstclick; // This ignores the first space click.  We do this because the first
 						 // space click removes the start screen
-	
+	/**
+	 * Constructor. Should throw exception if images cannot be read
+	 * @param gameScreen
+	 * @param gameState
+	 * @param gameShooter
+	 */
 	ShooterHandler(GameScreen gameScreen,GameState gameState, Shooter gameShooter) {
 		super(gameScreen,gameState);
 		// TODO Auto-generated constructor stub
@@ -50,7 +59,10 @@ public class ShooterHandler extends Handler implements KeyListener {
 		this.gameShooter = gameShooter;
 		firstclick = true;
 	}
-
+	/**
+	 * paints image on screen
+	 * @param g, graphics used
+	 */
 	public void paint(Graphics g) {
 		gameShooter.update();
 		//GameState game = getGameState();
@@ -111,12 +123,17 @@ public class ShooterHandler extends Handler implements KeyListener {
 		
 		gameShooter.getArrow().setStop();
 	}
-	
+	/**
+	 * key event for key typed
+	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
 		
 	}
-	
+	/**
+	 * key event for key pressed, which ensures firstclick is set to false
+	 * then sets direction, flags, and values according to the circumstance of the click
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(firstclick == true){
@@ -149,7 +166,10 @@ public class ShooterHandler extends Handler implements KeyListener {
 			}
 		}
 	}
-	
+	/**
+	 * generates a new projectile based on a random number generator to determine type
+	 * @return a new projectile
+	 */
 	public Projectile generateProjectile()
 	{
 		Projectile proj;
@@ -162,7 +182,9 @@ public class ShooterHandler extends Handler implements KeyListener {
 		gameState.add(proj);
 		return proj;
 	}
-
+	/**
+	 * key event for key being released
+	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
 	}

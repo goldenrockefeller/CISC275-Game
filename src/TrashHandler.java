@@ -7,10 +7,15 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class TrashHandler extends Handler {
-
+	//this object can have 4 possible sprites, which are stored here
 	Image image[] = new Image[4];
-	Image check;
+	Image check; //a check image
 	
+	/**
+	 * Constructor. Throws exception if images can't be read and stored in the image array
+	 * @param gameScreen
+	 * @param gameState
+	 */
 	TrashHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen, gameState);
 		try{
@@ -29,6 +34,7 @@ public class TrashHandler extends Handler {
 	/**
 	 * First draw all trash on the board
 	 * Then draw trash currently in transit if visible
+	 * @param g, graphics used
 	 */
 	@Override
 	public void paint(Graphics g) {

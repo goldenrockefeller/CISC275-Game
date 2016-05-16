@@ -11,9 +11,13 @@ import javax.imageio.ImageIO;
 
 public class StartDisplayHandler extends Handler implements KeyListener {
 
-	Image startdisplay;
+	Image startdisplay; //image to be used for the start screen
 	boolean active; // tells us if the start screen is needed or not
-	
+	/**
+	 * consctuctor for the start display. Throws exception if images can't be read
+	 * @param gameScreen
+	 * @param gameState
+	 */
 	StartDisplayHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen, gameState);
 		try{
@@ -25,7 +29,10 @@ public class StartDisplayHandler extends Handler implements KeyListener {
 		gameScreen.addKeyListener(this);
 		active = true;
 	}
-
+	/**
+	 * paints graphics on screen
+	 * @param g, graphics used
+	 */
 	@Override
 	public void paint(Graphics g) {
 		if(active){
@@ -40,12 +47,16 @@ public class StartDisplayHandler extends Handler implements KeyListener {
 			}
 		}
 	}
-
+	/**
+	 * blank key event for typing keys
+	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
 
 	}
-
+	/**
+	 * key event for pressing a key. Ends start display if it is active
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(active){
@@ -62,7 +73,9 @@ public class StartDisplayHandler extends Handler implements KeyListener {
 			}
 		}
 	}
-
+	/**
+	 * blank key event for releasing key
+	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
