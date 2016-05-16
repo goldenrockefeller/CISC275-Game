@@ -15,34 +15,23 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 	
 public class ShooterHandler extends Handler implements KeyListener {
-<<<<<<< HEAD
 	public static final int arrowWidth = 230;
 	public static final int arrowHeight = 249;
-=======
-	//starting size of arrow
-	public static final int arrowWidth = 228;
-	public static final int arrowHeight = 214;
 	//starting x and y values for projectile
->>>>>>> 82637dade8a127f2a09c9ea77591bf1a775e48df
+	
 	public static final int projectileStartingX = 480;
 	public static final int projectileStartingY = 730;
 	//x and y values for speed
 	double xSpeed; 
 	double ySpeed;
-<<<<<<< HEAD
 	int degrees;
 	int power;
 	int randProj;	
 	Food tempf;
 	Trash tempt;
-=======
-	int degrees; //degrees used for determining parts of velocity
-	int power; //power for projectile being shot
-	int randProj; 
-	Food tempf; //temporary food
-	Trash tempt; //temporary trash
+	
 	//projectile, arrow's image, powerbar's image, and shooter to be associated with this handler
->>>>>>> 82637dade8a127f2a09c9ea77591bf1a775e48df
+	
 	Projectile projectile;
 	BufferedImage arrow_image;
 	Shooter gameShooter;
@@ -70,7 +59,6 @@ public class ShooterHandler extends Handler implements KeyListener {
 		this.gameShooter = gameShooter;
 		firstclick = true;
 	}
-<<<<<<< HEAD
 	
 	/**
 	 * This function takes the current power in the power bar and will create a 
@@ -103,12 +91,10 @@ public class ShooterHandler extends Handler implements KeyListener {
 		return new_img;
 	}
 
-=======
 	/**
 	 * paints image on screen
 	 * @param g, graphics used
 	 */
->>>>>>> 82637dade8a127f2a09c9ea77591bf1a775e48df
 	public void paint(Graphics g) {
 		gameShooter.update();
 		//GameState game = getGameState();
