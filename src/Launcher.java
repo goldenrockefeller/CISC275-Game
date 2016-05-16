@@ -12,6 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class Launcher {	
+	/**
+	 * these values determine the total dimensions of the screen
+	 */
 	private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	public static final int WIDTH = (int) screenSize.getWidth();
 	public static final int HEIGHT = (int) screenSize.getHeight();
@@ -36,6 +39,9 @@ public class Launcher {
 		gameScreen.add(label1);
 		*/
 		//TODO correct while loop goes here
+		/**
+		 * gameState should ALWAYS be updating and repainting. Throws exception if Thread.sleep doesn't work
+		 */
 		while (true)
 		{
 			gameState.update();
@@ -49,7 +55,10 @@ public class Launcher {
 			}
 		}
 	}
-	
+	/**
+	 * sets default values of the game state
+	 * @param gameState the instance of game state
+	 */
 	public static void setupGameState (GameState gameState)
 	{
 		//Construct and add Objects here
@@ -65,23 +74,32 @@ public class Launcher {
 		gameState.add(new StartDisplay(Launcher.WIDTH / 8, Launcher.HEIGHT / 12, 0, 0, gameState));
 		
 	}
-	
+	/**
+	 * sets default values of the game screen
+	 * @param gameScreen the game's view
+	 * @param gameState the instance of game state
+	 * @param gameShooter the game's shooter
+	 */
 	public static void setupGameScreen (GameScreen gameScreen, GameState gameState, Shooter gameShooter)
 	{
 		//Construct and add Handlers here
 		
 		gameScreen.add (new BackgroundHandler(gameScreen,gameState));
 		gameScreen.add (new trashcanHandler(gameScreen,gameState));
-		gameScreen.add (new TrashHandler(gameScreen, gameState));
 		gameScreen.add (new MittenCrabHandler(gameScreen,gameState));
 		gameScreen.add (new BlueCrabHandler(gameScreen,gameState));
 		gameScreen.add (new ShooterHandler(gameScreen, gameState,gameShooter));
 		//gameScreen.add (new TestHandler(gameScreen,gameState));
 		//gameScreen.add (new mytestHandler(gameScreen,gameState));
 		gameScreen.add (new FoodHandler(gameScreen,gameState));
+		gameScreen.add (new TrashHandler(gameScreen, gameState));
 		gameScreen.add (new StartDisplayHandler(gameScreen, gameState));
 	}
-	
+	/**
+	 * sets default values of game window
+	 * @param gameWindow game window being set
+	 * @param gameScreen the game's view
+	 */
 	public static void setupGameWindow(JFrame gameWindow, GameScreen gameScreen)
 	{
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -89,7 +107,10 @@ public class Launcher {
 		gameWindow.getContentPane().add(gameScreen);
 		gameWindow.setVisible(true);
 	}
-	
+	/**
+	 * allows setup of game state from file, such as Serializable
+	 * @param gameState
+	 */
 	public static void setupGameStateFromFile (GameState gameState)
 	{
 		//Construct and add Objects here

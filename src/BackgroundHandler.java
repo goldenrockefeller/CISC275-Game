@@ -7,11 +7,15 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class BackgroundHandler extends Handler {
-	
+	//these images are the parts of the background itself
 	Image sand;
 	Image water;
 	Image sky;
-	
+	/**
+	 * constructor, should load background images or throw exception
+	 * @param gameScreen, the game's View
+	 * @param gameState, the instance of the game's state
+	 */
 	BackgroundHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen,gameState);
 		try{
@@ -26,7 +30,10 @@ public class BackgroundHandler extends Handler {
 			System.out.println("Background failed to load.");
 		}
 	}
-	
+	/**
+	 * draws the specified images. Should be two water sections, one sand section, and a skybox
+	 * @param g, graphics used.
+	 */
 	public void paint(Graphics g) {
 		for(int i = 0; i < Launcher.WIDTH; i += sand.getWidth(null)){
 			for(int j = 0; j < Launcher.HEIGHT; j+= sand.getWidth(null)){

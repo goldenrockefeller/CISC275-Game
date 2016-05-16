@@ -7,18 +7,31 @@ import java.util.Random;
 
 public abstract class Crab extends GameObject {
 	
+	/**
+	 * these values manually set the bounds and frame size of the crabs
+	 */
 	//final static int crabUpperBound = Launcher.HEIGHT / 4;
 	final static int crabUpperBound = 250; //Changed by Golden because it is easier and more manageable to only have the view worry about screen placement.
 	final static int crabLowerBound = 700; //It also technically violates MVC
 	
 	final static int height = GameState.frameHeight/15;
 	final static int width = GameState.frameWidth/15;
-
-	Crab(double xPosition, double yPositionition, double xVelocity, double yVelocity, GameState gameState) {
-		super(xPosition, yPositionition, xVelocity, yVelocity, gameState);
+	/**
+	 * Constructor for crabs
+	 * @param xPosition the crab's x position
+	 * @param yPosition the crab's y position
+	 * @param xVelocity the crab's x velocity
+	 * @param yVelocity the crab's y velocity
+	 * @param gameState the relative game state
+	 */
+	Crab(double xPosition, double yPosition, double xVelocity, double yVelocity, GameState gameState) {
+		super(xPosition, yPosition, xVelocity, yVelocity, gameState);
 		// TODO Auto-generated constructor stub
 	}
-
+	/**
+	 * checks the velocity and position of the crab and updates it accordingly based on each other and
+	 * the other game objects, such as collisions with walls and projectiles
+	 */
 	public void updateState() {
 		if (xPosition + width > GameState.frameWidth)
 		{
@@ -63,7 +76,7 @@ public abstract class Crab extends GameObject {
 					{
 						//Change Direction and maintain constant speed
 						oldspeed = getSpeed();
-						addVelocity(offsetX*20/distance/distance,offsetY *20/distance/distance);
+						addVelocity(offsetX*10/distance/distance,offsetY *10/distance/distance);
 						correction = oldspeed / getSpeed();
 						setVelocity(getxVelocity()*correction,getyVelocity()*correction);
 						
@@ -75,7 +88,7 @@ public abstract class Crab extends GameObject {
 	
 	/**
 	 * Checks if crab collided with projectile.
-	 * @return 
+	 * @param food, the food pellet colliding with the crab
 	 * @return true if within a certain hitbox, false otherwise.
 	 */
 	private void checkCollision(Food food) {
@@ -93,7 +106,9 @@ public abstract class Crab extends GameObject {
 			}
 		}
 	}
-	
+	/**
+	 * a crab-copying abstract class that will be implemented in the subclasses
+	 */
 	abstract public void crabClone(); //different from clone
 
 }

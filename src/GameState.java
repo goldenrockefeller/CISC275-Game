@@ -4,15 +4,19 @@ import java.awt.image.BufferStrategy;
 import java.util.*;
 
 public class GameState {
-	int score;
-	int trashCount;
-	int mittenCount;
-	int blueCount;
+	int score; //player's score
+	int trashCount; //amount of trash on screen
+	int mittenCount; //amount of mitten crabs on screen
+	int blueCount; // amount of blue crabs on screen
 	//Shooter gameShooter;
 	//TO DO need to have this in Launcher
+	
+	//frame size of overall game
 	final static int frameWidth = 1000;
     final static int frameHeight = 1000;
+    //linked list for all the game objects in play
 	Collection<GameObject> gameObjectCollection = new LinkedList<GameObject>();
+	
 	//Collection<Projectile> trashCollection = new LinkedList<Projectile>();
 	/*Other group's method of making screen size changeable
 	 * final Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -44,6 +48,10 @@ public class GameState {
 		}
 			 //not a gameObject, so I didn't use updateState
 	}
+	/**
+	 * add to namesake value based on parameter
+	 * @param value to be added
+	 */
 	public void addToScore(int value)
 	{
 		this.score += value;
@@ -70,6 +78,10 @@ public class GameState {
 		this.trashCollection.add(projectile);
 	}
 	*/
+	/**
+	 * removes the game object and sets it to null
+	 * @param gameObject to be removed
+	 */
 	public void remove(GameObject gameObject)
 	{
 		this.gameObjectCollection.remove(gameObject);
@@ -81,30 +93,66 @@ public class GameState {
 		this.trashCollection.remove(trash);
 	}
 	*/
+	/**
+	 * getter for Score
+	 * @return the player's Score
+	 */
 	public int getScore() {
 		return score;
 	}
+	/**
+	 * setter for Score
+	 * @param score the player's score
+	 */
 	public void setScore(int score) {
 		this.score = score;
 	}
+	/**
+	 * getter for Trashcount
+	 * @return trashCount
+	 */
 	public int getTrashCount() {
 		return trashCount;
 	}
+	/**
+	 * setter for Trashcount
+	 * @param trashCount
+	 */
 	public void setTrashCount(int trashCount) {
 		this.trashCount = trashCount;
 	}
+	/**
+	 * getter for MittenCount
+	 * @return mittenCount
+	 */
 	public int getMittenCount() {
 		return mittenCount;
 	}
+	/**
+	 * setter for MittenCount
+	 * @param mittenCount
+	 */
 	public void setMittenCount(int mittenCount) {
 		this.mittenCount = mittenCount;
 	}
+	/**
+	 * getter for BlueCount
+	 * @return blueCount
+	 */
 	public int getBlueCount() {
 		return blueCount;
 	}
+	/**
+	 * setter for BlueCount
+	 * @param blueCount
+	 */
 	public void setBlueCount(int blueCount) {
 		this.blueCount = blueCount;
 	}
+	/**
+	 * getter for gameObjectCollection
+	 * @return gameObjectCollection
+	 */
 	public Collection<GameObject> getGameObjectCollection() {
 		return gameObjectCollection;
 	}
@@ -119,6 +167,9 @@ public class GameState {
 		
 	}
 	*/
+	/**
+	 * tostring for the Game state
+	 */
 	@Override
 	public String toString() {
 		return "\nGameState [score=" + score + ", trashCount=" + trashCount + ", mittenCount=" + mittenCount

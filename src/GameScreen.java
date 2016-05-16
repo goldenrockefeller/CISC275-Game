@@ -9,7 +9,7 @@ import javax.swing.*;
 public class GameScreen extends JPanel{
 	
 	/**
-	 * 
+	 * this screen puts the game's handlers in a collection to help implement them
 	 */
 	
     private Collection<Handler> handlerCollection;
@@ -20,7 +20,9 @@ public class GameScreen extends JPanel{
      * Image Sets contains a list of Images for an animation of a GameObject
      *
      */
-    
+    /**
+     * by default, Opaque and Focusable are true and Background should be gray
+     */
     public GameScreen()
     {
     	super();
@@ -30,7 +32,10 @@ public class GameScreen extends JPanel{
 		this.handlerCollection = new LinkedList<Handler>();
     }
     
-	
+	/**
+	 * adds Handler to the collection
+	 * @param handler
+	 */
 	public void add(Handler handler)
 	{
 		handlerCollection.add(handler);
@@ -39,7 +44,10 @@ public class GameScreen extends JPanel{
 	/*
 	 * What to do while in the start screen
 	 */
-	
+	/**
+	 * paints the handlers in the collection
+	 * @param g the graphics used
+	 */
 	@Override
 	public void paintComponent(Graphics g)
 	{
@@ -50,7 +58,10 @@ public class GameScreen extends JPanel{
 			handler.paint(g);
 		}		
 	}
-	
+	/**
+	 * a getter for the handler collection
+	 * @return the collection of handlers
+	 */
 	public Collection<Handler> getHandlerCollection() {
 		return handlerCollection;
 	}

@@ -7,9 +7,13 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class MittenCrabHandler extends Handler {
-	Image image[] = new Image[3];
-	int crabFlag = 0;
-	
+	Image image[] = new Image[3];//this creature uses 3 images and keeps them in an array
+	int crabFlag = 0; //number of this type of crab
+	/**
+	 * constructor, should load mitten crab's files or throw an exception
+	 * @param gameScreen
+	 * @param gameState
+	 */
 	MittenCrabHandler(GameScreen gameScreen,GameState gameState) {
 		super(gameScreen,gameState);
 		try{
@@ -23,7 +27,10 @@ public class MittenCrabHandler extends Handler {
 		}
 		// TODO Auto-generated constructor stub
 	}
-
+	/**
+	 * paints graphics of mitten crab on screen
+	 * @param g, graphics used
+	 */
 	public void paint(Graphics g) {
 		crabFlag++;
 		crabFlag = crabFlag % 3;

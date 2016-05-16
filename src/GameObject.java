@@ -1,14 +1,27 @@
 import java.lang.*;
 
 public abstract class GameObject {
+	//the x and y values for the game object's location
 	double xPosition;
 	double yPosition;
+	//the x and y values for the game object's velocity
 	double xVelocity;
 	double yVelocity;
+	//an instance of game state to associate with the object in question
 	GameState gameState;
+	//a number to associate with the object's state
 	protected int objectState = 0;
+	//to be used with methods concerning time
 	protected double objectStateTime = 0;
 	
+	/**
+	 * Constructor for game objects
+	 * @param xPosition
+	 * @param yPosition
+	 * @param xVelocity
+	 * @param yVelocity
+	 * @param gameState
+	 */
 	GameObject(double xPosition, double yPosition, double xVelocity, double yVelocity, GameState gameState)
 	{
 		this.xPosition = xPosition;
@@ -17,14 +30,22 @@ public abstract class GameObject {
 		this.yVelocity = yVelocity;
 		this.gameState = gameState;
 	}
-	
+	/**
+	 * an updating method to be implemented by the subclasses
+	 */
 	abstract public void updateState();
-	
+	/**
+	 * removes the game object from the game
+	 */
 	public void selfDestruct()
 	{
 		gameState.remove(this);
 	}
-	
+	/**
+	 * takes the existing speed and adjusts the velocity's direction based on parameters
+	 * @param cosineAngle the angle associated with the x velocity
+	 * @param sineAngle the angle associated with the y velocity
+	 */
 	public void rotateDirection(double cosineAngle, double sineAngle)
 	{
 		double speed = getSpeed(); //end velocity must have the same end speed
@@ -38,24 +59,38 @@ public abstract class GameObject {
 		yVelocity = yVelocity * correction;
 		
 	}
-	
+	/**
+	 * 
+	 * @param x the x value
+	 * @param y the y value
+	 * @return the two values squared and then added together
+	 */
 	public double magnitude(double x, double y)
 	{
 		return Math.sqrt(x*x + y*y);
 	}
-	
+	/**
+	 * gets speed by calling magnitude for the object's velocities
+	 * @return the object's speed
+	 */
 	public double getSpeed()
 	{
 		return magnitude(xVelocity,yVelocity);
 	}
-	
+	/**
+	 * increases the object's position based on parameters
+	 * @param x to be added to xPosition
+	 * @param y to be added to yPosition
+	 */
 	public void translatePosition(double x, double y)
 	{
 		xPosition += x;
 		yPosition += y;
 	}
 	
-	
+	/**
+	 * increases x and y position based on their respective velocities
+	 */
 	// Do not override, this will handle position update
 	// for every subclass of GameObject
 	public void updatePosition()
@@ -64,7 +99,9 @@ public abstract class GameObject {
 		yPosition += yVelocity;
 	}
 	
-	
+	/**
+	 * getters and setters for this class
+	 */
 	public double getxPosition() {
 		return xPosition;
 	}
@@ -110,7 +147,11 @@ public abstract class GameObject {
 		xVelocity = x;
 		yVelocity = y;
 	}
-	
+	/**
+	 * adds to velocity based on parameters
+	 * @param x to be added to xVelocity
+	 * @param y to be added to yVelocity
+	 */
 	public void addVelocity(double x, double y)
 	{
 		xVelocity += x;
@@ -140,7 +181,9 @@ public abstract class GameObject {
 	public void setGameState(GameState gameState) {
 		this.gameState = gameState;
 	}
-
+	/**
+	 * tostring method for game objects
+	 */
 	@Override
 	public String toString() {
 		return "\n" + super.toString() + " GameObject [xPosition=" + xPosition + ", yPosition=" + yPosition + ", xVelocity=" + xVelocity

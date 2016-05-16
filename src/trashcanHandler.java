@@ -8,15 +8,19 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class trashcanHandler extends Handler {
-
+	//image used for this object
 	Image image;
 	
 	
-	
+	/**
+	 * Constructor. Throws exception if images can't be read
+	 * @param gameScreen
+	 * @param gameState
+	 */
 	trashcanHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen, gameState);
 		try{
-			image  = ImageIO.read(new File("img/TrashCan/trashcan_open.png")).getScaledInstance(Launcher.WIDTH/15, Launcher.HEIGHT/15, Image.SCALE_FAST);	
+			image  = ImageIO.read(new File("img/TrashCan/trashcan_open.png")).getScaledInstance(Launcher.WIDTH/25, Launcher.HEIGHT/25, Image.SCALE_FAST);	
 		}
 		catch(IOException e)
 		{
@@ -24,7 +28,10 @@ public class trashcanHandler extends Handler {
 		}
 		// TODO Auto-generated constructor stub
 	}
-
+	/**
+	 * paints graphics on screen
+	 * @param g, graphics used
+	 */
 	@Override
 	public void  paint(Graphics g)
 	{

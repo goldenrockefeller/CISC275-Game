@@ -7,14 +7,18 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class FoodHandler extends Handler{
-
+	//this object has 2 different images which are stored
 	Image image[] = new Image[2];
-	
+	/**
+	 * constructor, should load images or throw exception
+	 * @param gameScreen the game's View
+	 * @param gameState the instance of the game state
+	 */
 	FoodHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen, gameState);
 		try{
-			image[0] = ImageIO.read(new File("img/algae_good.png")).getScaledInstance(Launcher.WIDTH/25, Launcher.HEIGHT/25, Image.SCALE_FAST);	
-			image[1] = ImageIO.read(new File("img/algae_medium.png")).getScaledInstance(Launcher.WIDTH/25, Launcher.HEIGHT/25, Image.SCALE_FAST);
+			image[0] = ImageIO.read(new File("img/algae_good.png")).getScaledInstance(GameState.frameWidth/25, GameState.frameWidth/25, Image.SCALE_FAST);	
+			image[1] = ImageIO.read(new File("img/algae_medium.png")).getScaledInstance(GameState.frameWidth/25, GameState.frameWidth/25, Image.SCALE_FAST);
 		}
 		catch(IOException e)
 		{

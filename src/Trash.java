@@ -1,15 +1,25 @@
 import java.util.ArrayList;
 
 public class Trash extends Projectile{
-
-	int trashFlag = 0;
-	public static final int width = GameState.frameWidth/25;
-	public static final int height = GameState.frameHeight/25;
 	
+	int trashFlag = 0;//amount of trash on screen
+	//size values for this object
+	public static final int width = GameState.frameWidth/50;
+	public static final int height = GameState.frameHeight/50;
+	/**
+	 * Constructor
+	 * @param xPosition
+	 * @param yPosition
+	 * @param xVelocity
+	 * @param yVelocity
+	 * @param gameState
+	 */
 	Trash(double xPosition, double yPosition, double xVelocity, double yVelocity, GameState gameState) {
 		super(xPosition, yPosition, xVelocity, yVelocity, gameState);
 	}
-	
+	/**
+	 * setter for yEnd
+	 */
 	public void setEnd(int y) {
 		this.yEnd = y;
 	}
@@ -53,7 +63,10 @@ public class Trash extends Projectile{
 	
 		}
 	}
-	
+	/**
+	 * checks for collision between trash and a trash can
+	 * @param trashCan
+	 */
 	private void checkCollision(trashcanObject trashCan) {
 
 		//Collision boxes overlapping

@@ -7,18 +7,23 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class TrashHandler extends Handler {
-
+	//this object can have 4 possible sprites, which are stored here
 	Image image[] = new Image[4];
-	Image check;
+	Image check; //a check image
 	
+	/**
+	 * Constructor. Throws exception if images can't be read and stored in the image array
+	 * @param gameScreen
+	 * @param gameState
+	 */
 	TrashHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen, gameState);
 		try{
-			image[0] = ImageIO.read(new File("img/apple.png")).getScaledInstance(Launcher.WIDTH/25, Launcher.HEIGHT/25, Image.SCALE_FAST);	
-			image[1] = ImageIO.read(new File("img/banana.png")).getScaledInstance(Launcher.WIDTH/25, Launcher.HEIGHT/25, Image.SCALE_FAST);
-			image[2] = ImageIO.read(new File("img/paper.png")).getScaledInstance(Launcher.WIDTH/25, Launcher.HEIGHT/25, Image.SCALE_FAST);
-			image[3] = ImageIO.read(new File("img/soda.png")).getScaledInstance(Launcher.WIDTH/25, Launcher.HEIGHT/25, Image.SCALE_FAST);
-			Image check = ImageIO.read(new File("img/check.png")).getScaledInstance(Launcher.WIDTH/25, Launcher.HEIGHT/25, Image.SCALE_FAST);
+			image[0] = ImageIO.read(new File("img/apple.png")).getScaledInstance(Launcher.WIDTH/50, Launcher.HEIGHT/50, Image.SCALE_FAST);	
+			image[1] = ImageIO.read(new File("img/banana.png")).getScaledInstance(Launcher.WIDTH/50, Launcher.HEIGHT/50, Image.SCALE_FAST);
+			image[2] = ImageIO.read(new File("img/paper.png")).getScaledInstance(Launcher.WIDTH/50, Launcher.HEIGHT/50, Image.SCALE_FAST);
+			image[3] = ImageIO.read(new File("img/soda.png")).getScaledInstance(Launcher.WIDTH/50, Launcher.HEIGHT/50, Image.SCALE_FAST);
+			Image check = ImageIO.read(new File("img/check.png")).getScaledInstance(Launcher.WIDTH/50, Launcher.HEIGHT/50, Image.SCALE_FAST);
 			}
 		catch(IOException e)
 		{
@@ -29,6 +34,7 @@ public class TrashHandler extends Handler {
 	/**
 	 * First draw all trash on the board
 	 * Then draw trash currently in transit if visible
+	 * @param g, graphics used
 	 */
 	@Override
 	public void paint(Graphics g) {

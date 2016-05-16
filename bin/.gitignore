@@ -18,6 +18,7 @@
 /Shooter.class
 /ShooterHandler.class
 /StartDisplay.class
+<<<<<<< HEAD
 /StartDisplayHandler.class
 /TestHandler.class
 /TestObject.class
@@ -31,3 +32,7 @@
 /trashcanHandler.class
 /trashcanObject.class
 /Overlay.class
+=======
+/ProjectileHandler.class
+/Blank.class
+>>>>>>> 82637dade8a127f2a09c9ea77591bf1a775e48df
