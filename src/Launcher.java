@@ -78,10 +78,6 @@ public class Launcher {
 		gameScreen.add (new ShooterHandler(gameScreen, gameState,gameShooter));
 		//gameScreen.add (new TestHandler(gameScreen,gameState));
 		//gameScreen.add (new mytestHandler(gameScreen,gameState));
-		gameScreen.add (new powerbarHandler(gameScreen,
-				gameState,
-				gameShooter
-				));
 		gameScreen.add (new FoodHandler(gameScreen,gameState));
 		gameScreen.add (new StartDisplayHandler(gameScreen, gameState));
 	}

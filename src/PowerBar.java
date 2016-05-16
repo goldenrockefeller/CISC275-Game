@@ -19,7 +19,7 @@ public class PowerBar extends GameObject {
 			if (!stop_flag) {
 				if(power_flag){
 					powerfluc++;
-					if(powerfluc >= 100){
+					if(powerfluc >= 114){
 						power_flag = false;
 					}
 				}
