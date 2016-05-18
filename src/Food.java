@@ -1,5 +1,6 @@
 
 public class Food extends Projectile{
+	private static final long serialVersionUID = 102L;
 	
 	//size values for this object
 	final static int width = GameState.frameWidth/35;

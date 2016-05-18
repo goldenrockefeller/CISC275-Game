@@ -9,7 +9,8 @@ import javax.swing.*;
 public class GameScreen extends JPanel{
 	
 	/**
-	 * this screen puts the game's handlers in a collection to help implement them
+	 * this class puts the game's handlers in a collection to help implement them.
+	 * This acts as the main class for our view.
 	 */
 	private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	public static final int WIDTH = (int) screenSize.getWidth();

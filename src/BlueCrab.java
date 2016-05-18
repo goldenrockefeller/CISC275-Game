@@ -4,6 +4,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class BlueCrab extends Crab {
+	private static final long serialVersionUID = 101L;
 /**
  * Constructor for Blue Crab
  */

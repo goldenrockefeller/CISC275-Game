@@ -1,6 +1,6 @@
 import java.lang.*;
 
-public abstract class GameObject {
+public abstract class GameObject implements java.io.Serializable {
 	//the x and y values for the game object's location
 	double xPosition;
 	double yPosition;
@@ -15,7 +15,9 @@ public abstract class GameObject {
 	protected double objectStateTime = 0;
 	
 	/**
-	 * Constructor for game objects
+	 * Constructor for game objects. These are the model representations for
+	 * the objects that will appear on screen.
+	 * 
 	 * @param xPosition
 	 * @param yPosition
 	 * @param xVelocity

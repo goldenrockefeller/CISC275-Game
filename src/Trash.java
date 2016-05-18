@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Trash extends Projectile{
-	
+	private static final long serialVersionUID = 107L;
 	int trashFlag = 0;//amount of trash on screen
 	//size values for this object
 	public static final int width = GameState.frameWidth/35;

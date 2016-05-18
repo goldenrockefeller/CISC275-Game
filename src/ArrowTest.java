@@ -14,6 +14,8 @@ public class ArrowTest {
 		myArrow.updateState();
 		
 		assertEquals(myArrow.getDirectFluc(), 21);
+		myArrow.setDirection();
+		assertEquals(myArrow.getDirection(), 21);
 		
 		myArrow.setDirectFluc(160);
 		myArrow.updateState();
@@ -21,6 +23,8 @@ public class ArrowTest {
 		assertEquals(myArrow.getDirectFluc(), 161);
 		myArrow.updateState();
 		assertEquals(myArrow.getDirectFluc(), 160);
+		myArrow.setDirection();
+		assertEquals(myArrow.getDirection(), 160);
 		
 		myArrow.setDirectFluc(1);
 		myArrow.updateState();

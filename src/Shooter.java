@@ -1,5 +1,6 @@
 
 public class Shooter {	
+	private static final long serialVersionUID = 106L;
 	private boolean arrow_or_pb_flag; // tells us if we need to set the arrow or power bar
 	//arrow and powerbar to be associated with this shooters
 	private Arrow game_arrow;
@@ -18,7 +19,7 @@ public class Shooter {
 	/**
 	 * getter for Arrow
 	 * @return game_arrow
-	 */  
+	 */
 	
 	public Arrow getArrow(){
 		return game_arrow;
@@ -31,7 +32,10 @@ public class Shooter {
 		return game_powerbar;
 	}
 	/**
-	 * getter for the shooter's flag
+	 * getter for the shooter's flag. If the flag is true, the shooter
+	 * is using the arrow.  If the flag is false, the shooter is using
+	 * the powerbar.
+	 * 
 	 * @return arrow_or_pb_flag
 	 */
 	public boolean getFlag(){
@@ -50,15 +54,16 @@ public class Shooter {
 		return;
 	}
 	/**
-	 * sets default value to the arrow and power bar
+	 * sets default value to the power bar.  This activates once a projectile is
+	 * fired.
 	 */
 	public void setDefault(){
-		game_arrow.defaultDirection();
 		game_powerbar.defaultPower();
 		return;
 	}
 	/**
-	 * calls the arrow and power bar's updateState methods
+	 * calls the arrow and power bar's updateState methods. This is
+	 * called every tick
 	 */
 	public void update() {
 		game_arrow.updateState();

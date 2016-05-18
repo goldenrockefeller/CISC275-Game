@@ -10,7 +10,9 @@ import javax.imageio.ImageIO;
 
 
 public class StartDisplayHandler extends Handler implements KeyListener {
-
+	/**
+	 * This is the starting image players will see when they start the game
+	 */
 	Image startdisplay; //image to be used for the start screen
 	boolean active; // tells us if the start screen is needed or not
 	/**
@@ -48,6 +50,7 @@ public class StartDisplayHandler extends Handler implements KeyListener {
 	}
 	/**
 	 * key event for pressing a key. Ends start display if it is active
+	 * @param KeyEvent
 	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
