@@ -48,16 +48,17 @@ public class Projectile extends GameObject {
 			}*/
 			//getGameState().settrashMissd(i);
 			//System.out.println(getGameState().gettrashMissed());
-			for (GameObject gameObject : new ArrayList<GameObject>(this.getGameState().getGameObjectCollection()))
-			{
-				if (gameObject instanceof trashcanObject)
+			if (getGameState() != null){
+				for (GameObject gameObject : new ArrayList<GameObject>(this.getGameState().getGameObjectCollection()))
 				{
-					checkCollision((trashcanObject)gameObject);
-					//the function ends here. This object no longer exist
+					if (gameObject instanceof trashcanObject)
+					{
+						checkCollision((trashcanObject)gameObject);
+						//the function ends here. This object no longer exist
+					}
+			
 				}
-		
 			}
-
 		}
 	}
 	/**

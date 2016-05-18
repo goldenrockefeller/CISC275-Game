@@ -96,6 +96,7 @@ public class GameState {
 	public void remove(GameObject gameObject)
 	{
 		this.gameObjectCollection.remove(gameObject);
+		gameObject.setGameState(null);
 	}
 	/*
 	public void removeTrash(Trash trash)
