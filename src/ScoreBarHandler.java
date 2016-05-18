@@ -97,7 +97,7 @@ public class ScoreBarHandler extends Handler {
 		g.draw3DRect((950 - 40) * GameScreen.WIDTH / 1920, 0, 80 * GameScreen.WIDTH / 1920, 80  * GameScreen.HEIGHT / 1080, true);
 		g.setFont(new Font("Tahoma", Font.BOLD, 32 * Math.min(GameScreen.WIDTH / 1920,GameScreen.HEIGHT / 1080)));
 		g.setColor(Color.RED);
-		//g.drawString("K.O.", (950 - 30) * GameScreen.WIDTH / 1920, 25 + 25);
+		g.drawString("K.O.", (950 - 30) * GameScreen.WIDTH / 1920, (25 + 25)* GameScreen.HEIGHT / 1080 );
 		/////////////////////////////////
 		g.setColor(Color.RED);
 		g.setFont(new Font("Tahoma", Font.BOLD, 24 * Math.min(GameScreen.WIDTH / 1920,GameScreen.HEIGHT / 1080)));
