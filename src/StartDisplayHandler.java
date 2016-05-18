@@ -21,7 +21,7 @@ public class StartDisplayHandler extends Handler implements KeyListener {
 	StartDisplayHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen, gameState);
 		try{
-			startdisplay = ImageIO.read(new File("img/startscreen.png"));
+			startdisplay = ImageIO.read(new File("img/startscreen.png")).getScaledInstance((int)(GameScreen.WIDTH/1.5), (int)(GameScreen.HEIGHT/1.5), Image.SCALE_FAST);
 		}
 		catch (IOException e){
 			System.out.println("startscreen.png not found");
