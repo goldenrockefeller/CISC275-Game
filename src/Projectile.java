@@ -46,6 +46,7 @@ public abstract class Projectile extends GameObject {
 				}
 		
 			}*/
+			/*
 			//getGameState().settrashMissd(i);
 			//System.out.println(getGameState().gettrashMissed());
 			if (getGameState() != null){
@@ -59,6 +60,7 @@ public abstract class Projectile extends GameObject {
 			
 				}
 			}
+			*/
 		}
 	}
 

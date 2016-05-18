@@ -37,7 +37,7 @@ public class EndScreenHandler extends Handler implements KeyListener{
 	}
 
 	
-	public void setScores(int blueCount, int mittenCount, int trashcan, int trashfield) {
+	public void setScores(int blueCount, int mittenCount, int trashfield, int trashcan) {
 		scoreblue = Integer.toString(blueCount);
 		scoremitten = Integer.toString(mittenCount);
 		scoretrash = Integer.toString(trashfield);
