@@ -58,7 +58,7 @@ public class ScoreBarHandler extends Handler {
 		///////////////////////////// background
 		g.setColor(Color.RED);
 		g.setFont(new Font("Tahoma", Font.BOLD, 16 * Math.min(GameScreen.WIDTH / 1920,GameScreen.HEIGHT / 1080)));
-		g.drawString("BlueCarb", (950 - 260) * GameScreen.WIDTH / 1920, (25 - 11) * GameScreen.HEIGHT / 1080);
+		g.drawString("Blue Crab", (950 - 260) * GameScreen.WIDTH / 1920, (25 - 11) * GameScreen.HEIGHT / 1080);
 		g.drawString("Trash", (950 + 230)  * GameScreen.WIDTH / 1920, (25 - 11)  * GameScreen.HEIGHT / 1080);
 		g.setColor(Color.BLACK);
 		g.fillRect((950 - 292) * GameScreen.WIDTH / 1920, (25 - 2)  * GameScreen.HEIGHT / 1080,
@@ -128,16 +128,6 @@ public class ScoreBarHandler extends Handler {
 						(25 + 60) * GameScreen.HEIGHT / 1080);
 			}
 		}
-		if (gameState.getMessages().indexOf('T') >= 0) {
-			trashmisscount = gameState.gettrashMissed();
-			trashmissdisplaycount = 100;
-		} else if (trashmissdisplaycount > 0) {
-			trashmissdisplaycount--;
-			if (bluecrabdisplaycount == 0 && mittencrabdisplaycount == 0 && trashindisplaycount == 0) {
-				g.drawString("Throw Trash In The Trash Can!", (950 - 330)  * GameScreen.WIDTH / 1920,
-						(25 + 75) * GameScreen.HEIGHT / 1080);
-			}
-		}
 		if (gameState.getMessages().indexOf('t') >= 0) {
 			trashincount = gameState.getTrashCount();
 			trashindisplaycount = 100;
@@ -148,6 +138,17 @@ public class ScoreBarHandler extends Handler {
 						(25 + 90) * GameScreen.HEIGHT / 1080);
 			}
 		}
+		if (gameState.getMessages().indexOf('T') >= 0) {
+			trashmisscount = gameState.gettrashMissed();
+			trashmissdisplaycount = 100;
+		} else if (trashmissdisplaycount > 0) {
+			trashmissdisplaycount--;
+			if (bluecrabdisplaycount == 0 && mittencrabdisplaycount == 0 && trashindisplaycount == 0) {
+				g.drawString("Throw Trash In The Trash Can!", (950 - 330)  * GameScreen.WIDTH / 1920,
+						(25 + 75) * GameScreen.HEIGHT / 1080);
+			}
+		}
+
 
 				///////////////////////////////////
 

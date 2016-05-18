@@ -127,7 +127,9 @@ public class ShooterHandler extends Handler implements KeyListener {
 		{
 			if (projectile instanceof Trash)
 			{
-				gameState.addMessage("T");
+				if (projectile.getSpeed() == 0){
+					gameState.addMessage("T");
+				}
 			}
 			projectile = generateProjectile();
 		}
@@ -151,7 +153,7 @@ public class ShooterHandler extends Handler implements KeyListener {
 		
 		projectile.setVelocity(xSpeed, ySpeed);
 		int timeOfFlight = power ;
-		projectile.setZ(timeOfFlight);
+		projectile.setZ(Math.max(30,timeOfFlight));
 		/*
 		
 		if (projectile instanceof Trash && power < 50) {

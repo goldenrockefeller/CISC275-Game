@@ -11,8 +11,8 @@ public abstract class Crab extends GameObject {
 	 * these values manually set the bounds and frame size of the crabs
 	 */
 	//final static int crabUpperBound = Launcher.HEIGHT / 4;
-	final static int crabUpperBound = 250; //Changed by Golden because it is easier and more manageable to only have the view worry about screen placement.
-	final static int crabLowerBound = 700; //It also technically violates MVC
+	final static int crabUpperBound = GameState.frameHeight / 4; 
+	final static int crabLowerBound = GameState.frameHeight / 4 * 3; 
 	
 	final static int height = GameState.frameHeight/15;
 	final static int width = GameState.frameWidth/15;
@@ -72,7 +72,7 @@ public abstract class Crab extends GameObject {
 					double offsetX = food.getxPosition()+Food.width - this.getxPosition() - Crab.width;
 					double offsetY = food.getyPosition() + Food.height - this.getyPosition() - Crab.height;
 					double distance = magnitude(offsetX, offsetY);
-					if (  distance < 300 && distance > 5)
+					if (  distance < 600 && distance > 5)
 					{
 						//Change Direction and maintain constant speed
 						oldspeed = getSpeed();

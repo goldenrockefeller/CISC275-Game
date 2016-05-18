@@ -63,16 +63,7 @@ public abstract class Projectile extends GameObject {
 	}
 
 	abstract public void sendMessage();
-	
-	/**
-	 * checks for Collision? Currently disabled
-	 * @return
-	 */
-	public Projectile checkCollision() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+
 	/**getter for z
 	 * @return the z
 	 */
