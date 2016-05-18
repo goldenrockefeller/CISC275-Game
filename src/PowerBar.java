@@ -4,6 +4,9 @@ public class PowerBar extends GameObject {
 		private boolean power_flag; // Used to determine if powerfluc bar is going up or down
 		private boolean stop_flag; //used to stop the bar
 		/**
+		 * This class is used to determine the power in which our projectiles will be flung.
+		 * This will be visually displayed as the power meter inside the arrow.
+		 * 
 		 * Constructor. By default, fluc is 0, the power starts at negative, and the power is going up and not stopped
 		 * @param xPosition
 		 * @param yPosition
