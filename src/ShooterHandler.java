@@ -61,6 +61,12 @@ public class ShooterHandler extends Handler implements KeyListener {
 		firstclick = true;
 	}
 	
+	public void reset()
+	{
+		projectile = generateProjectile();
+		firstclick = true;
+	}
+	
 	/**
 	 * This function takes the current power in the power bar and will create a 
 	 * new arrow reflecting the current power and direction
@@ -180,13 +186,13 @@ public class ShooterHandler extends Handler implements KeyListener {
 	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(firstclick == true){
-			firstclick = false;
-			return;
-		}
+
 		if(e.getKeyCode() == KeyEvent.VK_SPACE){
 			// Do not control shooter when the projectile is in motion
-
+			if(firstclick == true){
+				firstclick = false;
+				return;
+			}
 			System.out.println(projectile);
 			if ((projectile.getxPosition() == projectileStartingX && projectile.getyPosition() == projectileStartingY))
 			{

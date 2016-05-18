@@ -87,14 +87,15 @@ public class Launcher {
 		gameScreen.add (new trashcanHandler(gameScreen,gameState));
 		gameScreen.add (new MittenCrabHandler(gameScreen,gameState));
 		gameScreen.add (new BlueCrabHandler(gameScreen,gameState));
-		gameScreen.add (new ShooterHandler(gameScreen, gameState,gameShooter));
+		ShooterHandler sh = new ShooterHandler(gameScreen, gameState,gameShooter);
+		gameScreen.add (sh);
 		//gameScreen.add (new TestHandler(gameScreen,gameState));
 		//gameScreen.add (new mytestHandler(gameScreen,gameState));
 		gameScreen.add (new FoodHandler(gameScreen,gameState));
 		gameScreen.add (new TrashHandler(gameScreen, gameState));
 		gameScreen.add(new ScoreBarHandler(gameScreen, gameState));
 		gameScreen.add (new StartDisplayHandler(gameScreen, gameState));
-		gameScreen.add(new EndScreenHandler(gameScreen, gameState));
+		gameScreen.add(new EndScreenHandler(gameScreen, gameState,sh));
 	}
 	/**
 	 * sets default values of game window

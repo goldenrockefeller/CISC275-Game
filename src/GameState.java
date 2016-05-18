@@ -33,7 +33,7 @@ public class GameState implements java.io.Serializable {
 	final static int frameWidth = 1000;
     final static int frameHeight = 1000;
     //linked list for all the game objects in play
-	Collection<GameObject> gameObjectCollection = new LinkedList<GameObject>();
+	Collection<GameObject> gameObjectCollection;
 	
 	//Collection<Projectile> trashCollection = new LinkedList<Projectile>();
 	/*Other group's method of making screen size changeable
@@ -45,6 +45,33 @@ public class GameState implements java.io.Serializable {
 	 these numbers are MY resolution. Can be easily changed to match any real, possible resolution
 	 */
 	
+	public GameState()
+	{
+		isend = false;
+		iswin = false;
+		totalTrash = 0;
+		trashMissed = 0;
+		messages = "";
+		blueCount = 0;
+		mittenCount = 0;
+		trashCount = 0;
+		score = 0;
+		gameObjectCollection = new LinkedList<GameObject>();
+	}
+	
+	public void reset()
+	{
+		isend = false;
+		iswin = false;
+		totalTrash = 0;
+		trashMissed = 0;
+		messages = "";
+		blueCount = 0;
+		mittenCount = 0;
+		trashCount = 0;
+		score = 0;
+		gameObjectCollection = new LinkedList<GameObject>();
+	}
 	/**
 	 * Iterate through game objects and update position for each one based on velocity
 	 * Iterate once again and update state (view)

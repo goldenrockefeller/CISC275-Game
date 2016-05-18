@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -9,7 +11,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class EndScreenHandler extends Handler {
+public class EndScreenHandler extends Handler implements KeyListener{
 
 	
 	private static final long serialVersionUID = 1L;
@@ -19,9 +21,10 @@ public class EndScreenHandler extends Handler {
 	String scoretrash;
 	String scoretrashmissed;
 	String feedback;
+	ShooterHandler shooterHandler;
 	boolean ended = false;
 	
-	EndScreenHandler(GameScreen gameScreen, GameState gameState) {
+	EndScreenHandler(GameScreen gameScreen, GameState gameState, ShooterHandler shooterHandler) {
 		super(gameScreen, gameState);
 		
 		try{
@@ -69,11 +72,39 @@ public class EndScreenHandler extends Handler {
 			Font f = new Font("serif", Font.PLAIN, scaleX(50));
 			g.setFont(f);
 			g.setColor(Color.white);
-			g.drawString(feedback,  GameScreen.WIDTH / 2 - feedback.length() * 20, (100)*GameScreen.HEIGHT / 1000);
-			g.drawString(scoreblue, (200)*GameScreen.WIDTH / 1000, (500)*GameScreen.HEIGHT / 1000);
-			g.drawString(scoremitten, (700)*GameScreen.WIDTH / 1000, (500)*GameScreen.HEIGHT / 1000);
-			g.drawString(scoretrash, (200)*GameScreen.WIDTH / 1000, (800)*GameScreen.HEIGHT / 1000);
-			g.drawString(scoretrashmissed, (700)*GameScreen.WIDTH / 1000, (800) *GameScreen.HEIGHT / 1000);
+			g.drawString(feedback,  (int)(GameScreen.WIDTH / 2. - feedback.length() * 20.), (int)((100)*GameScreen.HEIGHT / 1000.));
+			g.drawString(scoreblue, (int)((200)*GameScreen.WIDTH / 1000.), (int)((500)*GameScreen.HEIGHT / 1000.));
+			g.drawString(scoremitten, (int)((700)*GameScreen.WIDTH / 1000.), (int)((500)*GameScreen.HEIGHT / 1000.));
+			g.drawString(scoretrash, (int)((200)*GameScreen.WIDTH / 1000.), (int)((800)*GameScreen.HEIGHT / 1000.));
+			g.drawString(scoretrashmissed, (int)((700)*GameScreen.WIDTH / 1000.), (int)((800) *GameScreen.HEIGHT / 1000.));
 		}
+	}
+
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getKeyCode() == KeyEvent.VK_SPACE){
+			if (getGameState().isend || getGameState().iswin)
+			{
+				gameState.reset();
+				Launcher.setupGameState(gameState);
+				shooterHandler.reset();
+			}
+		}
+	}
+
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }
