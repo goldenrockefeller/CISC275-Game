@@ -96,6 +96,7 @@ public class Launcher {
 		gameScreen.add (new TrashHandler(gameScreen, gameState));
 		gameScreen.add(new ScoreBarHandler(gameScreen, gameState));
 		gameScreen.add (new StartDisplayHandler(gameScreen, gameState));
+		gameScreen.add(new EndScreenHandler(gameScreen, gameState));
 	}
 	/**
 	 * sets default values of game window
