@@ -12,13 +12,14 @@ public class Shooter {
 	public Shooter(GameState game){
 		arrow_or_pb_flag = true;
 		//game_arrow = new Arrow(GameState.frameWidth / 2 - 50, GameState.frameHeight - 330, 0, 0, game);
-		game_arrow = new Arrow(GameScreen.WIDTH / 2 - ShooterHandler.arrowWidth / 2, GameScreen.HEIGHT - GameScreen.HEIGHT / 4, 0, 0, game);
+		game_arrow = new Arrow(GameScreen.WIDTH / 2.0 - ShooterHandler.arrowWidth / 2.0, ((.75)*GameScreen.HEIGHT ), 0, 0, game);
 		game_powerbar = new PowerBar(GameScreen.WIDTH/5, GameScreen.HEIGHT - 220, 0, 0, game);
 	}
 	/**
 	 * getter for Arrow
 	 * @return game_arrow
-	 */
+	 */  
+	
 	public Arrow getArrow(){
 		return game_arrow;
 	}

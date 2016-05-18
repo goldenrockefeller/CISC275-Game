@@ -19,8 +19,8 @@ public class ShooterHandler extends Handler implements KeyListener {
 	public static final int arrowHeight = 249;
 	//starting x and y values for projectile
 	
-	public static final int projectileStartingX = 480;
-	public static final int projectileStartingY = 730;
+	public static final int projectileStartingX = 490;
+	public static final int projectileStartingY = 860;
 	//x and y values for speed
 	double xSpeed; 
 	double ySpeed;
