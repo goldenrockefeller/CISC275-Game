@@ -26,6 +26,7 @@ public class GameState implements java.io.Serializable {
 
 	boolean isend;
 	boolean iswin;
+	boolean startover;
 	//Shooter gameShooter;
 	//TO DO need to have this in Launcher
 	
@@ -56,6 +57,7 @@ public class GameState implements java.io.Serializable {
 		mittenCount = 0;
 		trashCount = 0;
 		score = 0;
+		startover = false;
 		gameObjectCollection = new LinkedList<GameObject>();
 	}
 	

@@ -68,4 +68,12 @@ public class GameScreen extends JPanel{
 	public Collection<Handler> getHandlerCollection() {
 		return handlerCollection;
 	}
+
+	/**
+	 * @param handlerCollection the handlerCollection to set
+	 */
+	public void setHandlerCollection(Collection<Handler> handlerCollection) {
+		this.handlerCollection = handlerCollection;
+	}
+	
 }

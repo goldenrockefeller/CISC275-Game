@@ -34,6 +34,7 @@ public class EndScreenHandler extends Handler implements KeyListener{
 		{
 			System.out.println("End screen image cannot be found.");
 		}
+		gameScreen.addKeyListener(this);
 	}
 
 	
@@ -87,9 +88,7 @@ public class EndScreenHandler extends Handler implements KeyListener{
 		if(e.getKeyCode() == KeyEvent.VK_SPACE){
 			if (getGameState().isend || getGameState().iswin)
 			{
-				gameState.reset();
-				Launcher.setupGameState(gameState);
-				shooterHandler.reset();
+				gameState.startover = true;
 			}
 		}
 	}

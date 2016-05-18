@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.lang.*;
+import java.util.LinkedList;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -42,16 +43,24 @@ public class Launcher {
 		 */
 		while (true)
 		{
-			gameState.update();
-			gameScreen.repaint();
-			//System.out.println(gameState);
-			try {
-				Thread.sleep(10);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			while (!gameState.startover)
+			{
+				gameState.update();
+				gameScreen.repaint();
+				//System.out.println(gameState);
+				try {
+					Thread.sleep(10);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
+			gameState = new GameState();
+			gameScreen.setHandlerCollection(new LinkedList<Handler>());
+			Launcher.setupGameState(gameState);
+			Launcher.setupGameScreen(gameScreen,gameState,gameShooter);
 		}
+		
 	}
 	/**
 	 * sets default values of the game state

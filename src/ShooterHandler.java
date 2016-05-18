@@ -186,32 +186,33 @@ public class ShooterHandler extends Handler implements KeyListener {
 	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
-
-		if(e.getKeyCode() == KeyEvent.VK_SPACE){
-			// Do not control shooter when the projectile is in motion
-			if(firstclick == true){
-				firstclick = false;
-				return;
-			}
-			System.out.println(projectile);
-			if ((projectile.getxPosition() == projectileStartingX && projectile.getyPosition() == projectileStartingY))
-			{
-				
-				if(gameShooter.getFlag()){
-					gameShooter.getArrow().setDirection();
-					gameShooter.getArrow().setStop();
-					gameShooter.changeFlag();
-
+		if (!(gameState.isend)){
+			if(e.getKeyCode() == KeyEvent.VK_SPACE){
+				// Do not control shooter when the projectile is in motion
+				if(firstclick == true){
+					firstclick = false;
+					return;
 				}
-				else{
-					gameShooter.getPowerBar().setPower();
-					System.out.print("Fired at: " + gameShooter.getPowerBar().getPower() + " power ");
-					System.out.println("in direction " + gameShooter.getArrow().getDirection() + "!");
-
-					calculateTrajectory(gameShooter);
-
-					gameShooter.changeFlag();
-					gameShooter.setDefault();
+				System.out.println(projectile);
+				if ((projectile.getxPosition() == projectileStartingX && projectile.getyPosition() == projectileStartingY))
+				{
+					
+					if(gameShooter.getFlag()){
+						gameShooter.getArrow().setDirection();
+						gameShooter.getArrow().setStop();
+						gameShooter.changeFlag();
+	
+					}
+					else{
+						gameShooter.getPowerBar().setPower();
+						System.out.print("Fired at: " + gameShooter.getPowerBar().getPower() + " power ");
+						System.out.println("in direction " + gameShooter.getArrow().getDirection() + "!");
+	
+						calculateTrajectory(gameShooter);
+	
+						gameShooter.changeFlag();
+						gameShooter.setDefault();
+					}
 				}
 			}
 		}
