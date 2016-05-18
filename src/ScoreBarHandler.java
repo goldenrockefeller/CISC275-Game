@@ -12,7 +12,7 @@ public class ScoreBarHandler extends Handler {
 	 * Image handling for the scoreboard.
 	 */
 	
-	int BlueCarbScore = gameState.getBlueCount();
+	int BlueCrabScore = gameState.getBlueCount();
 	int TrashScore = gameState.getTrashCount();
 
 	int red;
@@ -52,13 +52,14 @@ public class ScoreBarHandler extends Handler {
 	public void paint(Graphics g) {
 		// System.out.println("blue"+gameState.getBlueCount());
 		// System.out.println("trash"+gameState.getTrashCount());
-		// System.out.println("bluedisplay"+BlueCarbScore);
+		// System.out.println("bluedisplay"+BlueCrabScore);
 		// System.out.println("miss"+gameState.gettrashMissed());
 		// change();
 		///////////////////////////// background
 		g.setColor(Color.RED);
 		g.setFont(new Font("Tahoma", Font.BOLD, 16 * Math.min(GameScreen.WIDTH / 1920,GameScreen.HEIGHT / 1080)));
 		g.drawString("Blue Crab", (950 - 260) * GameScreen.WIDTH / 1920, (25 - 11) * GameScreen.HEIGHT / 1080);
+
 		g.drawString("Trash", (950 + 230)  * GameScreen.WIDTH / 1920, (25 - 11)  * GameScreen.HEIGHT / 1080);
 		g.setColor(Color.BLACK);
 		g.fillRect((950 - 292) * GameScreen.WIDTH / 1920, (25 - 2)  * GameScreen.HEIGHT / 1080,
