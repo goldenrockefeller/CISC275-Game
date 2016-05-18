@@ -1,4 +1,5 @@
 	public class Arrow extends GameObject {
+		private static final long serialVersionUID = 100L;
 		/**
 		 * The arrow is the object that determines the direction in which our projectile
 		 * will be flung.  On the screen, the player will see the arrow rotate back and

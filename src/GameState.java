@@ -1,9 +1,16 @@
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.*;
 
-public class GameState {
+public class GameState implements java.io.Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	/**
 	 * Gamestate is the main class for our model.  All of our gameobjects are combined
 	 * here to form the current gamestate.
@@ -226,8 +233,6 @@ public class GameState {
 	}*/
 	/*
 	public void loadProjectile(Shooter gameShooter) {
-
-		
 		
 	}
 	*/
@@ -238,5 +243,51 @@ public class GameState {
 	public String toString() {
 		return "\nGameState [score=" + score + ", trashCount=" + trashCount + ", mittenCount=" + mittenCount
 				+ ", blueCount=" + blueCount + ", gameObjectCollection=" + gameObjectCollection + "]";
+	}
+	
+	
+	
+	/**
+	 * Method to serialize OverallGame, which contains the other games as params
+	 * So this output will contain the serialized version of every object
+	 * @param obj
+	 * @param fileName
+	 * @exception Throws an error if file name isn't found
+	 * @see java.io.Serializable
+	 */
+	public static void serialize(Object obj, String fileName) {
+		try {
+	        FileOutputStream fos = new FileOutputStream(fileName);
+	        ObjectOutputStream oos = new ObjectOutputStream(fos);
+	        oos.writeObject(obj);
+	        fos.close();
+		}
+		catch (IOException e) {
+			System.out.println("Read Error: " + e.getMessage());
+		}
+	}
+	
+	/**
+	 * Method to read a game state from file and instantiate it. The reverse of the serialize function
+	 * @param fileName
+	 * @returns the deserialized object
+	 * @exception Throws an exception if file name isn't found
+	 * @exception Throws an exception if the class isn't found
+	 */
+	public static Object deserialize(String fileName) {
+		GameState obj = null ;
+		try {	
+			FileInputStream fis = new FileInputStream(fileName);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			obj = (GameState)ois.readObject();
+			ois.close();
+		}
+		catch(IOException e) {
+			System.out.println("Read Error: " + e.getMessage());
+		}
+		catch (ClassNotFoundException e){
+			System.out.println("Read Error: " + e.getMessage());
+		}
+		return obj;
 	}
 }

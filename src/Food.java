@@ -1,5 +1,6 @@
 
 public class Food extends Projectile{
+	private static final long serialVersionUID = 102L;
 	
 	/** Z's getter
 	 * @return the z

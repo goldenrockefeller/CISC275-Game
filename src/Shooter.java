@@ -1,5 +1,6 @@
 
 public class Shooter {	
+	private static final long serialVersionUID = 106L;
 	private boolean arrow_or_pb_flag; // tells us if we need to set the arrow or power bar
 	//arrow and powerbar to be associated with this shooters
 	private Arrow game_arrow;

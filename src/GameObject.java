@@ -1,6 +1,6 @@
 import java.lang.*;
 
-public abstract class GameObject {
+public abstract class GameObject implements java.io.Serializable {
 	//the x and y values for the game object's location
 	double xPosition;
 	double yPosition;

@@ -1,6 +1,6 @@
 
-
 public class MittenCrab extends Crab {
+	private static final long serialVersionUID = 103L;
 	/**
 	 * Constructor, parameters are the same as the superclass'
 	 * @param xPosition
@@ -15,7 +15,7 @@ public class MittenCrab extends Crab {
 		
 	}
 	/**
-	 * adds a new mitten crab to the game
+	 * Adds a new mitten crab to the game
 	 */
 	@Override
 	public void crabClone() {
