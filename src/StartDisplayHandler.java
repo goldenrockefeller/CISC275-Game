@@ -36,15 +36,7 @@ public class StartDisplayHandler extends Handler implements KeyListener {
 	@Override
 	public void paint(Graphics g) {
 		if(active){
-			for (GameObject gameObject : getGameState().getGameObjectCollection())
-			{
-				if (gameObject instanceof StartDisplay)
-				{
-					if(active){
-						g.drawImage(startdisplay, (int) gameObject.getxPosition(), (int) gameObject.getyPosition(), new Color(0,0,0,0), null);
-					}
-				}
-			}
+			g.drawImage(startdisplay, GameScreen.WIDTH/6, GameScreen.HEIGHT/12, new Color(0,0,0,0), null);
 		}
 	}
 	/**
@@ -61,15 +53,7 @@ public class StartDisplayHandler extends Handler implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		if(active){
 			if(e.getKeyCode() == KeyEvent.VK_SPACE){
-				System.out.println("hello");
-				for (GameObject gameObject : getGameState().getGameObjectCollection())
-				{
-					if (gameObject instanceof StartDisplay)
-					{
-						getGameState().remove(gameObject);
-						active = false;
-					}
-				}
+				active = false;
 			}
 		}
 	}

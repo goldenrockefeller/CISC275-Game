@@ -68,9 +68,9 @@ public class Launcher {
 		gameState.add(new trashcanObject(200,120,0,0,gameState));
 		gameState.add(new trashcanObject(500,120,0,0,gameState));
 		gameState.add(new trashcanObject(800,120,0,0,gameState));
-		gameState.add(new ScoreBar(850,25,0,0,gameState));
+		//gameState.add(new ScoreBar(850,25,0,0,gameState));
 		//gameState.setProjectile(new Food(480,700,0,0,gameState));
-		gameState.add(new StartDisplay(GameScreen.WIDTH / 8, GameScreen.HEIGHT / 12, 0, 0, gameState));
+		//add(new StartDisplay(GameScreen.WIDTH / 8, GameScreen.HEIGHT / 12, 0, 0, gameState));
 		
 	}
 	/**
