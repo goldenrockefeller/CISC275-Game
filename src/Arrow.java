@@ -79,12 +79,23 @@
 		public void setStop() {
 			stop_flag = !stop_flag;
 		}
-		/**
-		 * restores default values to Arrow
-		 */
-		public void defaultDirection(){
-			//direction = -1;
-			//this.setDirectFluc(0);
-			//arrow_flag = true;
+		
+		@Override
+		public String toString(){
+			String going;
+			String stopped;
+			if(direction == -1){
+				going = "left";
+			}
+			else going = "right";
+			
+			if(stop_flag){
+				stopped = "stopped";
+			}
+			else{
+				stopped = "moving";
+			}
+			
+			return "The arrow is " + stopped + " going " + going + " at " + directfluc;
 		}
 	}

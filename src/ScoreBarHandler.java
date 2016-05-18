@@ -8,6 +8,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class ScoreBarHandler extends Handler {
+	/**
+	 * Image handling for the scoreboard.
+	 */
+	
 	int BlueCarbScore = gameState.getBlueCount();
 	int TrashScore = gameState.getTrashCount();
 

@@ -1,8 +1,7 @@
 public class PowerBar extends GameObject {
 		private int powerfluc; //the power that fluctuates on every tick
 		private int power; // the power that the player chooses using the space bar.
-		private boolean power_flag; // Used to determine if powerfluc bar is going up or down
-		private boolean stop_flag; //used to stop the bar
+		private boolean power_flag; // Used to determine if powerfluc bar is going up or down, true is up, false is down
 		/**
 		 * This class is used to determine the power in which our projectiles will be flung.
 		 * This will be visually displayed as the power meter inside the arrow.
@@ -21,30 +20,31 @@ public class PowerBar extends GameObject {
 			power = -1;
 			powerfluc = 0;
 			power_flag = true;
-			stop_flag = false;
 		}
 
 	/**
 	 * changes the flags based on the current value of powerfluc
+	 * 
+	 * @return void
 	 */
 		public void setPowerFluc(){
-			if (!stop_flag) {
-				if(power_flag){
-					powerfluc++;
-					if(powerfluc >= 114){
-						power_flag = false;
-					}
+			if(power_flag){
+				powerfluc++;
+				if(powerfluc >= 114){
+					power_flag = false;
 				}
-				else{
-					powerfluc--;
-					if(powerfluc <= 0){
-						power_flag = true;
-					}
+			}
+			else{
+				powerfluc--;
+				if(powerfluc <= 0){
+					power_flag = true;
 				}
 			}
 		}
 		/**
 		 * updates state by calling setPowerFluc
+		 * 
+		 * @return void
 		 */
 		public void updateState(){
 			setPowerFluc();
@@ -67,6 +67,7 @@ public class PowerBar extends GameObject {
 		// this is called when the player releases the space bar
 		/**
 		 * setter for power, set equal to powerfluc
+		 * @return void
 		 */
 		public void setPower(){
 			power = powerfluc;
@@ -80,16 +81,21 @@ public class PowerBar extends GameObject {
 		}
 		/**
 		 * setter for stopflag, which is reversed from true to false and vice versa when method is called
+		 * @return void
 		 */
-		public void setStop() {
-			stop_flag = !stop_flag;
-		}
 		/**
 		 * sets power, powerfluc, and power_flag to their default values
+		 * @return void
 		 */
 		public void defaultPower(){
 			power = -1;
 			this.setPowerFluc(0);
 			power_flag = true;
 		}
+		public boolean getFlag(){
+			return power_flag;
+		}
+		/**
+		 * 
+		 */
 	}

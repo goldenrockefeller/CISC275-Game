@@ -4,6 +4,11 @@ import java.awt.image.BufferStrategy;
 import java.util.*;
 
 public class GameState {
+	/**
+	 * Gamestate is the main class for our model.  All of our gameobjects are combined
+	 * here to form the current gamestate.
+	 */
+	
 	int score; //player's score
 	int trashCount; //amount of trash on screen
 	int mittenCount; //amount of mitten crabs on screen
