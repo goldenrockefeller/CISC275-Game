@@ -27,6 +27,7 @@ public class ShooterHandler extends Handler implements KeyListener {
 	int degrees;
 	int power;
 	int randProj;	
+	int delay = 0;
 	Food tempf;
 	Trash tempt;
 	
