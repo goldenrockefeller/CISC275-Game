@@ -70,6 +70,7 @@ public class Launcher {
 		gameState.add(new trashcanObject(200,120,0,0,gameState));
 		gameState.add(new trashcanObject(500,120,0,0,gameState));
 		gameState.add(new trashcanObject(800,120,0,0,gameState));
+		gameState.add(new ScoreBar(850,25,0,0,gameState));
 		//gameState.setProjectile(new Food(480,700,0,0,gameState));
 		gameState.add(new StartDisplay(Launcher.WIDTH / 8, Launcher.HEIGHT / 12, 0, 0, gameState));
 		
@@ -93,6 +94,7 @@ public class Launcher {
 		//gameScreen.add (new mytestHandler(gameScreen,gameState));
 		gameScreen.add (new FoodHandler(gameScreen,gameState));
 		gameScreen.add (new TrashHandler(gameScreen, gameState));
+		gameScreen.add(new ScoreBarHandler(gameScreen, gameState));
 		gameScreen.add (new StartDisplayHandler(gameScreen, gameState));
 	}
 	/**

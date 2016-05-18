@@ -8,6 +8,10 @@ public class GameState {
 	int trashCount; //amount of trash on screen
 	int mittenCount; //amount of mitten crabs on screen
 	int blueCount; // amount of blue crabs on screen
+	int trashMissed;
+	int totalTrash;
+	boolean isend;
+	boolean iswin;
 	//Shooter gameShooter;
 	//TO DO need to have this in Launcher
 	
@@ -47,11 +51,18 @@ public class GameState {
 			gameObject.updateState();
 		}
 			 //not a gameObject, so I didn't use updateState
+		settrashMissed();
 	}
 	/**
 	 * add to namesake value based on parameter
 	 * @param value to be added
 	 */
+	public void addtotalTrash(int a){
+		totalTrash=totalTrash+a;
+	}
+	public void addtrashMissed(int a){
+		trashMissed=trashMissed+a;
+	}
 	public void addToScore(int value)
 	{
 		this.score += value;
@@ -85,7 +96,6 @@ public class GameState {
 	public void remove(GameObject gameObject)
 	{
 		this.gameObjectCollection.remove(gameObject);
-		gameObject.setGameState(null);
 	}
 	/*
 	public void removeTrash(Trash trash)
@@ -122,6 +132,20 @@ public class GameState {
 		this.trashCount = trashCount;
 	}
 	/**
+	 * getter for Trashcount
+	 * @return trashCount
+	 */
+	public int gettotalTrash() {
+		return totalTrash;
+	}
+	/**
+	 * setter for totalTrash
+	 * @param totalTrash
+	 */
+	public void settotalTrash(int totalTrash) {
+		this.totalTrash = totalTrash;
+	}
+	/**
 	 * getter for MittenCount
 	 * @return mittenCount
 	 */
@@ -143,6 +167,34 @@ public class GameState {
 		return blueCount;
 	}
 	/**
+	 * setter for number of  trash on ground
+	 * @param settrashMissd
+	 */
+	public void settrashMissed(){
+		trashMissed=0;
+		for (GameObject gameObject : new ArrayList<GameObject>(getGameObjectCollection()))
+		{
+			if (gameObject instanceof Trash)
+			{	
+				Projectile proj = (Projectile)gameObject;
+				if (proj.getZ() == 0)
+				{
+					trashMissed++;
+				}
+				
+			}
+	
+		}
+	}
+	/**
+	 * getter for number of trash on ground
+	 * @return settrashMissd
+	 */
+	public int gettrashMissed(){
+
+		return trashMissed;
+	}
+	/**
 	 * setter for BlueCount
 	 * @param blueCount
 	 */
@@ -155,6 +207,12 @@ public class GameState {
 	 */
 	public Collection<GameObject> getGameObjectCollection() {
 		return gameObjectCollection;
+	}
+	public void setiswin(boolean a){
+		iswin=a;
+	}
+	public void setisend(boolean a){
+		isend=a;
 	}
 	/*
 	public Collection<Projectile> getTrashCollection() {
@@ -175,6 +233,4 @@ public class GameState {
 		return "\nGameState [score=" + score + ", trashCount=" + trashCount + ", mittenCount=" + mittenCount
 				+ ", blueCount=" + blueCount + ", gameObjectCollection=" + gameObjectCollection + "]";
 	}
-	
-
 }
