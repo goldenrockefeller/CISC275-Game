@@ -21,6 +21,7 @@ public class MittenCrab extends Crab {
 	public void crabClone() {
 		getGameState().add( new MittenCrab(getxPosition(),getyPosition(),-getxVelocity(), -getyVelocity(),gameState));
 		getGameState().addMessage("m");
+		getGameState().mittenCount+=1;
 	}
 	
 

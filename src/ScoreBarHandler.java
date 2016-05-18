@@ -41,6 +41,10 @@ public class ScoreBarHandler extends Handler {
 
 	ScoreBarHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen, gameState);
+		bluecrabcount = 1;
+		mittencrabcount = 1;
+		trashmisscount = 0;
+		trashincount = 0;
 
 	}
 
@@ -109,7 +113,7 @@ public class ScoreBarHandler extends Handler {
 		
 	
 		if (gameState.getMessages().indexOf('m') >= 0) {
-			//mittencrabcount = gameState.getMittenCount();
+			mittencrabcount +=1;
 			mittencrabdisplaycount = 100;
 		} else if (mittencrabdisplaycount > 0) {
 			mittencrabdisplaycount--;
@@ -120,7 +124,7 @@ public class ScoreBarHandler extends Handler {
 		}
 
 		if (gameState.getMessages().indexOf('b') >= 0) {
-			bluecrabcount = gameState.getBlueCount();
+			bluecrabcount +=1;
 			bluecrabdisplaycount = 100;
 		} else if (bluecrabdisplaycount > 0) {
 			bluecrabdisplaycount--;
@@ -130,7 +134,7 @@ public class ScoreBarHandler extends Handler {
 			}
 		}
 		if (gameState.getMessages().indexOf('t') >= 0) {
-			trashincount = gameState.getTrashCount();
+			trashincount +=1;
 			trashindisplaycount = 100;
 		} else if (trashindisplaycount > 0) {
 			trashindisplaycount--;
@@ -140,7 +144,8 @@ public class ScoreBarHandler extends Handler {
 			}
 		}
 		if (gameState.getMessages().indexOf('T') >= 0) {
-			trashmisscount = gameState.gettrashMissed();
+			trashmisscount += 1;
+			
 			trashmissdisplaycount = 100;
 		} else if (trashmissdisplaycount > 0) {
 			trashmissdisplaycount--;

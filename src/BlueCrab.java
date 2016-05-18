@@ -19,6 +19,7 @@ public class BlueCrab extends Crab {
 	public void crabClone() {
 		getGameState().add( new BlueCrab(getxPosition(),getyPosition(),-getxVelocity(), -getyVelocity(),gameState));
 		getGameState().addMessage("b");
+		getGameState().blueCount+=1;
 	}
 	
 	

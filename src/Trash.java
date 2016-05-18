@@ -81,6 +81,7 @@ public class Trash extends Projectile{
 				trashCan.getyPosition() + trashCan.height > this.getyPosition() )
 		{
 			//Collision Detected
+			getGameState().trashCount += 1;
 			getGameState().addMessage("t");
 			getGameState().remove(this);
 		}
