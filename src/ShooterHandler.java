@@ -148,8 +148,8 @@ public class ShooterHandler extends Handler implements KeyListener {
 		degrees = gameShooter.getArrow().getDirection();
 		power = gameShooter.getPowerBar().getPower();
 		
-		xSpeed = 7.2 * (Math.cos(Math.toRadians(degrees)));
-		ySpeed = - 7.2 *(Math.sin(Math.toRadians(degrees)));
+		xSpeed = 7.8 * (Math.cos(Math.toRadians(degrees)));
+		ySpeed = - 7.8 *(Math.sin(Math.toRadians(degrees)));
 		
 		projectile.setVelocity(xSpeed, ySpeed);
 		int timeOfFlight = power ;

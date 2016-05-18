@@ -30,13 +30,13 @@ public class PowerBar extends GameObject {
 	 */
 	public void setPowerFluc(){
 		if(power_flag){
-			powerfluc++;
+			powerfluc+= 2;
 			if(powerfluc >= 114){
 				power_flag = false;
 			}
 		}
 		else{
-			powerfluc--;
+			powerfluc-= 2;
 			if(powerfluc <= 0){
 				power_flag = true;
 			}

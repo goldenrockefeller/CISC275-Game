@@ -34,11 +34,19 @@ public class EndScreenHandler extends Handler {
 	}
 
 	
-	public void setScores(int blueCount, int mittenCount, int trashfield, int trashcan) {
+	public void setScores(int blueCount, int mittenCount, int trashcan, int trashfield) {
 		scoreblue = Integer.toString(blueCount);
 		scoremitten = Integer.toString(mittenCount);
 		scoretrash = Integer.toString(trashfield);
 		scoretrashmissed = Integer.toString(trashcan);
+			
+		feedback = "Better Luck Next Time!";
+
+		if (getGameState().iswin)
+		{
+			feedback = "Good Job";
+		}
+		/*
 		if (blueCount < mittenCount && trashcan > trashfield)
 			feedback = "Great Job!";
 		else if (blueCount > mittenCount && trashcan > trashfield)
@@ -47,6 +55,7 @@ public class EndScreenHandler extends Handler {
 			feedback = "Good Work!";
 		else
 			feedback = "Better Luck Next Time!";
+		*/
 			
 	}
 

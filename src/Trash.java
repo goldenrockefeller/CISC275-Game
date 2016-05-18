@@ -54,14 +54,17 @@ public class Trash extends Projectile{
 			setVelocity(0,0);
 			stopped = true;
 		}*/
-		for (GameObject gameObject : new ArrayList<GameObject>(getGameState().getGameObjectCollection()))
-		{
-			if (gameObject instanceof trashcanObject)
+		if (getGameState() != null){
+			for (GameObject gameObject : new ArrayList<GameObject>(getGameState().getGameObjectCollection()))
 			{
-				checkCollision((trashcanObject)gameObject);
+				if (gameObject instanceof trashcanObject)
+				{
+					checkCollision((trashcanObject)gameObject);
+				}
+		
 			}
-	
 		}
+
 	}
 	
 	public void sendMessage()
