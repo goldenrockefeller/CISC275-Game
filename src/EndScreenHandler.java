@@ -25,7 +25,7 @@ public class EndScreenHandler extends Handler {
 		super(gameScreen, gameState);
 		
 		try{
-			image = ImageIO.read(new File("img/endscreen.png")).getScaledInstance(Launcher.WIDTH, Launcher.HEIGHT, Image.SCALE_FAST);
+			image = ImageIO.read(new File("img/endscreen.png")).getScaledInstance(GameScreen.WIDTH, GameScreen.HEIGHT, Image.SCALE_FAST);
 		}
 		catch(IOException e)
 		{

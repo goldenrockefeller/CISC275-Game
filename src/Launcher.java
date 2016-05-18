@@ -15,9 +15,7 @@ public class Launcher {
 	/**
 	 * these values determine the total dimensions of the screen
 	 */
-	private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	public static final int WIDTH = (int) screenSize.getWidth();
-	public static final int HEIGHT = (int) screenSize.getHeight();
+
 	public static void main(String[] args) {
 		
 		
@@ -72,7 +70,7 @@ public class Launcher {
 		gameState.add(new trashcanObject(800,120,0,0,gameState));
 		gameState.add(new ScoreBar(850,25,0,0,gameState));
 		//gameState.setProjectile(new Food(480,700,0,0,gameState));
-		gameState.add(new StartDisplay(Launcher.WIDTH / 8, Launcher.HEIGHT / 12, 0, 0, gameState));
+		gameState.add(new StartDisplay(GameScreen.WIDTH / 8, GameScreen.HEIGHT / 12, 0, 0, gameState));
 		
 	}
 	/**
@@ -106,7 +104,7 @@ public class Launcher {
 	public static void setupGameWindow(JFrame gameWindow, GameScreen gameScreen)
 	{
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		gameWindow.setSize(Launcher.WIDTH, Launcher.HEIGHT);
+		gameWindow.setSize(GameScreen.WIDTH, GameScreen.HEIGHT);
 		gameWindow.getContentPane().add(gameScreen);
 		gameWindow.setVisible(true);
 	}

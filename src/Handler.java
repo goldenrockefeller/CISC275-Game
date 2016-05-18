@@ -50,7 +50,7 @@ public abstract class Handler {
 	 */
 	public int scaleX(double x)
 	{
-		return (int)(x * Launcher.WIDTH / GameState.frameWidth);
+		return (int)(x * GameScreen.WIDTH / GameState.frameWidth);
 	}
 	/**
 	 * scales Y based on parameter
@@ -59,7 +59,7 @@ public abstract class Handler {
 	 */
 	public int scaleY(double y)
 	{
-		return (int)(y * Launcher.HEIGHT / GameState.frameHeight);
+		return (int)(y * GameScreen.HEIGHT / GameState.frameHeight);
 	}
 
 	
