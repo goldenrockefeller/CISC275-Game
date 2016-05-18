@@ -60,13 +60,11 @@ public class EndScreenHandler extends Handler {
 			Font f = new Font("serif", Font.PLAIN, scaleX(50));
 			g.setFont(f);
 			g.setColor(Color.white);
-			g.drawString(feedback,  250 *GameScreen.WIDTH / 1000, (100)*GameScreen.HEIGHT / 1000);
+			g.drawString(feedback,  GameScreen.WIDTH / 2 - feedback.length() * 20, (100)*GameScreen.HEIGHT / 1000);
 			g.drawString(scoreblue, (200)*GameScreen.WIDTH / 1000, (500)*GameScreen.HEIGHT / 1000);
 			g.drawString(scoremitten, (700)*GameScreen.WIDTH / 1000, (500)*GameScreen.HEIGHT / 1000);
 			g.drawString(scoretrash, (200)*GameScreen.WIDTH / 1000, (800)*GameScreen.HEIGHT / 1000);
 			g.drawString(scoretrashmissed, (700)*GameScreen.WIDTH / 1000, (800) *GameScreen.HEIGHT / 1000);
 		}
 	}
-	
-	
 }
