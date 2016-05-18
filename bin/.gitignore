@@ -1,4 +1,13 @@
 /backup.class
 /ScoreBar.class
 /ScoreBarHandler.class
+<<<<<<< HEAD
 /EndScreenHandler.class
+=======
+/CrabTest.class
+/EndScreenHandler.class
+/FoodTest.class
+/ProjectileTest.class
+/TrashTest.class
+/Launcher.class
+>>>>>>> 739e5dc1f05065e8b6c5dc2a537a3357073a0569

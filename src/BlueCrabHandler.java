@@ -17,9 +17,9 @@ public class BlueCrabHandler extends Handler{
 	BlueCrabHandler(GameScreen gameScreen,GameState gameState) {
 		super(gameScreen,gameState);
 		try{
-			image[0] = ImageIO.read(new File("img/blueclaw/bluecrab_0.png")).getScaledInstance(Launcher.WIDTH/15, Launcher.HEIGHT/15, Image.SCALE_FAST);
-			image[1] = ImageIO.read(new File("img/blueclaw/bluecrab_1.png")).getScaledInstance(Launcher.WIDTH/15, Launcher.HEIGHT/15, Image.SCALE_FAST);
-			image[2] = ImageIO.read(new File("img/blueclaw/bluecrab_2.png")).getScaledInstance(Launcher.WIDTH/15, Launcher.HEIGHT/15, Image.SCALE_FAST);
+			image[0] = ImageIO.read(new File("img/blueclaw/bluecrab_0.png")).getScaledInstance(GameScreen.WIDTH/15, GameScreen.HEIGHT/15, Image.SCALE_FAST);
+			image[1] = ImageIO.read(new File("img/blueclaw/bluecrab_1.png")).getScaledInstance(GameScreen.WIDTH/15, GameScreen.HEIGHT/15, Image.SCALE_FAST);
+			image[2] = ImageIO.read(new File("img/blueclaw/bluecrab_2.png")).getScaledInstance(GameScreen.WIDTH/15, GameScreen.HEIGHT/15, Image.SCALE_FAST);
 		}
 		catch(IOException e)
 		{

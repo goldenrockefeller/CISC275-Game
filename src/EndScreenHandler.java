@@ -25,7 +25,7 @@ public class EndScreenHandler extends Handler {
 		super(gameScreen, gameState);
 		
 		try{
-			image = ImageIO.read(new File("img/endscreen.png")).getScaledInstance(Launcher.WIDTH, Launcher.HEIGHT, Image.SCALE_FAST);
+			image = ImageIO.read(new File("img/endscreen.png")).getScaledInstance(GameScreen.WIDTH, GameScreen.HEIGHT, Image.SCALE_FAST);
 		}
 		catch(IOException e)
 		{
@@ -60,11 +60,11 @@ public class EndScreenHandler extends Handler {
 			Font f = new Font("serif", Font.PLAIN, scaleX(50));
 			g.setFont(f);
 			g.setColor(Color.white);
-			g.drawString(feedback,  scaleX(250), scaleY(100));
-			g.drawString(scoreblue, scaleX(200), scaleY(500));
-			g.drawString(scoremitten, scaleX(700), scaleY(500));
-			g.drawString(scoretrash, scaleX(200), scaleY(800));
-			g.drawString(scoretrashmissed, scaleX(700), scaleY(800));
+			g.drawString(feedback,  250 *GameScreen.WIDTH / 1000, (100)*GameScreen.HEIGHT / 1000);
+			g.drawString(scoreblue, (200)*GameScreen.WIDTH / 1000, (500)*GameScreen.HEIGHT / 1000);
+			g.drawString(scoremitten, (700)*GameScreen.WIDTH / 1000, (500)*GameScreen.HEIGHT / 1000);
+			g.drawString(scoretrash, (200)*GameScreen.WIDTH / 1000, (800)*GameScreen.HEIGHT / 1000);
+			g.drawString(scoretrashmissed, (700)*GameScreen.WIDTH / 1000, (800) *GameScreen.HEIGHT / 1000);
 		}
 	}
 	
