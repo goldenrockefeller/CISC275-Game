@@ -101,8 +101,10 @@ public class ScoreBarHandler extends Handler {
 		/////////////////////////////////
 		g.setColor(Color.RED);
 		g.setFont(new Font("Tahoma", Font.BOLD, 24 * Math.min(GameScreen.WIDTH / 1920,GameScreen.HEIGHT / 1080)));
-		if (gameState.getMittenCount() > mittencrabcount) {
-			mittencrabcount = gameState.getMittenCount();
+		
+	
+		if (gameState.getMessages().indexOf('m') >= 0) {
+			//mittencrabcount = gameState.getMittenCount();
 			mittencrabdisplaycount = 100;
 		} else if (mittencrabdisplaycount > 0) {
 			mittencrabdisplaycount--;
@@ -112,7 +114,7 @@ public class ScoreBarHandler extends Handler {
 			}
 		}
 
-		if (gameState.getBlueCount() > bluecrabcount) {
+		if (gameState.getMessages().indexOf('b') >= 0) {
 			bluecrabcount = gameState.getBlueCount();
 			bluecrabdisplaycount = 100;
 		} else if (bluecrabdisplaycount > 0) {
@@ -122,9 +124,9 @@ public class ScoreBarHandler extends Handler {
 						(25 + 60) * GameScreen.HEIGHT / 1080);
 			}
 		}
-		if (gameState.gettrashMissed() > trashmisscount) {
+		if (gameState.getMessages().indexOf('T') >= 0) {
 			trashmisscount = gameState.gettrashMissed();
-			trashmissdisplaycount = 200;
+			trashmissdisplaycount = 100;
 		} else if (trashmissdisplaycount > 0) {
 			trashmissdisplaycount--;
 			if (bluecrabdisplaycount == 0 && mittencrabdisplaycount == 0 && trashindisplaycount == 0) {
@@ -132,7 +134,7 @@ public class ScoreBarHandler extends Handler {
 						(25 + 75) * GameScreen.HEIGHT / 1080);
 			}
 		}
-		if (gameState.getTrashCount() > trashincount) {
+		if (gameState.getMessages().indexOf('t') >= 0) {
 			trashincount = gameState.getTrashCount();
 			trashindisplaycount = 100;
 		} else if (trashindisplaycount > 0) {

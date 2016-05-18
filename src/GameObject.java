@@ -35,11 +35,11 @@ public abstract class GameObject {
 	 */
 	abstract public void updateState();
 	/**
-	 * removes the game object from the game
+	 * What the object does when it is removed from the game
 	 */
-	public void selfDestruct()
+	public void finish()
 	{
-		gameState.remove(this);
+		//Do nothing
 	}
 	/**
 	 * takes the existing speed and adjusts the velocity's direction based on parameters

@@ -125,6 +125,10 @@ public class ShooterHandler extends Handler implements KeyListener {
 			!(projectile.getxPosition() == projectileStartingX &&
 			projectile.getyPosition() == projectileStartingY)))
 		{
+			if (projectile instanceof Trash)
+			{
+				gameState.addMessage("T");
+			}
 			projectile = generateProjectile();
 		}
 		

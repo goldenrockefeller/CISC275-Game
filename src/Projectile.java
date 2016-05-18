@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Projectile extends GameObject {
+public abstract class Projectile extends GameObject {
 
 	//values of the projectile's end point
 	int xEnd;
@@ -61,14 +61,9 @@ public class Projectile extends GameObject {
 			}
 		}
 	}
-	/**
-	 * setter for end
-	 * @param j
-	 */
-	public void setEnd(int j) {
-		// TODO Auto-generated method stub
-		
-	}
+
+	abstract public void sendMessage();
+	
 	/**
 	 * checks for Collision? Currently disabled
 	 * @return
@@ -101,9 +96,12 @@ public class Projectile extends GameObject {
 		{
 			//Collision Detected
 			getGameState().addToTrashCount(1);
+			
+			sendMessage();
 //			getGameState().settrashMissd(getGameState().gettotalTrash()-getGameState().getTrashCount());
 //			System.out.println("Missed "+getGameState().gettrashMissed()+" total trash "+getGameState().gettotalTrash()+" trash in can "+getGameState().getTrashCount());
 			getGameState().remove(this);
+			
 		}
 	}
 	

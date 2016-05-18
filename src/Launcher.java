@@ -60,8 +60,8 @@ public class Launcher {
 	public static void setupGameState (GameState gameState)
 	{
 		//Construct and add Objects here
-		gameState.add(new MittenCrab(500,500,2,1,gameState));
-		gameState.add(new BlueCrab(500,500,3,1,gameState));
+		gameState.add(new MittenCrab(500,500,2,2,gameState));
+		gameState.add(new BlueCrab(500,500,2,1,gameState));
 		//gameState.add(new TestObject(480,850,0,0,gameState));
 		//gameState.add(new mytestObject(32,64,0,0,gameState));
 		//gameState.add(new Food(480,700,0,0,gameState));

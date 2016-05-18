@@ -63,6 +63,11 @@ public class Trash extends Projectile{
 	
 		}
 	}
+	
+	public void sendMessage()
+	{
+		getGameState().addMessage("t");
+	}
 	/**
 	 * checks for collision between trash and a trash can
 	 * @param trashCan

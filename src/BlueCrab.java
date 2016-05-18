@@ -17,6 +17,7 @@ public class BlueCrab extends Crab {
 	@Override
 	public void crabClone() {
 		getGameState().add( new BlueCrab(getxPosition(),getyPosition(),-getxVelocity(), -getyVelocity(),gameState));
+		getGameState().addMessage("b");
 	}
 	
 	

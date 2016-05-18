@@ -20,6 +20,7 @@ public class MittenCrab extends Crab {
 	@Override
 	public void crabClone() {
 		getGameState().add( new MittenCrab(getxPosition(),getyPosition(),-getxVelocity(), -getyVelocity(),gameState));
+		getGameState().addMessage("m");
 	}
 	
 

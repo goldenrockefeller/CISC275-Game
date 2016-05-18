@@ -1,33 +1,6 @@
 
 public class Food extends Projectile{
 	
-	/** Z's getter
-	 * @return the z
-	 */
-	public int getZ() {
-		return z;
-	}
-
-	/**Z's setter
-	 * @param z the z to set
-	 */
-	public void setZ(int z) {
-		this.z = z;
-	}
-
-	/**Width's getter
-	 * @return the width
-	 */
-	public static int getWidth() {
-		return width;
-	}
-
-	/**Height's getter
-	 * @return the height
-	 */
-	public static int getHeight() {
-		return height;
-	}
 	//size values for this object
 	final static int width = GameState.frameWidth/35;
 	final static int height = GameState.frameHeight/35;
@@ -55,6 +28,38 @@ public class Food extends Projectile{
 		if (yPosition <= 0 || yPosition >= gameState.frameHeight) {
 			setVelocity(0,0);
 		}
+	}
+	
+	public void sendMessage(){
+		//Do nothing
+	}
+	
+	/** Z's getter
+	 * @return the z
+	 */
+	public int getZ() {
+		return z;
+	}
+
+	/**Z's setter
+	 * @param z the z to set
+	 */
+	public void setZ(int z) {
+		this.z = z;
+	}
+
+	/**Width's getter
+	 * @return the width
+	 */
+	public static int getWidth() {
+		return width;
+	}
+
+	/**Height's getter
+	 * @return the height
+	 */
+	public static int getHeight() {
+		return height;
 	}
 
 }

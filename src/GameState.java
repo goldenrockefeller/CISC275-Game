@@ -10,6 +10,8 @@ public class GameState {
 	int blueCount; // amount of blue crabs on screen
 	int trashMissed;
 	int totalTrash;
+	String messages; //used for project information about the game state changes to the world
+
 	boolean isend;
 	boolean iswin;
 	//Shooter gameShooter;
@@ -42,6 +44,7 @@ public class GameState {
 	 */
 	public void update()
 	{
+		messages = "";
 		for (GameObject gameObject : gameObjectCollection)
 		{
 			gameObject.updatePosition();
@@ -52,6 +55,11 @@ public class GameState {
 		}
 			 //not a gameObject, so I didn't use updateState
 		settrashMissed();
+	}
+	
+	public void addMessage(String info)
+	{
+		messages += info;
 	}
 	/**
 	 * add to namesake value based on parameter
@@ -96,6 +104,7 @@ public class GameState {
 	public void remove(GameObject gameObject)
 	{
 		this.gameObjectCollection.remove(gameObject);
+		gameObject.finish();
 		gameObject.setGameState(null);
 	}
 	/*
@@ -186,6 +195,19 @@ public class GameState {
 			}
 	
 		}
+	}
+	
+	/**
+	 * @return the messages
+	 */
+	public String getMessages() {
+		return messages;
+	}
+	/**
+	 * @param messages the messages to set
+	 */
+	public void setMessages(String messages) {
+		this.messages = messages;
 	}
 	/**
 	 * getter for number of trash on ground
