@@ -29,8 +29,8 @@ public class Food extends Projectile{
 		return height;
 	}
 	//size values for this object
-	final static int width = GameState.frameWidth/50;
-	final static int height = GameState.frameHeight/50;
+	final static int width = GameState.frameWidth/35;
+	final static int height = GameState.frameHeight/35;
 
 /**
  * constructor for food

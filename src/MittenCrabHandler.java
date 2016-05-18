@@ -17,9 +17,9 @@ public class MittenCrabHandler extends Handler {
 	MittenCrabHandler(GameScreen gameScreen,GameState gameState) {
 		super(gameScreen,gameState);
 		try{
-			image[0] = ImageIO.read(new File("img/mittencrab/mittencrab_0.png")).getScaledInstance(GameScreen.WIDTH/15, GameScreen.HEIGHT/15, Image.SCALE_FAST);
-			image[1] = ImageIO.read(new File("img/mittencrab/mittencrab_1.png")).getScaledInstance(GameScreen.WIDTH/15, GameScreen.HEIGHT/15, Image.SCALE_FAST);
-			image[2] = ImageIO.read(new File("img/mittencrab/mittencrab_2.png")).getScaledInstance(GameScreen.WIDTH/15, GameScreen.HEIGHT/15, Image.SCALE_FAST);
+			image[0] = ImageIO.read(new File("img/mittencrab/mittencrab_0.png")).getScaledInstance(scaleX(Crab.width), scaleY(Crab.height), Image.SCALE_FAST);
+			image[1] = ImageIO.read(new File("img/mittencrab/mittencrab_1.png")).getScaledInstance(scaleX(Crab.width), scaleY(Crab.height), Image.SCALE_FAST);
+			image[2] = ImageIO.read(new File("img/mittencrab/mittencrab_2.png")).getScaledInstance(scaleX(Crab.width), scaleY(Crab.height), Image.SCALE_FAST);
 		}
 		catch(IOException e)
 		{
