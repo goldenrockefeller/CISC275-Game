@@ -1,7 +1,7 @@
-//TODO add todos
-//TODO create tests
-//TODO add function comments and javadoc
-//TODO add a button to the frame
+  /**
+   * Estuary Slam! - by Jake Papineau, Talha Ehtasham, Golden Rockefeller, 
+   * Cheng Zheng, and Thomas Lucca
+   */
 
 import java.util.LinkedList;
 import javax.swing.JFrame;

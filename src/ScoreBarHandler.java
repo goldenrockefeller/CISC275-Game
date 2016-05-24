@@ -23,11 +23,12 @@ public class ScoreBarHandler extends Handler {
 	int missreducetemp;
 	int win;
 	int lose;
+	
+	int bluecrabcount;
+	int bluecrabdisplaycount;
 	int mittencrabcount;
 	int mittencrabdisplaycount;
-	int bluecrabcount;
-
-	int bluecrabdisplaycount;
+	
 	int trashmisscount;
 	int trashmissdisplaycount;
 	int trashincount;
@@ -43,8 +44,11 @@ public class ScoreBarHandler extends Handler {
 	}
 
 	/**
-	 * Draw food in transit if visible If it hits a crab, it will disappear and
-	 * replicate the crab
+	 * Paints the scoreboard.  Variables that affect the scoreboard are taken into account here.
+	 * The left side of the scoreboard is determined by the amount of blue crabs fed and the amount
+	 * of trash missed. The right side of the scoreboard is determined by the amount fo trash that
+	 * has landed in the trashcan.  This will also set a boolean in gameState to determine if the
+	 * game has ended.
 	 */
 	@Override
 	public void paint(Graphics g) {
