@@ -1,6 +1,8 @@
 
 public class trashcanObject extends GameObject {
 
+	private static final long serialVersionUID = 56L; // Serial ID
+	
 	//size values for this object
 	public final static int width = GameState.frameWidth / 10;
 	public final static int height = GameState.frameHeight / 10;

@@ -1,8 +1,3 @@
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 public class BlueCrab extends Crab {
 	private static final long serialVersionUID = 101L;
 /**
@@ -21,9 +16,4 @@ public class BlueCrab extends Crab {
 		getGameState().addMessage("b");
 		getGameState().blueCount+=1;
 	}
-	
-	
-
-	
-
 }

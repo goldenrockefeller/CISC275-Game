@@ -24,7 +24,11 @@ public class PowerBar extends GameObject {
 	}
 
 	/**
-	 * changes the flags based on the current value of powerfluc
+	 * changes the flags based on the current value of powerfluc.
+	 * Will increase the powerfluc by 2 every tick if the power_flag
+	 * is true.  Will decrease the powerfluc by 2 every tick if the power_flag
+	 * is false the powerflag will change if the powerfluc becomes equal to
+	 * 0 or 114.
 	 * 
 	 * @return void
 	 */

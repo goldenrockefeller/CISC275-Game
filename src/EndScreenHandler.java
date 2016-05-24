@@ -8,13 +8,11 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
 public class EndScreenHandler extends Handler implements KeyListener{
 
 	//serial version for Serializable
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 20L;
 	/**
 	 * these are all values from the game that will be display on this screen
 	 */
@@ -133,5 +131,11 @@ public class EndScreenHandler extends Handler implements KeyListener{
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}	
+	/**
+	 * Used to return the Serial ID
+	 */
+	public long returnSerial(){
+		return serialVersionUID;
 	}
 }

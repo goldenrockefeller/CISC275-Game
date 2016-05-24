@@ -71,4 +71,10 @@ public class Shooter {
 	}	
 	
 	
+	/**
+	 * Used to return the Serial ID
+	 */
+	public long returnSerial(){
+		return serialVersionUID;
+	}
 }

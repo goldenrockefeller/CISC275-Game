@@ -3,14 +3,8 @@
 //TODO add function comments and javadoc
 //TODO add a button to the frame
 
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Toolkit;
-import java.lang.*;
 import java.util.LinkedList;
-
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 public class Launcher {	
 	/**

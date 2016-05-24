@@ -1,14 +1,5 @@
 
 import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.util.*;
-
-import java.io.File;
-import java.io.IOException;
-import java.lang.*;
-
-import javax.imageio.ImageIO;
 
 public abstract class Handler {
 	//gameScreen and gameState to be associated with this Handler

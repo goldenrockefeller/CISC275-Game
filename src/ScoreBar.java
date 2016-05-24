@@ -1,8 +1,3 @@
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 public class ScoreBar extends GameObject{
 	private static final long serialVersionUID = 105L; //used for Serializable 
 	

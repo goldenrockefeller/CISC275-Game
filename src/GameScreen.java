@@ -1,9 +1,5 @@
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 import java.util.*;
-
-import java.awt.event.*;
 import javax.swing.*;
 
 public class GameScreen extends JPanel{
