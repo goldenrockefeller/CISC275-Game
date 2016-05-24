@@ -23,46 +23,49 @@ public class CrabTest {
 		testgame.add(testblue);;
 		testgame.add(testmitten);
 		assertEquals(2, getCrabCount(testgame));
-		assertEquals(3.0, testblue.getxVelocity(), 0.1);
-		assertEquals(6.0, testmitten.getxVelocity(), 0.1);
-		assertEquals(1.0, testblue.getyVelocity(), 0.1);
-		assertEquals(2.0, testmitten.getyVelocity(), 0.1);
+		assertEquals(3.0, testblue.getxVelocity(), 0.2);
+		assertEquals(6.0, testmitten.getxVelocity(), 0.2);
+		assertEquals(1.0, testblue.getyVelocity(), 0.2);
+		assertEquals(2.0, testmitten.getyVelocity(), 0.2);
 		
 		//Change nothing
 		testblue.updateState();
 		testmitten.updateState();
-		assertEquals(3.0, testblue.getxVelocity(), 0.1);
-		assertEquals(6.0, testmitten.getxVelocity(), 0.1);
-		assertEquals(1.0, testblue.getyVelocity(), 0.1);
-		assertEquals(2.0, testmitten.getyVelocity(), 0.1);
+		assertEquals(3.0, testblue.getxVelocity(), 0.2);
+		assertEquals(6.0, testmitten.getxVelocity(), 0.2);
+		assertEquals(1.0, testblue.getyVelocity(), 0.2);
+		assertEquals(2.0, testmitten.getyVelocity(), 0.2);
 		
 		//Change xPosition
 		testblue.setxPosition(-10);
 		testmitten.setxPosition(1500);
 		testblue.updateState();
 		testmitten.updateState();
-		assertEquals(3.0, testblue.getxVelocity(), 0.1);
-		assertEquals(-6.0, testmitten.getxVelocity(), 0.1);
-		assertEquals(1.0, testblue.getyVelocity(), 0.1);
-		assertEquals(2.0, testmitten.getyVelocity(), 0.1);
+		assertEquals(3.0, testblue.getxVelocity(), 0.2);
+		assertEquals(-6.0, testmitten.getxVelocity(), 0.2);
+		assertEquals(1.0, testblue.getyVelocity(), 0.2);
+		assertEquals(2.0, testmitten.getyVelocity(), 0.2);
 		
 		//Change y Position
 		testblue.setyPosition(800);
 		testmitten.setyPosition(100);
 		testblue.updateState();
 		testmitten.updateState();
-		assertEquals(3.0, testblue.getxVelocity(), 0.1);
-		assertEquals(-6.0, testmitten.getxVelocity(), 0.1);
-		assertEquals(-1.0, testblue.getyVelocity(), 0.1);
-		assertEquals(2.0, testmitten.getyVelocity(), 0.1);
+		assertEquals(3.0, testblue.getxVelocity(), 0.2);
+		assertEquals(-6.0, testmitten.getxVelocity(), 0.2);
+		assertEquals(-1.0, testblue.getyVelocity(), 0.2);
+		assertEquals(2.0, testmitten.getyVelocity(), 0.2);
 		
-		//Collision checking is part of updateState, tested here
+		//Collision checking is part of updateState, tested below
+		
 		//First reset position values for crab
 		testblue.setxPosition(500);
 		testblue.setyPosition(500);
 		testmitten.setxPosition(500);
 		testmitten.setyPosition(500);
-		testgame.add(new Food(400, 400, 0, 0, testgame));
+		Food testfood1 = new Food(400, 400, 0, 0, testgame);
+		testfood1.setZ(0);
+		testgame.add(testfood1);
 		assertEquals(1, getFoodCount(testgame));
 		assertEquals(2, getCrabCount(testgame));
 		
@@ -73,7 +76,9 @@ public class CrabTest {
 		assertEquals(2, getCrabCount(testgame));
 	
 		//Add food that should collide with crab
-		testgame.add(new Food(500, 500, 0, 0, testgame));
+		Food testfood2 = new Food(500, 500, 0, 0, testgame);
+		testfood2.setZ(0);
+		testgame.add(testfood2);
 		assertEquals(2, getFoodCount(testgame));
 		assertEquals(2, getCrabCount(testgame));
 		
@@ -90,7 +95,9 @@ public class CrabTest {
 		assertEquals(3, getCrabCount(testgame));
 		
 		//Add food that should collide with crab, different position, same hitbox
-		testgame.add(new Food(550, 550, 0, 0, testgame));
+		Food testfood3 = new Food(500, 500, 0, 0, testgame);
+		testfood3.setZ(0);
+		testgame.add(testfood3);
 		assertEquals(2, getFoodCount(testgame));
 		assertEquals(3, getCrabCount(testgame));
 				
