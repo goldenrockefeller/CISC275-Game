@@ -30,13 +30,10 @@ public class Food extends Projectile{
 			setVelocity(0,0);
 		}
 	}
-<<<<<<< HEAD
+	
 	/**
 	 * stub method. Can be called but does nothing.
 	 */
-=======
-	
->>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
 	public void sendMessage(){
 		//Do nothing
 	}

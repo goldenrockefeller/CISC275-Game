@@ -9,11 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.*;
 
 public class GameState implements java.io.Serializable {
-<<<<<<< HEAD
 	private static final long serialVersionUID = 1L;//used for Serializable
-=======
-	private static final long serialVersionUID = 1L;
->>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
 	
 	/**
 	 * Gamestate is the main class for our model.  All of our gameobjects are combined
@@ -24,7 +20,6 @@ public class GameState implements java.io.Serializable {
 	int trashCount; //amount of trash on screen
 	int mittenCount; //amount of mitten crabs on screen
 	int blueCount; // amount of blue crabs on screen
-<<<<<<< HEAD
 	int trashMissed; //amount of trash that was thrown but didn't get into a can
 	int totalTrash; //total trash thrown
 	String messages; //used for project information about the game state changes to the world
@@ -32,15 +27,6 @@ public class GameState implements java.io.Serializable {
 	boolean isend; //is true if the game is over
 	boolean iswin; //is true if the player has "won"
 	boolean startover; //is true if the game needs to restart
-=======
-	int trashMissed;
-	int totalTrash;
-	String messages; //used for project information about the game state changes to the world
-
-	boolean isend;
-	boolean iswin;
-	boolean startover;
->>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
 	//Shooter gameShooter;
 	//TO DO need to have this in Launcher
 	
@@ -59,13 +45,11 @@ public class GameState implements java.io.Serializable {
 	 double yScale= frameHeight/768;
 	 these numbers are MY resolution. Can be easily changed to match any real, possible resolution
 	 */
-<<<<<<< HEAD
+	
+	
 	/**
 	 * Constructor. Sets default value for game stats.
 	 */
-=======
-	
->>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
 	public GameState()
 	{
 		isend = false;
@@ -80,13 +64,10 @@ public class GameState implements java.io.Serializable {
 		startover = false;
 		gameObjectCollection = new LinkedList<GameObject>();
 	}
-<<<<<<< HEAD
+	
 	/**
 	 * sets the game state stats to be the same as the initial constructor's
 	 */
-=======
-	
->>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
 	public void reset()
 	{
 		isend = false;
@@ -298,7 +279,7 @@ public class GameState implements java.io.Serializable {
 	public Collection<GameObject> getGameObjectCollection() {
 		return gameObjectCollection;
 	}
-<<<<<<< HEAD
+	
 	/**
 	 * setter for iswin
 	 * @param a the new value of iswin
@@ -306,15 +287,11 @@ public class GameState implements java.io.Serializable {
 	public void setiswin(boolean a){
 		iswin=a;
 	}
+
 	/**
 	 * setter for isend
 	 * @param a the new value of isend
 	 */
-=======
-	public void setiswin(boolean a){
-		iswin=a;
-	}
->>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
 	public void setisend(boolean a){
 		isend=a;
 	}

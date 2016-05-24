@@ -1,11 +1,7 @@
 import java.util.ArrayList;
 
 public class Trash extends Projectile{
-<<<<<<< HEAD
 	private static final long serialVersionUID = 107L; //used for Serializable 
-=======
-	private static final long serialVersionUID = 107L;
->>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
 	int trashFlag = 0;//amount of trash on screen
 	//size values for this object
 	public static final int width = GameState.frameWidth/35;
@@ -70,13 +66,9 @@ public class Trash extends Projectile{
 		}
 
 	}
-<<<<<<< HEAD
 	/**
 	 * adds the message "t" to gameState
 	 */
-=======
-	
->>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
 	public void sendMessage()
 	{
 		getGameState().addMessage("t");

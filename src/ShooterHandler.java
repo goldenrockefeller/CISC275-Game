@@ -24,21 +24,12 @@ public class ShooterHandler extends Handler implements KeyListener {
 	//x and y values for speed
 	double xSpeed; 
 	double ySpeed;
-<<<<<<< HEAD
 	int degrees; //degrees or angle used for vector calculations
 	int power; //power of projectile
 	int randProj;	//rand used for projectiles
 	int delay = 0; //possible delay 
 	Food tempf; //temp form of food
 	Trash tempt; //temp form of trash
-=======
-	int degrees;
-	int power;
-	int randProj;	
-	int delay = 0;
-	Food tempf;
-	Trash tempt;
->>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
 	
 	//projectile, arrow's image, powerbar's image, and shooter to be associated with this handler
 	
@@ -69,43 +60,6 @@ public class ShooterHandler extends Handler implements KeyListener {
 		this.gameShooter = gameShooter;
 		firstclick = true;
 	}
-	
-	public void reset()
-	{
-		projectile = generateProjectile();
-		firstclick = true;
-	}
-	
-	/**
-	 * This function takes the current power in the power bar and will create a 
-	 * new arrow reflecting the current power and direction
-	 */
-	private BufferedImage colorArrow(BufferedImage img, int curr_power){
-		int width = img.getWidth();
-		int height = img.getHeight();
-		
-		// Clone the arrow Image
-		BufferedImage new_img = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
-	    Graphics g = new_img.getGraphics();
-	    g.drawImage(img, 0, 0, null);
-	    g.dispose();
-		 
-	    // Change the arrow image based on current power
-		for(int x = 0; x < width; x++){
-			for(int y = 0; y < height; y++){
-				final int color = img.getRGB(x, y);
-				final int red = (color & 0x00ff0000) >> 16;
-				final int green = (color & 0x0000ff00) >> 8;
-				final int blue = color & 0x000000ff;
-
-				if(y < 122 - curr_power && !(red == 0 && green == 0 && blue == 0) && 
-						!(red == 255 && green == 255 && blue == 255)){
-					new_img.setRGB(x, y, 0xffffffff);
-				}
-			}
-		}
-		return new_img;
-	}
 
 	/**
 	 * resets the first click bool and generates a new projectile
@@ -118,7 +72,8 @@ public class ShooterHandler extends Handler implements KeyListener {
 	
 	/**
 	 * This function takes the current power in the power bar and will create a 
-	 * new arrow reflecting the current power and direction
+	 * new arrow reflecting the current power
+	 * @param BufferedImage img, int curr_power
 	 */
 	private BufferedImage colorArrow(BufferedImage img, int curr_power){
 		int width = img.getWidth();
@@ -148,7 +103,9 @@ public class ShooterHandler extends Handler implements KeyListener {
 	}
 
 	/**
-	 * paints image on screen
+	 * Gets the current arrow image using colorArrow then rotates
+	 * that image to reflect the current direction it should
+	 * be facing. Then paints that image onto the screen
 	 * @param g, graphics used
 	 */
 	public void paint(Graphics g) {

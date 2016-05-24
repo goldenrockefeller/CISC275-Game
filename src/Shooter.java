@@ -1,10 +1,6 @@
 
 public class Shooter {	
-<<<<<<< HEAD
-	private static final long serialVersionUID = 106L;//used for Serializable 
-=======
-	private static final long serialVersionUID = 106L;
->>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
+	private static final long serialVersionUID = 106L;//used for Serializable
 	private boolean arrow_or_pb_flag; // tells us if we need to set the arrow or power bar
 	//arrow and powerbar to be associated with this shooters
 	private Arrow game_arrow;
