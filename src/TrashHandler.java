@@ -19,11 +19,11 @@ public class TrashHandler extends Handler {
 	TrashHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen, gameState);
 		try{
-			image[0] = ImageIO.read(new File("img/apple.png")).getScaledInstance(Launcher.WIDTH/50, Launcher.HEIGHT/50, Image.SCALE_FAST);	
-			image[1] = ImageIO.read(new File("img/banana.png")).getScaledInstance(Launcher.WIDTH/50, Launcher.HEIGHT/50, Image.SCALE_FAST);
-			image[2] = ImageIO.read(new File("img/paper.png")).getScaledInstance(Launcher.WIDTH/50, Launcher.HEIGHT/50, Image.SCALE_FAST);
-			image[3] = ImageIO.read(new File("img/soda.png")).getScaledInstance(Launcher.WIDTH/50, Launcher.HEIGHT/50, Image.SCALE_FAST);
-			Image check = ImageIO.read(new File("img/check.png")).getScaledInstance(Launcher.WIDTH/50, Launcher.HEIGHT/50, Image.SCALE_FAST);
+			image[0] = ImageIO.read(new File("img/apple.png")).getScaledInstance(scaleX(Trash.width), scaleY(Trash.height), Image.SCALE_FAST);	
+			image[1] = ImageIO.read(new File("img/banana.png")).getScaledInstance(scaleX(Trash.width), scaleY(Trash.height), Image.SCALE_FAST);
+			image[2] = ImageIO.read(new File("img/paper.png")).getScaledInstance(scaleX(Trash.width), scaleY(Trash.height), Image.SCALE_FAST);
+			image[3] = ImageIO.read(new File("img/soda.png")).getScaledInstance(scaleX(Trash.width), scaleY(Trash.height), Image.SCALE_FAST);
+			Image check = ImageIO.read(new File("img/check.png")).getScaledInstance(scaleX(Trash.width), scaleY(Trash.height), Image.SCALE_FAST);
 			}
 		catch(IOException e)
 		{

@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.lang.*;
+import java.util.LinkedList;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,9 +16,7 @@ public class Launcher {
 	/**
 	 * these values determine the total dimensions of the screen
 	 */
-	private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	public static final int WIDTH = (int) screenSize.getWidth();
-	public static final int HEIGHT = (int) screenSize.getHeight();
+
 	public static void main(String[] args) {
 		
 		
@@ -44,16 +43,24 @@ public class Launcher {
 		 */
 		while (true)
 		{
-			gameState.update();
-			gameScreen.repaint();
-			//System.out.println(gameState);
-			try {
-				Thread.sleep(10);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			while (!gameState.startover)
+			{
+				gameState.update();
+				gameScreen.repaint();
+				//System.out.println(gameState);
+				try {
+					Thread.sleep(10);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
+			gameState = new GameState();
+			gameScreen.setHandlerCollection(new LinkedList<Handler>());
+			Launcher.setupGameState(gameState);
+			Launcher.setupGameScreen(gameScreen,gameState,gameShooter);
 		}
+		
 	}
 	/**
 	 * sets default values of the game state
@@ -62,16 +69,17 @@ public class Launcher {
 	public static void setupGameState (GameState gameState)
 	{
 		//Construct and add Objects here
-		gameState.add(new MittenCrab(500,500,2,1,gameState));
-		gameState.add(new BlueCrab(500,500,3,1,gameState));
+		gameState.add(new MittenCrab(500,500,2,2,gameState));
+		gameState.add(new BlueCrab(500,500,2,1,gameState));
 		//gameState.add(new TestObject(480,850,0,0,gameState));
 		//gameState.add(new mytestObject(32,64,0,0,gameState));
 		//gameState.add(new Food(480,700,0,0,gameState));
 		gameState.add(new trashcanObject(200,120,0,0,gameState));
 		gameState.add(new trashcanObject(500,120,0,0,gameState));
 		gameState.add(new trashcanObject(800,120,0,0,gameState));
+		//gameState.add(new ScoreBar(850,25,0,0,gameState));
 		//gameState.setProjectile(new Food(480,700,0,0,gameState));
-		gameState.add(new StartDisplay(Launcher.WIDTH / 8, Launcher.HEIGHT / 12, 0, 0, gameState));
+		//add(new StartDisplay(GameScreen.WIDTH / 8, GameScreen.HEIGHT / 12, 0, 0, gameState));
 		
 	}
 	/**
@@ -88,16 +96,15 @@ public class Launcher {
 		gameScreen.add (new trashcanHandler(gameScreen,gameState));
 		gameScreen.add (new MittenCrabHandler(gameScreen,gameState));
 		gameScreen.add (new BlueCrabHandler(gameScreen,gameState));
-		gameScreen.add (new ShooterHandler(gameScreen, gameState,gameShooter));
+		ShooterHandler sh = new ShooterHandler(gameScreen, gameState,gameShooter);
+		gameScreen.add (sh);
 		//gameScreen.add (new TestHandler(gameScreen,gameState));
 		//gameScreen.add (new mytestHandler(gameScreen,gameState));
-		gameScreen.add (new powerbarHandler(gameScreen,
-				gameState,
-				gameShooter
-				));
 		gameScreen.add (new FoodHandler(gameScreen,gameState));
 		gameScreen.add (new TrashHandler(gameScreen, gameState));
+		gameScreen.add(new ScoreBarHandler(gameScreen, gameState));
 		gameScreen.add (new StartDisplayHandler(gameScreen, gameState));
+		gameScreen.add(new EndScreenHandler(gameScreen, gameState,sh));
 	}
 	/**
 	 * sets default values of game window
@@ -107,7 +114,7 @@ public class Launcher {
 	public static void setupGameWindow(JFrame gameWindow, GameScreen gameScreen)
 	{
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		gameWindow.setSize(Launcher.WIDTH, Launcher.HEIGHT);
+		gameWindow.setSize(GameScreen.WIDTH, GameScreen.HEIGHT);
 		gameWindow.getContentPane().add(gameScreen);
 		gameWindow.setVisible(true);
 	}
@@ -119,6 +126,5 @@ public class Launcher {
 	{
 		//Construct and add Objects here
 	}
-	
 
 }

@@ -1,13 +1,32 @@
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.*;
 
-public class GameState {
+public class GameState implements java.io.Serializable {
+	private static final long serialVersionUID = 1L;//used for Serializable
+	
+	/**
+	 * Gamestate is the main class for our model.  All of our gameobjects are combined
+	 * here to form the current gamestate.
+	 */
+	
 	int score; //player's score
 	int trashCount; //amount of trash on screen
 	int mittenCount; //amount of mitten crabs on screen
 	int blueCount; // amount of blue crabs on screen
+	int trashMissed; //amount of trash that was thrown but didn't get into a can
+	int totalTrash; //total trash thrown
+	String messages; //used for project information about the game state changes to the world
+
+	boolean isend; //is true if the game is over
+	boolean iswin; //is true if the player has "won"
+	boolean startover; //is true if the game needs to restart
 	//Shooter gameShooter;
 	//TO DO need to have this in Launcher
 	
@@ -15,7 +34,7 @@ public class GameState {
 	final static int frameWidth = 1000;
     final static int frameHeight = 1000;
     //linked list for all the game objects in play
-	Collection<GameObject> gameObjectCollection = new LinkedList<GameObject>();
+	Collection<GameObject> gameObjectCollection;
 	
 	//Collection<Projectile> trashCollection = new LinkedList<Projectile>();
 	/*Other group's method of making screen size changeable
@@ -26,7 +45,39 @@ public class GameState {
 	 double yScale= frameHeight/768;
 	 these numbers are MY resolution. Can be easily changed to match any real, possible resolution
 	 */
-	
+	/**
+	 * Constructor. Sets default value for game stats.
+	 */
+	public GameState()
+	{
+		isend = false;
+		iswin = false;
+		totalTrash = 0;
+		trashMissed = 0;
+		messages = "";
+		blueCount = 0;
+		mittenCount = 0;
+		trashCount = 0;
+		score = 0;
+		startover = false;
+		gameObjectCollection = new LinkedList<GameObject>();
+	}
+	/**
+	 * sets the game state stats to be the same as the initial constructor's
+	 */
+	public void reset()
+	{
+		isend = false;
+		iswin = false;
+		totalTrash = 0;
+		trashMissed = 0;
+		messages = "";
+		blueCount = 0;
+		mittenCount = 0;
+		trashCount = 0;
+		score = 0;
+		gameObjectCollection = new LinkedList<GameObject>();
+	}
 	/**
 	 * Iterate through game objects and update position for each one based on velocity
 	 * Iterate once again and update state (view)
@@ -38,6 +89,7 @@ public class GameState {
 	 */
 	public void update()
 	{
+		messages = "";
 		for (GameObject gameObject : gameObjectCollection)
 		{
 			gameObject.updatePosition();
@@ -47,11 +99,23 @@ public class GameState {
 			gameObject.updateState();
 		}
 			 //not a gameObject, so I didn't use updateState
+		settrashMissed();
+	}
+	
+	public void addMessage(String info)
+	{
+		messages += info;
 	}
 	/**
 	 * add to namesake value based on parameter
 	 * @param value to be added
 	 */
+	public void addtotalTrash(int a){
+		totalTrash=totalTrash+a;
+	}
+	public void addtrashMissed(int a){
+		trashMissed=trashMissed+a;
+	}
 	public void addToScore(int value)
 	{
 		this.score += value;
@@ -85,6 +149,7 @@ public class GameState {
 	public void remove(GameObject gameObject)
 	{
 		this.gameObjectCollection.remove(gameObject);
+		gameObject.finish();
 		gameObject.setGameState(null);
 	}
 	/*
@@ -122,6 +187,20 @@ public class GameState {
 		this.trashCount = trashCount;
 	}
 	/**
+	 * getter for Trashcount
+	 * @return trashCount
+	 */
+	public int gettotalTrash() {
+		return totalTrash;
+	}
+	/**
+	 * setter for totalTrash
+	 * @param totalTrash
+	 */
+	public void settotalTrash(int totalTrash) {
+		this.totalTrash = totalTrash;
+	}
+	/**
 	 * getter for MittenCount
 	 * @return mittenCount
 	 */
@@ -143,6 +222,47 @@ public class GameState {
 		return blueCount;
 	}
 	/**
+	 * setter for number of  trash on ground
+	 * @param settrashMissd
+	 */
+	public void settrashMissed(){
+		trashMissed=0;
+		for (GameObject gameObject : new ArrayList<GameObject>(getGameObjectCollection()))
+		{
+			if (gameObject instanceof Trash)
+			{	
+				Projectile proj = (Projectile)gameObject;
+				if (proj.getZ() == 0)
+				{
+					trashMissed++;
+				}
+				
+			}
+	
+		}
+	}
+	
+	/**
+	 * @return the messages
+	 */
+	public String getMessages() {
+		return messages;
+	}
+	/**
+	 * @param messages the messages to set
+	 */
+	public void setMessages(String messages) {
+		this.messages = messages;
+	}
+	/**
+	 * getter for number of trash on ground
+	 * @return settrashMissd
+	 */
+	public int gettrashMissed(){
+
+		return trashMissed;
+	}
+	/**
 	 * setter for BlueCount
 	 * @param blueCount
 	 */
@@ -156,14 +276,26 @@ public class GameState {
 	public Collection<GameObject> getGameObjectCollection() {
 		return gameObjectCollection;
 	}
+	/**
+	 * setter for iswin
+	 * @param a the new value of iswin
+	 */
+	public void setiswin(boolean a){
+		iswin=a;
+	}
+	/**
+	 * setter for isend
+	 * @param a the new value of isend
+	 */
+	public void setisend(boolean a){
+		isend=a;
+	}
 	/*
 	public Collection<Projectile> getTrashCollection() {
 		return trashCollection;
 	}*/
 	/*
 	public void loadProjectile(Shooter gameShooter) {
-
-		
 		
 	}
 	*/
@@ -176,5 +308,49 @@ public class GameState {
 				+ ", blueCount=" + blueCount + ", gameObjectCollection=" + gameObjectCollection + "]";
 	}
 	
-
+	
+	
+	/**
+	 * Method to serialize OverallGame, which contains the other games as params
+	 * So this output will contain the serialized version of every object
+	 * @param obj
+	 * @param fileName
+	 * @exception Throws an error if file name isn't found
+	 * @see java.io.Serializable
+	 */
+	public static void serialize(Object obj, String fileName) {
+		try {
+	        FileOutputStream fos = new FileOutputStream(fileName);
+	        ObjectOutputStream oos = new ObjectOutputStream(fos);
+	        oos.writeObject(obj);
+	        fos.close();
+		}
+		catch (IOException e) {
+			System.out.println("Read Error: " + e.getMessage());
+		}
+	}
+	
+	/**
+	 * Method to read a game state from file and instantiate it. The reverse of the serialize function
+	 * @param fileName
+	 * @returns the deserialized object
+	 * @exception Throws an exception if file name isn't found
+	 * @exception Throws an exception if the class isn't found
+	 */
+	public static Object deserialize(String fileName) {
+		GameState obj = null ;
+		try {	
+			FileInputStream fis = new FileInputStream(fileName);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			obj = (GameState)ois.readObject();
+			ois.close();
+		}
+		catch(IOException e) {
+			System.out.println("Read Error: " + e.getMessage());
+		}
+		catch (ClassNotFoundException e){
+			System.out.println("Read Error: " + e.getMessage());
+		}
+		return obj;
+	}
 }

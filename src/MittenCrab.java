@@ -1,6 +1,6 @@
 
-
 public class MittenCrab extends Crab {
+	private static final long serialVersionUID = 103L; //used for serializable
 	/**
 	 * Constructor, parameters are the same as the superclass'
 	 * @param xPosition
@@ -15,11 +15,13 @@ public class MittenCrab extends Crab {
 		
 	}
 	/**
-	 * adds a new mitten crab to the game
+	 * Adds a new mitten crab to the game
 	 */
 	@Override
 	public void crabClone() {
 		getGameState().add( new MittenCrab(getxPosition(),getyPosition(),-getxVelocity(), -getyVelocity(),gameState));
+		getGameState().addMessage("m");
+		getGameState().mittenCount+=1;
 	}
 	
 

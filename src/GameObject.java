@@ -1,6 +1,6 @@
 import java.lang.*;
 
-public abstract class GameObject {
+public abstract class GameObject implements java.io.Serializable {
 	//the x and y values for the game object's location
 	double xPosition;
 	double yPosition;
@@ -15,7 +15,9 @@ public abstract class GameObject {
 	protected double objectStateTime = 0;
 	
 	/**
-	 * Constructor for game objects
+	 * Constructor for game objects. These are the model representations for
+	 * the objects that will appear on screen.
+	 * 
 	 * @param xPosition
 	 * @param yPosition
 	 * @param xVelocity
@@ -35,11 +37,11 @@ public abstract class GameObject {
 	 */
 	abstract public void updateState();
 	/**
-	 * removes the game object from the game
+	 * What the object does when it is removed from the game
 	 */
-	public void selfDestruct()
+	public void finish()
 	{
-		gameState.remove(this);
+		//Do nothing
 	}
 	/**
 	 * takes the existing speed and adjusts the velocity's direction based on parameters

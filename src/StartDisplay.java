@@ -1,6 +1,8 @@
 
 public class StartDisplay extends GameObject {
 	/**
+	 * The game object for the start screen
+	 * 
 	 * Constructor
 	 * @param xPosition
 	 * @param yPosition

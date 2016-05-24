@@ -15,24 +15,26 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 	
 public class ShooterHandler extends Handler implements KeyListener {
-	//starting size of arrow
-	public static final int arrowWidth = 228;
-	public static final int arrowHeight = 214;
+	public static final int arrowWidth = 230;
+	public static final int arrowHeight = 249;
 	//starting x and y values for projectile
-	public static final int projectileStartingX = 480;
-	public static final int projectileStartingY = 730;
+	
+	public static final int projectileStartingX = 490;
+	public static final int projectileStartingY = 860;
 	//x and y values for speed
 	double xSpeed; 
 	double ySpeed;
-	int degrees; //degrees used for determining parts of velocity
-	int power; //power for projectile being shot
-	int randProj; 
-	Food tempf; //temporary food
-	Trash tempt; //temporary trash
+	int degrees; //degrees or angle used for vector calculations
+	int power; //power of projectile
+	int randProj;	//rand used for projectiles
+	int delay = 0; //possible delay 
+	Food tempf; //temp form of food
+	Trash tempt; //temp form of trash
+	
 	//projectile, arrow's image, powerbar's image, and shooter to be associated with this handler
+	
 	Projectile projectile;
 	BufferedImage arrow_image;
-	Image powerbar_image;
 	Shooter gameShooter;
 	
 	boolean firstclick; // This ignores the first space click.  We do this because the first
@@ -47,8 +49,7 @@ public class ShooterHandler extends Handler implements KeyListener {
 		super(gameScreen,gameState);
 		// TODO Auto-generated constructor stub
 		try{
-			arrow_image = ImageIO.read(new File("img/arrow.png"));
-			powerbar_image = ImageIO.read(new File("img/powerbar.png"));
+			arrow_image = ImageIO.read(new File("img/colored_arrow.png"));
 		}
 		catch(IOException e)
 		{
@@ -60,6 +61,46 @@ public class ShooterHandler extends Handler implements KeyListener {
 		firstclick = true;
 	}
 	/**
+	 * resets the first click bool and generates a new projectile
+	 */
+	public void reset()
+	{
+		projectile = generateProjectile();
+		firstclick = true;
+	}
+	
+	/**
+	 * This function takes the current power in the power bar and will create a 
+	 * new arrow reflecting the current power and direction
+	 */
+	private BufferedImage colorArrow(BufferedImage img, int curr_power){
+		int width = img.getWidth();
+		int height = img.getHeight();
+		
+		// Clone the arrow Image
+		BufferedImage new_img = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
+	    Graphics g = new_img.getGraphics();
+	    g.drawImage(img, 0, 0, null);
+	    g.dispose();
+		 
+	    // Change the arrow image based on current power
+		for(int x = 0; x < width; x++){
+			for(int y = 0; y < height; y++){
+				final int color = img.getRGB(x, y);
+				final int red = (color & 0x00ff0000) >> 16;
+				final int green = (color & 0x0000ff00) >> 8;
+				final int blue = color & 0x000000ff;
+
+				if(y < 122 - curr_power && !(red == 0 && green == 0 && blue == 0) && 
+						!(red == 255 && green == 255 && blue == 255)){
+					new_img.setRGB(x, y, 0xffffffff);
+				}
+			}
+		}
+		return new_img;
+	}
+
+	/**
 	 * paints image on screen
 	 * @param g, graphics used
 	 */
@@ -70,14 +111,19 @@ public class ShooterHandler extends Handler implements KeyListener {
 		PowerBar pb = gameShooter.getPowerBar();
 		Arrow a = gameShooter.getArrow();
 		
-		// TODO rotate arrow - NEEDS TESTING -----------------------------------------------------
-        double rotation_needed = Math.toRadians(90 - a.getDirectFluc());
+		// Create new arrow based off powerbar
+		
+		BufferedImage new_arrow = colorArrow(arrow_image, pb.getPowerFluc());
+		
+		// ROTATE ARROW 
+        
+		double rotation_needed = Math.toRadians(90 - a.getDirectFluc());
 		double locationX = (double) arrowWidth / 2;
 		double locationY = (double) arrowHeight / 2;
 		AffineTransform tx = AffineTransform.getRotateInstance(rotation_needed, locationX, locationY);
 		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
-        
-		BufferedImage new_image = op.filter(arrow_image, null);
+		
+		BufferedImage new_image = op.filter(new_arrow, null);
 		
 		g.drawImage(new_image, (int)a.getxPosition(), (int)a.getyPosition(), new Color(0, 0, 0, 0), null);
 		
@@ -87,6 +133,12 @@ public class ShooterHandler extends Handler implements KeyListener {
 			!(projectile.getxPosition() == projectileStartingX &&
 			projectile.getyPosition() == projectileStartingY)))
 		{
+			if (projectile instanceof Trash)
+			{
+				if (projectile.getSpeed() == 0){
+					gameState.addMessage("T");
+				}
+			}
 			projectile = generateProjectile();
 		}
 		
@@ -104,12 +156,12 @@ public class ShooterHandler extends Handler implements KeyListener {
 		degrees = gameShooter.getArrow().getDirection();
 		power = gameShooter.getPowerBar().getPower();
 		
-		xSpeed = (Math.toDegrees(Math.cos(Math.toRadians(degrees)))/10);
-		ySpeed = - (Math.toDegrees(Math.sin(Math.toRadians(degrees)))/10);
+		xSpeed = 7.8 * (Math.cos(Math.toRadians(degrees)));
+		ySpeed = - 7.8 *(Math.sin(Math.toRadians(degrees)));
 		
 		projectile.setVelocity(xSpeed, ySpeed);
 		int timeOfFlight = power ;
-		projectile.setZ(timeOfFlight);
+		projectile.setZ(Math.max(30,timeOfFlight));
 		/*
 		
 		if (projectile instanceof Trash && power < 50) {
@@ -136,32 +188,33 @@ public class ShooterHandler extends Handler implements KeyListener {
 	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(firstclick == true){
-			firstclick = false;
-			return;
-		}
-		if(e.getKeyCode() == KeyEvent.VK_SPACE){
-			// Do not control shooter when the projectile is in motion
-
-			System.out.println(projectile);
-			if ((projectile.getxPosition() == projectileStartingX && projectile.getyPosition() == projectileStartingY))
-			{
-				
-				if(gameShooter.getFlag()){
-					gameShooter.getArrow().setDirection();
-					gameShooter.getArrow().setStop();
-					gameShooter.changeFlag();
-
+		if (!(gameState.isend)){
+			if(e.getKeyCode() == KeyEvent.VK_SPACE){
+				// Do not control shooter when the projectile is in motion
+				if(firstclick == true){
+					firstclick = false;
+					return;
 				}
-				else{
-					gameShooter.getPowerBar().setPower();
-					System.out.print("Fired at: " + gameShooter.getPowerBar().getPower() + " power ");
-					System.out.println("in direction " + gameShooter.getArrow().getDirection() + "!");
-
-					calculateTrajectory(gameShooter);
-
-					gameShooter.changeFlag();
-					gameShooter.setDefault();
+				System.out.println(projectile);
+				if ((projectile.getxPosition() == projectileStartingX && projectile.getyPosition() == projectileStartingY))
+				{
+					
+					if(gameShooter.getFlag()){
+						gameShooter.getArrow().setDirection();
+						gameShooter.getArrow().setStop();
+						gameShooter.changeFlag();
+	
+					}
+					else{
+						gameShooter.getPowerBar().setPower();
+						System.out.print("Fired at: " + gameShooter.getPowerBar().getPower() + " power ");
+						System.out.println("in direction " + gameShooter.getArrow().getDirection() + "!");
+	
+						calculateTrajectory(gameShooter);
+	
+						gameShooter.changeFlag();
+						gameShooter.setDefault();
+					}
 				}
 			}
 		}

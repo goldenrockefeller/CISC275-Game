@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
 public class Trash extends Projectile{
-	
+	private static final long serialVersionUID = 107L; //used for Serializable 
 	int trashFlag = 0;//amount of trash on screen
 	//size values for this object
-	public static final int width = GameState.frameWidth/50;
-	public static final int height = GameState.frameHeight/50;
+	public static final int width = GameState.frameWidth/35;
+	public static final int height = GameState.frameHeight/35;
 	/**
 	 * Constructor
 	 * @param xPosition
@@ -54,14 +54,24 @@ public class Trash extends Projectile{
 			setVelocity(0,0);
 			stopped = true;
 		}*/
-		for (GameObject gameObject : new ArrayList<GameObject>(getGameState().getGameObjectCollection()))
-		{
-			if (gameObject instanceof trashcanObject)
+		if (getGameState() != null){
+			for (GameObject gameObject : new ArrayList<GameObject>(getGameState().getGameObjectCollection()))
 			{
-				checkCollision((trashcanObject)gameObject);
+				if (gameObject instanceof trashcanObject)
+				{
+					checkCollision((trashcanObject)gameObject);
+				}
+		
 			}
-	
 		}
+
+	}
+	/**
+	 * adds the message "t" to gameState
+	 */
+	public void sendMessage()
+	{
+		getGameState().addMessage("t");
 	}
 	/**
 	 * checks for collision between trash and a trash can
@@ -76,6 +86,8 @@ public class Trash extends Projectile{
 				trashCan.getyPosition() + trashCan.height > this.getyPosition() )
 		{
 			//Collision Detected
+			getGameState().trashCount += 1;
+			getGameState().addMessage("t");
 			getGameState().remove(this);
 		}
 	}

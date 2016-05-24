@@ -1,4 +1,17 @@
 	public class Arrow extends GameObject {
+		private static final long serialVersionUID = 100L;
+		/**
+		 * The arrow is the object that determines the direction in which our projectile
+		 * will be flung.  On the screen, the player will see the arrow rotate back and
+		 * forth
+		 * 
+		 * @param xPosition
+		 * @param yPosition
+		 * @param xVelocity
+		 * @param yVelocity
+		 * @param gameState
+		 */
+		
 		private int directfluc = 20; //sets value for the arrow's movement, acts as "position"
 		private int direction = -1; //determines direction
 		private boolean arrow_flag = true; // Used to determine if arrow is rotating left or right
@@ -11,6 +24,8 @@
 		
 		/**
 		 * sets direction of the arrow's movement based on its position
+		 * 
+		 * @return void
 		 */
 		public void setDirectFluc(){
 			if (!stop_flag) {
@@ -65,12 +80,23 @@
 		public void setStop() {
 			stop_flag = !stop_flag;
 		}
-		/**
-		 * restores default values to Arrow
-		 */
-		public void defaultDirection(){
-			//direction = -1;
-			//this.setDirectFluc(0);
-			//arrow_flag = true;
+		
+		@Override
+		public String toString(){
+			String going;
+			String stopped;
+			if(direction == -1){
+				going = "left";
+			}
+			else going = "right";
+			
+			if(stop_flag){
+				stopped = "stopped";
+			}
+			else{
+				stopped = "moving";
+			}
+			
+			return "The arrow is " + stopped + " going " + going + " at " + directfluc;
 		}
 	}

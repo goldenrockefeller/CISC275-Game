@@ -9,11 +9,14 @@ import javax.swing.*;
 public class GameScreen extends JPanel{
 	
 	/**
-	 * this screen puts the game's handlers in a collection to help implement them
+	 * this class puts the game's handlers in a collection to help implement them.
+	 * This acts as the main class for our view.
 	 */
-	
+	private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	public static final int WIDTH = (int) screenSize.getWidth(); //width of game screen
+	public static final int HEIGHT = (int) screenSize.getHeight(); //height of game screen
     private Collection<Handler> handlerCollection;
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L; //used for Serializable
     /*
      * ImageBank contains a set of Sprite Set
      * SpriteSets contains a list of all Image Sets for a GameObject
@@ -65,4 +68,12 @@ public class GameScreen extends JPanel{
 	public Collection<Handler> getHandlerCollection() {
 		return handlerCollection;
 	}
+
+	/**
+	 * @param handlerCollection the handlerCollection to set
+	 */
+	public void setHandlerCollection(Collection<Handler> handlerCollection) {
+		this.handlerCollection = handlerCollection;
+	}
+	
 }

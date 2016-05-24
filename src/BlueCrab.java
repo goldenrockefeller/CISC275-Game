@@ -4,6 +4,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class BlueCrab extends Crab {
+	private static final long serialVersionUID = 101L;
 /**
  * Constructor for Blue Crab
  */
@@ -17,6 +18,8 @@ public class BlueCrab extends Crab {
 	@Override
 	public void crabClone() {
 		getGameState().add( new BlueCrab(getxPosition(),getyPosition(),-getxVelocity(), -getyVelocity(),gameState));
+		getGameState().addMessage("b");
+		getGameState().blueCount+=1;
 	}
 	
 	

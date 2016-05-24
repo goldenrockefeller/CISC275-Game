@@ -10,7 +10,9 @@ import javax.imageio.ImageIO;
 
 
 public class StartDisplayHandler extends Handler implements KeyListener {
-
+	/**
+	 * This is the starting image players will see when they start the game
+	 */
 	Image startdisplay; //image to be used for the start screen
 	boolean active; // tells us if the start screen is needed or not
 	/**
@@ -21,7 +23,7 @@ public class StartDisplayHandler extends Handler implements KeyListener {
 	StartDisplayHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen, gameState);
 		try{
-			startdisplay = ImageIO.read(new File("img/startscreen.png"));
+			startdisplay = ImageIO.read(new File("img/startscreen.png")).getScaledInstance((int)(GameScreen.WIDTH/1.5), (int)(GameScreen.HEIGHT/1.5), Image.SCALE_FAST);
 		}
 		catch (IOException e){
 			System.out.println("startscreen.png not found");
@@ -36,15 +38,7 @@ public class StartDisplayHandler extends Handler implements KeyListener {
 	@Override
 	public void paint(Graphics g) {
 		if(active){
-			for (GameObject gameObject : getGameState().getGameObjectCollection())
-			{
-				if (gameObject instanceof StartDisplay)
-				{
-					if(active){
-						g.drawImage(startdisplay, (int) gameObject.getxPosition(), (int) gameObject.getyPosition(), new Color(0,0,0,0), null);
-					}
-				}
-			}
+			g.drawImage(startdisplay, GameScreen.WIDTH/6, GameScreen.HEIGHT/12, new Color(0,0,0,0), null);
 		}
 	}
 	/**
@@ -56,20 +50,13 @@ public class StartDisplayHandler extends Handler implements KeyListener {
 	}
 	/**
 	 * key event for pressing a key. Ends start display if it is active
+	 * @param KeyEvent
 	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(active){
 			if(e.getKeyCode() == KeyEvent.VK_SPACE){
-				System.out.println("hello");
-				for (GameObject gameObject : getGameState().getGameObjectCollection())
-				{
-					if (gameObject instanceof StartDisplay)
-					{
-						getGameState().remove(gameObject);
-						active = false;
-					}
-				}
+				active = false;
 			}
 		}
 	}

@@ -20,7 +20,7 @@ public class trashcanHandler extends Handler {
 	trashcanHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen, gameState);
 		try{
-			image  = ImageIO.read(new File("img/TrashCan/trashcan_open.png")).getScaledInstance(Launcher.WIDTH/25, Launcher.HEIGHT/25, Image.SCALE_FAST);	
+			image  = ImageIO.read(new File("img/TrashCan/trashcan_open.png")).getScaledInstance(scaleX(trashcanObject.width), scaleY(trashcanObject.height), Image.SCALE_FAST);	
 		}
 		catch(IOException e)
 		{
