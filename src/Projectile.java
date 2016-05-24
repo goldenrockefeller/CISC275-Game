@@ -7,8 +7,13 @@ public abstract class Projectile extends GameObject {
 	int yEnd;
 	int z =-1; //projectile's z value
 	
+<<<<<<< HEAD
 	public final static int width = GameState.frameWidth / 25; //projectile's width
 	public final static int height = GameState.frameHeight / 25; //projectile's height
+=======
+	public final static int width = GameState.frameWidth / 25;
+	public final static int height = GameState.frameHeight / 25;
+>>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
 	
 	boolean isVisible = true; //determines if projectile is visible
 	boolean stopped = false; //determines if the projectile is stopped
@@ -63,9 +68,13 @@ public abstract class Projectile extends GameObject {
 			*/
 		}
 	}
+<<<<<<< HEAD
 	/**
 	 * blank sendMessage method
 	 */
+=======
+
+>>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
 	abstract public void sendMessage();
 
 	/**getter for z
@@ -81,10 +90,13 @@ public abstract class Projectile extends GameObject {
 	public void setZ(int z) {
 		this.z = z;
 	}
+<<<<<<< HEAD
 	/**
 	 * should check if a projectile has collided with a trash can. Trash that hits a can is added to trashCount and then removed visually from the game
 	 * @param trashCan the potentially colliding can
 	 */
+=======
+>>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
 	private void checkCollision(trashcanObject trashCan) {
 
 		//Collision boxes overlapping

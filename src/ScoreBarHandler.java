@@ -12,8 +12,13 @@ public class ScoreBarHandler extends Handler {
 	 * Image handling for the scoreboard.
 	 */
 	
+<<<<<<< HEAD
 	int BlueCrabScore = gameState.getBlueCount(); //score based on the amount of blue crabs
 	int TrashScore = gameState.getTrashCount(); //score based on trash
+=======
+	int BlueCrabScore = gameState.getBlueCount();
+	int TrashScore = gameState.getTrashCount();
+>>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
 
 	int red;
 	int green;
@@ -167,10 +172,14 @@ public class ScoreBarHandler extends Handler {
 			gameState.setiswin(false);
 		}
 	}
+<<<<<<< HEAD
 	/**
 	 * change colors to alert the player of a change to the score bar
 	 * @param a
 	 */
+=======
+
+>>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
 	public void warning(int a) {
 
 		if (a < 50) {
@@ -189,11 +198,15 @@ public class ScoreBarHandler extends Handler {
 		}
 
 	}
+<<<<<<< HEAD
 	/**
 	 * reduces the score of the RIGHT bar
 	 * @param a, a value used in determining how much the score is reduced
 	 * @return 0
 	 */
+=======
+
+>>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
 	public int ReduceR(int a) {
 		if (a < prescoreB) {
 			countB++;
@@ -207,11 +220,15 @@ public class ScoreBarHandler extends Handler {
 		prescoreB = a;
 		return 0;
 	}
+<<<<<<< HEAD
 	/**
 	 * reduces the score of the LEFT bar
 	 * @param a, a value used in determining how much score is reduced
 	 * @return
 	 */
+=======
+
+>>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
 	public int ReduceL(int a) {
 		if (a < prescoreA) {
 			countA++;
@@ -225,9 +242,13 @@ public class ScoreBarHandler extends Handler {
 		prescoreA = a;
 		return prescoreA;
 	}
+<<<<<<< HEAD
 	/**
 	 * the score reduction for missing
 	 */
+=======
+
+>>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
 	public void MissReduce() {
 		int number = 50;
 		missreducetemp = missreducetemp + gameState.gettrashMissed();

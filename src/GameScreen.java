@@ -13,8 +13,13 @@ public class GameScreen extends JPanel{
 	 * This acts as the main class for our view.
 	 */
 	private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+<<<<<<< HEAD
 	public static final int WIDTH = (int) screenSize.getWidth(); //width of game screen
 	public static final int HEIGHT = (int) screenSize.getHeight(); //height of game screen
+=======
+	public static final int WIDTH = (int) screenSize.getWidth();
+	public static final int HEIGHT = (int) screenSize.getHeight();
+>>>>>>> 764e9fca27f15f1c0f35524071ca0843bfff2b56
     private Collection<Handler> handlerCollection;
     private static final long serialVersionUID = 1L; //used for Serializable
     /*
