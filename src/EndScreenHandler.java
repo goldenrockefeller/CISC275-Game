@@ -61,7 +61,7 @@ public class EndScreenHandler extends Handler implements KeyListener{
 
 		if (getGameState().iswin)
 		{
-			feedback = "Good Job";
+			feedback = "Great Job!";
 		}
 		/*
 		if (blueCount < mittenCount && trashcan > trashfield)
