@@ -8,22 +8,29 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
 public class EndScreenHandler extends Handler implements KeyListener{
 
-	
-	private static final long serialVersionUID = 1L;
+	//serial version for Serializable
+	private static final long serialVersionUID = 20L;
+	/**
+	 * these are all values from the game that will be display on this screen
+	 */
 	Image image;
 	String scoreblue;
 	String scoremitten;
 	String scoretrash;
 	String scoretrashmissed;
 	String feedback;
+	//the shooter-handler to be associated with this endscreen
 	ShooterHandler shooterHandler;
-	boolean ended = false;
-	
+	boolean ended = false; //this bool is used to let this handler know when the game is over
+	/**
+	 * Constructor. Should throw exception if image cannot be read.
+	 * @param gameScreen
+	 * @param gameState
+	 * @param shooterHandler
+	 */
 	EndScreenHandler(GameScreen gameScreen, GameState gameState, ShooterHandler shooterHandler) {
 		super(gameScreen, gameState);
 		
@@ -37,7 +44,13 @@ public class EndScreenHandler extends Handler implements KeyListener{
 		gameScreen.addKeyListener(this);
 	}
 
-	
+	/**
+	 * sets class attributes based on parameters' tostring methods. Display message is different if player "wins"
+	 * @param blueCount sets scoreblue
+	 * @param mittenCount sets scoremitten
+	 * @param trashfield sets scoretrash
+	 * @param trashcan sets scoretrashmissed
+	 */
 	public void setScores(int blueCount, int mittenCount, int trashfield, int trashcan) {
 		scoreblue = Integer.toString(blueCount);
 		scoremitten = Integer.toString(mittenCount);
@@ -48,7 +61,7 @@ public class EndScreenHandler extends Handler implements KeyListener{
 
 		if (getGameState().iswin)
 		{
-			feedback = "Good Job";
+			feedback = "Great Job!";
 		}
 		/*
 		if (blueCount < mittenCount && trashcan > trashfield)
@@ -62,7 +75,11 @@ public class EndScreenHandler extends Handler implements KeyListener{
 		*/
 			
 	}
-
+	/**
+	 * paints the images on screen, specifically the end screen itself and the text that goes over it
+	 *@param g, graphics used
+	 */
+	
 	@Override
 	public void paint(Graphics g) {
 		
@@ -81,7 +98,10 @@ public class EndScreenHandler extends Handler implements KeyListener{
 		}
 	}
 
-
+	/**
+	 * key event for pressing a key. At this point in the game, pressing a key at the endgame screen restarts the game
+	 * @KeyEvent arg0
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -93,17 +113,29 @@ public class EndScreenHandler extends Handler implements KeyListener{
 		}
 	}
 
-
+	/**
+	 * stub key event for releasing a key
+	 * @param @KeyEvent arg0
+	 */
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-
+	/**
+	 * stub key event for typing a key
+	 * @param KeyEvent arg0
+	 */
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}	
+	/**
+	 * Used to return the Serial ID
+	 */
+	public long returnSerial(){
+		return serialVersionUID;
 	}
 }

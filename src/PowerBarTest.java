@@ -8,19 +8,19 @@ public class PowerBarTest {
 	@Test
 	public void test() {
 		GameState myGame = new GameState();
-		PowerBar myPower = new PowerBar(myGame.frameWidth / 4, myGame.frameHeight - 100, 0, 0, myGame);
+		PowerBar myPower = new PowerBar(0, 0, 0, 0, myGame);
 		
 		assertEquals(myPower.getPowerFluc(), 0);
 		assertEquals(myPower.getFlag(), true);
 		
 		myPower.updateState();
 		
-		assertEquals(myPower.getPowerFluc(), 1);
+		assertEquals(myPower.getPowerFluc(), 2);
 		
 		myPower.setPowerFluc(114);
 		myPower.updateState();
 		
-		assertEquals(myPower.getPowerFluc(), 115);
+		assertEquals(myPower.getPowerFluc(), 116);
 		myPower.updateState();
 		assertEquals(myPower.getPowerFluc(), 114);
 		assertEquals(myPower.getFlag(), false);
@@ -30,7 +30,7 @@ public class PowerBarTest {
 		myPower.updateState();
 		assertEquals(myPower.getFlag(), true);
 		
-		assertEquals(myPower.getPowerFluc(), 0);
+		assertEquals(myPower.getPowerFluc(), -1);
 		assertEquals(myPower.getFlag(), true);
 		myPower.updateState();
 		assertEquals(myPower.getPowerFluc(), 1);

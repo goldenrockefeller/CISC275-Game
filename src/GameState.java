@@ -1,6 +1,3 @@
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.awt.image.BufferStrategy;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,7 +6,7 @@ import java.io.ObjectOutputStream;
 import java.util.*;
 
 public class GameState implements java.io.Serializable {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;//used for Serializable
 	
 	/**
 	 * Gamestate is the main class for our model.  All of our gameobjects are combined
@@ -20,13 +17,13 @@ public class GameState implements java.io.Serializable {
 	int trashCount; //amount of trash on screen
 	int mittenCount; //amount of mitten crabs on screen
 	int blueCount; // amount of blue crabs on screen
-	int trashMissed;
-	int totalTrash;
+	int trashMissed; //amount of trash that was thrown but didn't get into a can
+	int totalTrash; //total trash thrown
 	String messages; //used for project information about the game state changes to the world
 
-	boolean isend;
-	boolean iswin;
-	boolean startover;
+	boolean isend; //is true if the game is over
+	boolean iswin; //is true if the player has "won"
+	boolean startover; //is true if the game needs to restart
 	//Shooter gameShooter;
 	//TO DO need to have this in Launcher
 	
@@ -46,6 +43,10 @@ public class GameState implements java.io.Serializable {
 	 these numbers are MY resolution. Can be easily changed to match any real, possible resolution
 	 */
 	
+	
+	/**
+	 * Constructor. Sets default value for game stats.
+	 */
 	public GameState()
 	{
 		isend = false;
@@ -61,6 +62,9 @@ public class GameState implements java.io.Serializable {
 		gameObjectCollection = new LinkedList<GameObject>();
 	}
 	
+	/**
+	 * sets the game state stats to be the same as the initial constructor's
+	 */
 	public void reset()
 	{
 		isend = false;
@@ -272,9 +276,19 @@ public class GameState implements java.io.Serializable {
 	public Collection<GameObject> getGameObjectCollection() {
 		return gameObjectCollection;
 	}
+	
+	/**
+	 * setter for iswin
+	 * @param a the new value of iswin
+	 */
 	public void setiswin(boolean a){
 		iswin=a;
 	}
+
+	/**
+	 * setter for isend
+	 * @param a the new value of isend
+	 */
 	public void setisend(boolean a){
 		isend=a;
 	}

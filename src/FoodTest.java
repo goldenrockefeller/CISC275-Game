@@ -46,5 +46,4 @@ public class FoodTest {
 		assertEquals(0, testfood.getxVelocity(), 0.1);
 		assertEquals(0, testfood.getyVelocity(), 0.1);
 	}
-
 }

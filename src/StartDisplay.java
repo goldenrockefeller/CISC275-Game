@@ -1,5 +1,7 @@
 
 public class StartDisplay extends GameObject {
+	private static final long serialVersionUID = 57L; // Serial ID
+
 	/**
 	 * The game object for the start screen
 	 * 

@@ -7,7 +7,7 @@ public class ArrowTest {
 	@Test
 	public void test() {
 		GameState myGame = new GameState();
-		Arrow myArrow = new Arrow(myGame.frameWidth / 2, myGame.frameHeight - 100, 0, 0, myGame);
+		Arrow myArrow = new Arrow(0, 0, 0, 0, myGame);
 		
 		assertEquals(myArrow.getDirectFluc(), 20);
 		

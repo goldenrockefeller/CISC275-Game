@@ -1,14 +1,12 @@
-import java.util.ArrayList;
-
 public abstract class Projectile extends GameObject {
+	private static final long serialVersionUID = 58L; // Serial ID
 
 	//values of the projectile's end point
 	int xEnd;
 	int yEnd;
 	int z =-1; //projectile's z value
-	
-	public final static int width = GameState.frameWidth / 25;
-	public final static int height = GameState.frameHeight / 25;
+	public final static int width = GameState.frameWidth / 25; //projectile's width
+	public final static int height = GameState.frameHeight / 25; //projectile's height
 	
 	boolean isVisible = true; //determines if projectile is visible
 	boolean stopped = false; //determines if the projectile is stopped
@@ -63,9 +61,13 @@ public abstract class Projectile extends GameObject {
 			*/
 		}
 	}
-
+	
+	/**
+	 * blank sendMessage method
+	 */
 	abstract public void sendMessage();
 
+	
 	/**getter for z
 	 * @return the z
 	 */
@@ -79,23 +81,4 @@ public abstract class Projectile extends GameObject {
 	public void setZ(int z) {
 		this.z = z;
 	}
-	private void checkCollision(trashcanObject trashCan) {
-
-		//Collision boxes overlapping
-		if (trashCan.getxPosition()  < this.getxPosition() + width &&
-				trashCan.getyPosition() < this.getyPosition() + height &&
-				trashCan.getxPosition() + trashCan.width > this.getxPosition() &&
-				trashCan.getyPosition() + trashCan.height > this.getyPosition() )
-		{
-			//Collision Detected
-			getGameState().addToTrashCount(1);
-			
-			sendMessage();
-//			getGameState().settrashMissd(getGameState().gettotalTrash()-getGameState().getTrashCount());
-//			System.out.println("Missed "+getGameState().gettrashMissed()+" total trash "+getGameState().gettotalTrash()+" trash in can "+getGameState().getTrashCount());
-			getGameState().remove(this);
-			
-		}
-	}
-	
 }

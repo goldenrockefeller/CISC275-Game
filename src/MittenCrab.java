@@ -1,6 +1,7 @@
 
 public class MittenCrab extends Crab {
-	private static final long serialVersionUID = 103L;
+	private static final long serialVersionUID = 103L; //used for serializable
+
 	/**
 	 * Constructor, parameters are the same as the superclass'
 	 * @param xPosition

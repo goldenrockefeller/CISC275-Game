@@ -1,5 +1,5 @@
 public class PowerBar extends GameObject {
-	private static final long serialVersionUID = 104L;
+	private static final long serialVersionUID = 104L; //used for Serializable 
 	private int powerfluc; //the power that fluctuates on every tick
 	private int power; // the power that the player chooses using the space bar.
 	private boolean power_flag; // Used to determine if powerfluc bar is going up or down, true is up, false is down
@@ -24,7 +24,11 @@ public class PowerBar extends GameObject {
 	}
 
 	/**
-	 * changes the flags based on the current value of powerfluc
+	 * changes the flags based on the current value of powerfluc.
+	 * Will increase the powerfluc by 2 every tick if the power_flag
+	 * is true.  Will decrease the powerfluc by 2 every tick if the power_flag
+	 * is false the powerflag will change if the powerfluc becomes equal to
+	 * 0 or 114.
 	 * 
 	 * @return void
 	 */
@@ -93,10 +97,11 @@ public class PowerBar extends GameObject {
 		this.setPowerFluc(0);
 		power_flag = true;
 	}
+	/**
+	 * getter for power_flag
+	 * @return power_flag
+	 */
 	public boolean getFlag(){
 		return power_flag;
 	}
-	/**
-	 * 
-	 */
 }

@@ -1,9 +1,5 @@
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
@@ -24,12 +20,12 @@ public class ShooterHandler extends Handler implements KeyListener {
 	//x and y values for speed
 	double xSpeed; 
 	double ySpeed;
-	int degrees;
-	int power;
-	int randProj;	
-	int delay = 0;
-	Food tempf;
-	Trash tempt;
+	int degrees; //degrees or angle used for vector calculations
+	int power; //power of projectile
+	int randProj;	//rand used for projectiles
+	int delay = 0; //possible delay 
+	Food tempf; //temp form of food
+	Trash tempt; //temp form of trash
 	
 	//projectile, arrow's image, powerbar's image, and shooter to be associated with this handler
 	
@@ -60,7 +56,10 @@ public class ShooterHandler extends Handler implements KeyListener {
 		this.gameShooter = gameShooter;
 		firstclick = true;
 	}
-	
+
+	/**
+	 * resets the first click bool and generates a new projectile
+	 */
 	public void reset()
 	{
 		projectile = generateProjectile();
@@ -69,7 +68,8 @@ public class ShooterHandler extends Handler implements KeyListener {
 	
 	/**
 	 * This function takes the current power in the power bar and will create a 
-	 * new arrow reflecting the current power and direction
+	 * new arrow reflecting the current power
+	 * @param BufferedImage img, int curr_power
 	 */
 	private BufferedImage colorArrow(BufferedImage img, int curr_power){
 		int width = img.getWidth();
@@ -99,7 +99,9 @@ public class ShooterHandler extends Handler implements KeyListener {
 	}
 
 	/**
-	 * paints image on screen
+	 * Gets the current arrow image using colorArrow then rotates
+	 * that image to reflect the current direction it should
+	 * be facing. Then paints that image onto the screen
 	 * @param g, graphics used
 	 */
 	public void paint(Graphics g) {

@@ -1,5 +1,5 @@
 import java.awt.Graphics;
-import java.util.Random;
+
 public class ProjectileHandler extends Handler {
 	//the projectile being handled
 	public static Projectile projectile;

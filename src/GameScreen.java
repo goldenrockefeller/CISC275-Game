@@ -1,9 +1,5 @@
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 import java.util.*;
-
-import java.awt.event.*;
 import javax.swing.*;
 
 public class GameScreen extends JPanel{
@@ -13,10 +9,11 @@ public class GameScreen extends JPanel{
 	 * This acts as the main class for our view.
 	 */
 	private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	public static final int WIDTH = (int) screenSize.getWidth();
-	public static final int HEIGHT = (int) screenSize.getHeight();
+	
+	public static final int WIDTH = (int) screenSize.getWidth(); //width of game screen
+	public static final int HEIGHT = (int) screenSize.getHeight(); //height of game screen
     private Collection<Handler> handlerCollection;
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L; //used for Serializable
     /*
      * ImageBank contains a set of Sprite Set
      * SpriteSets contains a list of all Image Sets for a GameObject

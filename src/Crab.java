@@ -1,12 +1,7 @@
-import java.awt.Color;
-
-import java.awt.Graphics;
-import java.awt.Image;
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 public abstract class Crab extends GameObject {
-	
+	private static final long serialVersionUID = 55L; // Serial ID
 	/**
 	 * these values manually set the bounds and frame size of the crabs
 	 */

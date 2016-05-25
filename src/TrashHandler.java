@@ -23,7 +23,6 @@ public class TrashHandler extends Handler {
 			image[1] = ImageIO.read(new File("img/banana.png")).getScaledInstance(scaleX(Trash.width), scaleY(Trash.height), Image.SCALE_FAST);
 			image[2] = ImageIO.read(new File("img/paper.png")).getScaledInstance(scaleX(Trash.width), scaleY(Trash.height), Image.SCALE_FAST);
 			image[3] = ImageIO.read(new File("img/soda.png")).getScaledInstance(scaleX(Trash.width), scaleY(Trash.height), Image.SCALE_FAST);
-			Image check = ImageIO.read(new File("img/check.png")).getScaledInstance(scaleX(Trash.width), scaleY(Trash.height), Image.SCALE_FAST);
 			}
 		catch(IOException e)
 		{
