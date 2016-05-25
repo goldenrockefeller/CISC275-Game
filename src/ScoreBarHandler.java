@@ -34,213 +34,223 @@ public class ScoreBarHandler extends Handler {
 	int trashincount;// the number of trash on screen
 	int trashindisplaycount;//counting the trash display text time
 	/**
-	 *the counting number of object on screen, set the value to gamestate.
+	 * initial the number of object on screen 
+	 * 
 	 */
-	ScoreBarHandler(GameScreen gameScreen, GameState gameState) {
-		super(gameScreen, gameState);
-		bluecrabcount = 1;
-		mittencrabcount = 1;
-		trashmisscount = 0;
-		trashincount = 0;
+		ScoreBarHandler(GameScreen gameScreen, GameState gameState) {
+			super(gameScreen, gameState);
+			bluecrabcount = 1;
+			mittencrabcount = 1;
+			trashmisscount = 0;
+			trashincount = 0;
 
-	}
+		}
 
-	/**
-	 * Paints the scoreboard.  Variables that affect the scoreboard are taken into account here.
-	 * The left side of the scoreboard is determined by the amount of blue crabs fed and the amount
-	 * of trash missed. The right side of the scoreboard is determined by the amount of trash that
-	 * has landed in the trashcan.  This will also set a boolean in gameState to determine if the
-	 * game has ended.
-	 */
-	@Override
-	public void paint(Graphics g) {
-		// System.out.println("blue"+gameState.getBlueCount());
-		// System.out.println("trash"+gameState.getTrashCount());
-		// System.out.println("bluedisplay"+BlueCrabScore);
-		// System.out.println("miss"+gameState.gettrashMissed());
-		// change();
-		///////////////////////////// background
-		g.setColor(Color.RED);
-		g.setFont(new Font("Tahoma", Font.BOLD, 16 * Math.min(GameScreen.WIDTH / 1920,GameScreen.HEIGHT / 1080)));
-		g.drawString("Blue Crab", (950 - 260) * GameScreen.WIDTH / 1920, (25 - 11) * GameScreen.HEIGHT / 1080);
+		/**
+		 * Draw food in transit if visible If it hits a crab, it will disappear and
+		 * replicate the crab
+		 */
+		@Override
+		public void paint(Graphics g) {
+			// System.out.println("blue"+gameState.getBlueCount());
+			// System.out.println("trash"+gameState.getTrashCount());
+			// System.out.println("bluedisplay"+BlueCrabScore);
+			// System.out.println("miss"+gameState.gettrashMissed());
+			// change();
+			///////////////////////////// background
+			g.setColor(Color.RED);
+			g.setFont(new Font("Tahoma", Font.BOLD,
+					(int) (16 * Math.min(GameScreen.WIDTH / 1920.0, (GameScreen.HEIGHT / 1080.0)))));
+			g.drawString("Blue Crab", (int) ((950 - 260) * GameScreen.WIDTH / 1920.0),
+					(int) ((25 - 11) * GameScreen.HEIGHT / 1080.0));
 
-		g.drawString("Trash", (950 + 230)  * GameScreen.WIDTH / 1920, (25 - 11)  * GameScreen.HEIGHT / 1080);
-		g.setColor(Color.BLACK);
-		g.fillRect((950 - 292) * GameScreen.WIDTH / 1920, (25 - 2)  * GameScreen.HEIGHT / 1080,
-				(250 + 250 + 43 + 40) * GameScreen.WIDTH / 1920, 35  * GameScreen.HEIGHT / 1080);
-		g.setColor(Color.BLACK);
-		g.drawRect((950 - 292) * GameScreen.WIDTH / 1920, (25 - 2)  * GameScreen.HEIGHT / 1080,
-				(250 + 250 + 43 + 40) * GameScreen.WIDTH / 1920, 35  * GameScreen.HEIGHT / 1080);
+			g.drawString("Trash", (int) ((950 + 230) * GameScreen.WIDTH / 1920.0),
+					(int) ((25 - 11) * GameScreen.HEIGHT / 1080.0));
+			g.setColor(Color.BLACK);
+			g.fillRect((int) ((950 - 292) * GameScreen.WIDTH / 1920.0), (int) ((25 - 2) * GameScreen.HEIGHT / 1080.0),
+					(int) ((250 + 250 + 43 + 40) * GameScreen.WIDTH / 1920.0), (int) (35 * GameScreen.HEIGHT / 1080.0));
+			g.setColor(Color.BLACK);
+			g.drawRect((int) ((950 - 292) * GameScreen.WIDTH / 1920.0), (int) ((25 - 2) * GameScreen.HEIGHT / 1080.0),
+					(int) ((250 + 250 + 43 + 40) * GameScreen.WIDTH / 1920.0), (int) (35 * GameScreen.HEIGHT / 1080.0));
 
-		/////////////////////////////////////
+			/////////////////////////////////////
 
-		// left side score bar.
+			// left side score bar.
 
-		g.setColor(Color.RED);
-		MissReduce();
+			g.setColor(Color.RED);
+			MissReduce();
 
-		temp = ReduceL(250 - gameState.getMittenCount() * 10) - missreduce;
-		lose = 250 - gameState.getMittenCount() * 10 + gameState.getBlueCount() * 20 - missreduce;
-		g.fillRect((950 - 290 + 250 - temp) * GameScreen.WIDTH / 1920, 25  * GameScreen.HEIGHT / 1080, (temp) * GameScreen.WIDTH / 1920,
-				32  * GameScreen.HEIGHT / 1080);
-		warning(lose);
-		g.setColor(new Color(red, green, blue));
+			temp = ReduceL(250 - gameState.getMittenCount() * 10) - missreduce;
+			lose = 250 - gameState.getMittenCount() * 10 + gameState.getBlueCount() * 20 - missreduce;
+			g.fillRect((int) ((950 - 290 + 250 - temp) * GameScreen.WIDTH / 1920.0),
+					(int) (25 * GameScreen.HEIGHT / 1080.0), (int) ((temp) * GameScreen.WIDTH / 1920.0),
+					(int) (32 * GameScreen.HEIGHT / 1080.0));
+			warning(lose);
+			g.setColor(new Color(red, green, blue));
 
-		g.fillRect((950 - 290 + gameState.getMittenCount() * 10 + missreduce
-				- gameState.getBlueCount() * 20) * GameScreen.WIDTH / 1920, 25  * GameScreen.HEIGHT / 1080, (lose) * GameScreen.WIDTH / 1920, 32  * GameScreen.HEIGHT / 1080);
+			g.fillRect(
+					(int) ((950 - 290 + gameState.getMittenCount() * 10 + missreduce - gameState.getBlueCount() * 20)
+							* GameScreen.WIDTH / 1920.0),
+					(int) (25 * GameScreen.HEIGHT / 1080.0), (int) ((lose) * GameScreen.WIDTH / 1920.0),
+					(int) (32 * GameScreen.HEIGHT / 1080.0));
 
-		// right side score bar.
-		g.setColor(Color.RED);
-		g.fillRect((950 + 40 * GameScreen.WIDTH / 1920), 25 * GameScreen.HEIGHT / 1080,
-				ReduceR(250 - gameState.getTrashCount() * 30)* GameScreen.WIDTH / 1920, 32 * GameScreen.HEIGHT / 1080);
+			// right side score bar.
 
-		g.setColor(Color.YELLOW);
-		win = 250 - gameState.getTrashCount() * 30;
-		g.fillRect((950 + 40) * GameScreen.WIDTH / 1920, 25 * GameScreen.HEIGHT / 1080, (win) * GameScreen.WIDTH / 1920, 32 * GameScreen.HEIGHT / 1080);// gameState.getBlueCount()*10,
-																									// 32);
+			g.setColor(Color.RED);
+			g.fillRect((int) ((825 + 40 * GameScreen.WIDTH / 1920.0)), (int) (25 * GameScreen.HEIGHT / 1080.0),
+					(int) (ReduceR(250 - gameState.getTrashCount() * 30) * GameScreen.WIDTH / 1920.0),
+					(int) (32 * GameScreen.HEIGHT / 1080.0)); // 32);
 
-		/////////////////////////////////// K.O.
-		g.setColor(Color.BLACK);
-		g.fillRect((950 - 40) * GameScreen.WIDTH / 1920, 0, 80 * GameScreen.WIDTH / 1920, 80  * GameScreen.HEIGHT / 1080);
-		g.setColor(Color.WHITE);
-		g.draw3DRect((950 - 40) * GameScreen.WIDTH / 1920, 0, 80 * GameScreen.WIDTH / 1920, 80  * GameScreen.HEIGHT / 1080, true);
-		g.setFont(new Font("Tahoma", Font.BOLD, 32 * Math.min(GameScreen.WIDTH / 1920,GameScreen.HEIGHT / 1080)));
-		g.setColor(Color.RED);
-		g.drawString("K.O.", (950 - 30) * GameScreen.WIDTH / 1920, (25 + 25)* GameScreen.HEIGHT / 1080 );
-		/////////////////////////////////
-		g.setColor(Color.RED);
-		g.setFont(new Font("Tahoma", Font.BOLD, 24 * Math.min(GameScreen.WIDTH / 1920,GameScreen.HEIGHT / 1080)));
-		
-		//displaying text near score bar for tell player what they need to do.
-		if (gameState.getMessages().indexOf('m') >= 0) {
-			mittencrabcount +=1;
-			mittencrabdisplaycount = 100;
-		} else if (mittencrabdisplaycount > 0) {
-			mittencrabdisplaycount--;
-			if (trashmissdisplaycount == 0 && bluecrabdisplaycount == 0 && trashindisplaycount == 0) {
-				g.drawString("Don't feed the Mitten Crabs. They're an invasive species!", (950 + 230)  * GameScreen.WIDTH / 1920,
-						(25 + 60) * GameScreen.HEIGHT / 1080);
+			g.setColor(Color.YELLOW);
+			win = 250 - gameState.getTrashCount() * 30;
+			g.fillRect((int) ((950 + 40) * GameScreen.WIDTH / 1920.0), (int) (25 * GameScreen.HEIGHT / 1080.0),
+					(int) ((win) * GameScreen.WIDTH / 1920.0), (int) (32 * GameScreen.HEIGHT / 1080.0));// gameState.getBlueCount()*10,
+
+			/////////////////////////////////// K.O.
+			g.setColor(Color.BLACK);
+			g.fillRect((int) ((950 - 40) * GameScreen.WIDTH / 1920.0), 0, (int) (80 * GameScreen.WIDTH / 1920.0),
+					(int) (80 * GameScreen.HEIGHT / 1080.0));
+			g.setColor(Color.WHITE);
+			g.draw3DRect((int) ((950 - 40) * GameScreen.WIDTH / 1920.0), (int) 0, (int) (80 * GameScreen.WIDTH / 1920.0),
+					(int) (80 * GameScreen.HEIGHT / 1080.0), true);
+			g.setFont(new Font("Tahoma", Font.BOLD,
+					(int) (32 * Math.min(GameScreen.WIDTH / 1920.0, GameScreen.HEIGHT / 1080.0))));
+			g.setColor(Color.RED);
+			g.drawString("K.O.", (int) ((950 - 30) * GameScreen.WIDTH / 1920.0),
+					(int) ((25 + 25) * GameScreen.HEIGHT / 1080.0));
+			/////////////////////////////////
+			g.setColor(Color.RED);
+			g.setFont(new Font("Tahoma", Font.BOLD,
+					(int) (24 * Math.min(GameScreen.WIDTH / 1920.0, GameScreen.HEIGHT / 1080.0))));
+
+			if (gameState.getMessages().indexOf('m') >= 0) {
+				mittencrabcount += 1;
+				mittencrabdisplaycount = 100;
+			} else if (mittencrabdisplaycount > 0) {
+				mittencrabdisplaycount--;
+				if (trashmissdisplaycount == 0 && bluecrabdisplaycount == 0 && trashindisplaycount == 0) {
+					g.drawString("Don't feed the Mitten Crabs. They're an invasive species!",
+							(int) ((950 + 230) * GameScreen.WIDTH / 1920.0),
+							(int) ((25 + 60) * GameScreen.HEIGHT / 1080.0));
+				}
+			}
+
+			if (gameState.getMessages().indexOf('b') >= 0) {
+				bluecrabcount += 1;
+				bluecrabdisplaycount = 100;
+			} else if (bluecrabdisplaycount > 0) {
+				bluecrabdisplaycount--;
+				if (trashmissdisplaycount == 0 && mittencrabdisplaycount == 0 && trashindisplaycount == 0) {
+					g.drawString("You Fed A Blue Claw Crab. Great Job!", (int) ((950 - 260) * GameScreen.WIDTH / 1920.0),
+							(int) ((25 + 60) * GameScreen.HEIGHT / 1080.0));
+				}
+			}
+			if (gameState.getMessages().indexOf('t') >= 0) {
+				trashincount += 1;
+				trashindisplaycount = 100;
+			} else if (trashindisplaycount > 0) {
+				trashindisplaycount--;
+				if (bluecrabdisplaycount == 0 && mittencrabdisplaycount == 0 && trashmissdisplaycount == 0) {
+					g.drawString("Nice Shot!", (int) ((950 + 240) * GameScreen.WIDTH / 1920.0),
+							(int) ((25 + 90) * GameScreen.HEIGHT / 1080.0));
+				}
+			}
+			if (gameState.getMessages().indexOf('T') >= 0) {
+				trashmisscount += 1;
+
+				trashmissdisplaycount = 100;
+			} else if (trashmissdisplaycount > 0) {
+				trashmissdisplaycount--;
+				if (bluecrabdisplaycount == 0 && mittencrabdisplaycount == 0 && trashindisplaycount == 0) {
+					g.drawString("Throw Trash In The Trash Can!", (int) ((950 - 330) * GameScreen.WIDTH / 1920.0),
+							(int) ((25 + 75) * GameScreen.HEIGHT / 1080.0));
+				}
+			}
+
+			/////////////////////////////////// checking if the game ends and wins
+
+			if (win <= 0) {
+				gameState.setiswin(true);
+				gameState.setisend(true);
+			}
+			if (lose <= 0) {
+				gameState.setisend(true);
+				gameState.setiswin(false);
 			}
 		}
+		/**
+		 * change colors to alert player the score is low, the game is losing.
+		 * @param a
+		 */
+		public void warning(int a) {
 
-		if (gameState.getMessages().indexOf('b') >= 0) {
-			bluecrabcount +=1;
-			bluecrabdisplaycount = 100;
-		} else if (bluecrabdisplaycount > 0) {
-			bluecrabdisplaycount--;
-			if (trashmissdisplaycount == 0 && mittencrabdisplaycount == 0 && trashindisplaycount == 0) {
-				g.drawString("You Fed A Blue Claw Crab. Great Job!", (950 - 260)  * GameScreen.WIDTH / 1920,
-						(25 + 60) * GameScreen.HEIGHT / 1080);
+			if (a < 50) {
+				red = 255;
+
+				blue = 0;
+				if (green <= 10) {
+					b = 10;
+				} else if (green >= 245) {
+					b = -10;
+				}
+				green = green + b;
+			} else {
+				red = green = 255;
+				blue = 0;
 			}
+
 		}
-		if (gameState.getMessages().indexOf('t') >= 0) {
-			trashincount +=1;
-			trashindisplaycount = 100;
-		} else if (trashindisplaycount > 0) {
-			trashindisplaycount--;
-			if (bluecrabdisplaycount == 0 && mittencrabdisplaycount == 0 && trashmissdisplaycount == 0) {
-				g.drawString("Nice Shot!", (950 + 240)  * GameScreen.WIDTH / 1920,
-						(25 + 90) * GameScreen.HEIGHT / 1080);
+		/**
+		 * reduces the score of the right bar
+		 * @param a, a value used in determining how much score is reduced
+		 * @return
+		 */
+		public int ReduceR(int a) {
+			if (a < prescoreB) {
+				countB++;
+				if (countB > 20) {
+					countB = 0;
+					prescoreB--;
+				}
+				return prescoreB;
+
 			}
+			prescoreB = a;
+			return 0;
 		}
-		if (gameState.getMessages().indexOf('T') >= 0) {
-			trashmisscount += 1;
-			
-			trashmissdisplaycount = 100;
-		} else if (trashmissdisplaycount > 0) {
-			trashmissdisplaycount--;
-			if (bluecrabdisplaycount == 0 && mittencrabdisplaycount == 0 && trashindisplaycount == 0) {
-				g.drawString("Throw Trash In The Trash Can!", (950 - 330)  * GameScreen.WIDTH / 1920,
-						(25 + 75) * GameScreen.HEIGHT / 1080);
+		/**
+		 * reduces the score of the LEFT bar
+		 * @param a, a value used in determining how much score is reduced
+		 * @return
+		 */
+		public int ReduceL(int a) {
+			if (a < prescoreA) {
+				countA++;
+				if (countA > 20) {
+					countA = 0;
+					prescoreA--;
+				}
+				return prescoreA;
+
 			}
-		}
-
-
-				///////////////////////////////////checking the game if ends and wins.
-
-		if (win <= 0) {
-			gameState.setiswin(true);
-			gameState.setisend(true);
-		}
-		if (lose <= 0) {
-			gameState.setisend(true);
-			gameState.setiswin(false);
-		}
-	}
-	
-	/**
-	 * change colors to alert player the score is low, the game is losing.
-	 * @param a
-	 */
-	public void warning(int a) {
-
-		if (a < 50) {
-			red = 255;
-
-			blue = 0;
-			if (green <= 10) {
-				b = 10;
-			} else if (green >= 245) {
-				b = -10;
-			}
-			green = green + b;
-		} else {
-			red = green = 255;
-			blue = 0;
-		}
-
-	}
-	
-	/**
-	 * reduces the score of the RIGHT bar
-	 * @param a, a value used in determining how much the score is reduced
-	 * @return 0
-	 */
-	public int ReduceR(int a) {
-		if (a < prescoreB) {
-			countB++;
-			if (countB > 20) {
-				countB = 0;
-				prescoreB--;
-			}
-			return prescoreB;
-
-		}
-		prescoreB = a;
-		return 0;
-	}
-	
-	/**
-	 * reduces the score of the LEFT bar
-	 * @param a, a value used in determining how much score is reduced
-	 * @return
-	 */
-	public int ReduceL(int a) {
-		if (a < prescoreA) {
-			countA++;
-			if (countA > 20) {
-				countA = 0;
-				prescoreA--;
-			}
+			prescoreA = a;
 			return prescoreA;
+		}
+		/**
+		 * Showing score reduction for missing
+		 */
+		public void MissReduce() {
+			int number = 50;
+			missreducetemp = missreducetemp + gameState.gettrashMissed();
+
+			if (missreducetemp > number) {
+				missreducetemp = 0;
+				missreduce++;
+
+			}
 
 		}
-		prescoreA = a;
-		return prescoreA;
 	}
-	
-	/**
-	 * the score reduction for missing
-	 */
-	public void MissReduce() {
-		int number = 50;
-		missreducetemp = missreducetemp + gameState.gettrashMissed();
 
-		if (missreducetemp > number) {
-			missreducetemp = 0;
-			missreduce++;
 
-		}
 
-	}
-}
