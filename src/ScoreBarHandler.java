@@ -9,31 +9,33 @@ public class ScoreBarHandler extends Handler {
 	int BlueCrabScore = gameState.getBlueCount(); //score based on the amount of blue crabs
 	int TrashScore = gameState.getTrashCount(); //score based on trash
 
-	int red;
-	int green;
-	int blue;
+	int red; // RGB color for score bar
+	int green; // RGB color for score bar
+	int blue; // RGB color for score bar
 	int b = -2;
-	int prescoreA = 250;
-	int prescoreB = 250;
-	int countB = 0;
-	int countA = 0;
-	int temp;
-	int missreduce;
+	int prescoreA = 250; // the length of the score bar
+	int prescoreB = 250;// the length of the score bar
+	int countB = 0; //the value for counting right reducing score animation
+	int countA = 0; //the value for counting left reducing score animation
+	int temp; //temple value for left side score bar for X position and length
+	int missreduce; // animation of reducing of score
 
-	int missreducetemp;
-	int win;
-	int lose;
+	int missreducetemp;// temple value store the number of reduce animation
+	int win; // check if it is winning
+	int lose; // check if it is end of the game
 	
-	int bluecrabcount;
-	int bluecrabdisplaycount;
-	int mittencrabcount;
-	int mittencrabdisplaycount;
+	int bluecrabcount; // the number of blue crab on screen
+	int bluecrabdisplaycount; //counting the blue crab display text time
+	int mittencrabcount;// the number of mitten crab on screen
+	int mittencrabdisplaycount;//counting the mitten crab display text time
 	
-	int trashmisscount;
-	int trashmissdisplaycount;
-	int trashincount;
-	int trashindisplaycount;
-
+	int trashmisscount;// the number of trash missed
+	int trashmissdisplaycount;//counting the trash missed display text time
+	int trashincount;// the number of trash on screen
+	int trashindisplaycount;//counting the trash display text time
+	/**
+	 *the counting number of object on screen, set the value to gamestate.
+	 */
 	ScoreBarHandler(GameScreen gameScreen, GameState gameState) {
 		super(gameScreen, gameState);
 		bluecrabcount = 1;
@@ -46,7 +48,7 @@ public class ScoreBarHandler extends Handler {
 	/**
 	 * Paints the scoreboard.  Variables that affect the scoreboard are taken into account here.
 	 * The left side of the scoreboard is determined by the amount of blue crabs fed and the amount
-	 * of trash missed. The right side of the scoreboard is determined by the amount fo trash that
+	 * of trash missed. The right side of the scoreboard is determined by the amount of trash that
 	 * has landed in the trashcan.  This will also set a boolean in gameState to determine if the
 	 * game has ended.
 	 */
@@ -109,7 +111,7 @@ public class ScoreBarHandler extends Handler {
 		g.setColor(Color.RED);
 		g.setFont(new Font("Tahoma", Font.BOLD, 24 * Math.min(GameScreen.WIDTH / 1920,GameScreen.HEIGHT / 1080)));
 		
-	
+		//displaying text near score bar for tell player what they need to do.
 		if (gameState.getMessages().indexOf('m') >= 0) {
 			mittencrabcount +=1;
 			mittencrabdisplaycount = 100;
@@ -154,7 +156,7 @@ public class ScoreBarHandler extends Handler {
 		}
 
 
-				///////////////////////////////////
+				///////////////////////////////////checking the game if ends and wins.
 
 		if (win <= 0) {
 			gameState.setiswin(true);
@@ -167,7 +169,7 @@ public class ScoreBarHandler extends Handler {
 	}
 	
 	/**
-	 * change colors to alert the player of a change to the score bar
+	 * change colors to alert player the score is low, the game is losing.
 	 * @param a
 	 */
 	public void warning(int a) {
