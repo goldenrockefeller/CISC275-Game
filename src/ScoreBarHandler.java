@@ -216,7 +216,7 @@ public class ScoreBarHandler extends Handler {
 	}
 
 	public void MissReduce() {
-		int number = 50;
+		int number = 200;
 		missreducetemp = missreducetemp + gameState.gettrashMissed();
 
 		if (missreducetemp > number) {
